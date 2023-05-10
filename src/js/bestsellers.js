@@ -58,7 +58,7 @@ function getBestsellersTablet(){
 }
 function renderBestsellersTablet(bestsellers){
     bestsellersList.innerHTML = bestsellers.map((bestseller) => {
-        return `<li class="bestsellers-list-item>
+        return `<li class="bestsellers-list-item">
         <p class="bestsellers-general-category">${bestseller.list_name}</p>
         <div class="bestsellers-book-list">
 
@@ -94,7 +94,7 @@ function getBestsellersDesktop(){
 }
 function renderBestsellersDesktop(bestsellers){
     bestsellersList.innerHTML = bestsellers.map((bestseller) => {
-        return `<li class="bestsellers-list-item>
+        return `<li class="bestsellers-list-item">
         <p class="bestsellers-general-category">${bestseller.list_name}</p>
         <div class="bestsellers-book-list">
 
