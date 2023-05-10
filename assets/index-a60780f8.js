@@ -23,7 +23,7 @@
         </div>
     
         <button class="bestsellers-button">See more</button>
-        </li>`).join(" ")}function A(){fetch("https://books-backend.p.goit.global/books/top-books").then(e=>e.json()).then(e=>H(e)).catch(e=>console.log(e))}function H(e){g.innerHTML=e.map(t=>`<li class="bestsellers-list-item>
+        </li>`).join(" ")}function A(){fetch("https://books-backend.p.goit.global/books/top-books").then(e=>e.json()).then(e=>H(e)).catch(e=>console.log(e))}function H(e){g.innerHTML=e.map(t=>`<li class="bestsellers-list-item">
         <p class="bestsellers-general-category">${t.list_name}</p>
         <div class="bestsellers-book-list">
 
@@ -47,7 +47,7 @@
 
         </div>
         <button class="bestsellers-button">See more</button>
-        </li>`).join(" ")}function O(){fetch("https://books-backend.p.goit.global/books/top-books").then(e=>e.json()).then(e=>W(e)).catch(e=>console.log(e))}function W(e){g.innerHTML=e.map(t=>`<li class="bestsellers-list-item>
+        </li>`).join(" ")}function O(){fetch("https://books-backend.p.goit.global/books/top-books").then(e=>e.json()).then(e=>W(e)).catch(e=>console.log(e))}function W(e){g.innerHTML=e.map(t=>`<li class="bestsellers-list-item">
         <p class="bestsellers-general-category">${t.list_name}</p>
         <div class="bestsellers-book-list">
 
