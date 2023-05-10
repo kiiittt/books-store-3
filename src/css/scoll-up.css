@@ -1,0 +1,31 @@
+.scroll-up_hidden {
+	position: fixed;
+	bottom: 25px;
+	right: 20px;
+	width: 64px;
+	height: 64px;
+	background-image: url("../img/scroll-up.svg");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 24px;
+	background-color: #4F2EE8;
+	border-radius: 50%;
+	box-shadow: inset 0 0 0 4px #ccc9dc4d;
+	cursor: pointer;
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.3s ease-in-out;
+	z-index: 101;
+}
+
+.scroll-up_hidden:hover,
+.scroll-up_hidden:focus {
+	background-color: #4421e2;
+	box-shadow: inset 0 0 0 4px #a9a7b44d;
+	transition: background-color 0.3s ease-in-out;
+}
+
+.scroll-up {
+	opacity: 1;
+	visibility: visible;
+}

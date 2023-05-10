@@ -1,0 +1,35 @@
+<svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<defs>
+		<symbol id="icon-burger" viewBox="0 0 32 32">
+			<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.2857" d="M22.667 13.333h-18.667">
+			</path>
+			<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.2857" d="M28 8h-24">
+			</path>
+			<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.2857" d="M28 18.667h-24">
+			</path>
+			<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.2857" d="M22.667 24h-18.667">
+			</path>
+		</symbol>
+		<symbol id="icon-close-icon" viewBox="0 0 32 32">
+			<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="5.3333" d="M28.444 3.556l-24.889 24.889M3.556 3.556l24.889 24.889">
+			</path>
+		</symbol>
+		<symbol id="icon-arrow" viewBox="0 0 16 12" stroke="#EAC645">
+			<path d="M1.3335 6H14.6668M14.6668 6L9.66683 1M14.6668 6L9.66683 11" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+		</symbol>
+		<symbol id="icon-bag" viewBox="0 0 14 17">
+			<path d="M13.1,4.2h-2.6V3.4c0-0.9-0.4-1.8-1-2.4C8.8,0.4,7.9,0,7,0S5.2,0.4,4.5,1c-0.7,0.6-1,1.5-1,2.4v0.8H0.9
+				c-0.2,0-0.5,0.1-0.6,0.2C0.1,4.7,0,4.9,0,5.1v9.4c0,0.7,0.3,1.3,0.8,1.8C1.3,16.7,1.9,17,2.6,17h8.7c0.7,0,1.4-0.3,1.9-0.7
+				c0.5-0.5,0.8-1.1,0.8-1.8V5.1c0-0.2-0.1-0.4-0.3-0.6C13.6,4.3,13.4,4.2,13.1,4.2z M5.3,3.4c0-0.5,0.2-0.9,0.5-1.2
+				C6.1,1.9,6.5,1.7,7,1.7s0.9,0.2,1.2,0.5c0.3,0.3,0.5,0.8,0.5,1.2v0.8H5.3V3.4z M12.3,14.5c0,0.2-0.1,0.4-0.3,0.6
+				c-0.2,0.2-0.4,0.2-0.6,0.2H2.6c-0.2,0-0.5-0.1-0.6-0.2c-0.2-0.2-0.3-0.4-0.3-0.6V5.9h1.8v0.8c0,0.2,0.1,0.4,0.3,0.6
+				c0.2,0.2,0.4,0.2,0.6,0.2c0.2,0,0.5-0.1,0.6-0.2S5.3,7,5.3,6.8V5.9h3.5v0.8C8.8,7,8.8,7.2,9,7.4c0.2,0.2,0.4,0.2,0.6,0.2
+				s0.5-0.1,0.6-0.2c0.2-0.2,0.3-0.4,0.3-0.6V5.9h1.8V14.5z" />
+		</symbol>
+		<symbol id="icon-arrow-bottom" viewBox="0 0 15 8">
+			<style type="text/css">
+			</style>
+			<path class="st0" d="M0.8,0.4h13.4l-6,6.8C8,7.5,7.8,7.6,7.5,7.6C7.2,7.6,7,7.5,6.8,7.3L0.8,0.4z" />
+		</symbol>
+	</defs>
+</svg>

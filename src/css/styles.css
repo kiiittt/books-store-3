@@ -7,19 +7,128 @@
 @import url('./reset.css');
 @import url('./vite-promo.css');
 @import url('./header.css');
+@import url('./scoll-up.css');
+@import url('https://fonts.cdnfonts.com/css/dm-sans');
 
 :root {
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  --dark: #111111;
+  --ligthDark: #202024;
+  --violet: #4f2ee8;
+  --yellow: #eac645;
+}
+
+body {
+  margin: auto;
+  padding: 0;
+  font-family: montserrat, sans-serif;
   font-size: 16px;
-  line-height: 24px;
-  font-weight: 400;
+  letter-spacing: 0.04em;
+  min-width: 320px;
+}
 
-  color: #242424;
-  background-color: rgba(255, 255, 255, 0.87);
+textarea {
+  resize: none;
+}
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+}
+
+.link {
+  text-decoration: none;
+  scroll-behavior: smooth;
+}
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  min-width: 280px;
+  width: 100%;
+}
+
+.index-category-support {
+  margin-top: 110px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media screen and (min-width: 480px) {
+  .container {
+    width: 480px;
+  }
+
+  .index{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .index-category-support {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 40px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    width: 768px;
+  }
+  .index-category-support {
+    display: flex;
+    padding: auto;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1440px) {
+  .index-category-support {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .container {
+    max-width: 1440px;
+  }
+
+.index{
+  display: flex;
+  flex-direction: row;
+}
+
+.index-bestsellers-div{
+  display: flex;
+  justify-content: center;
+}
+
+    .index-category-support {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 335px;
+    margin-left: 24px;
+    margin-right: 40px;
+  }
 }

@@ -1,0 +1,56 @@
+.spinner {
+	width: 100vw;
+	height: 100vh;
+	z-index: 111;
+	opacity: .9;
+	background: rgba(0, 0, 0, .7);
+	transition: opacity .3s;
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+
+.spinner.is-hidden {
+	opacity: 0;
+	visibility: hidden;
+	pointer-events: none;
+}
+
+.circle {
+	width: 150px;
+	height: 150px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	animation: spin 1s linear infinite;
+	border-radius: 50%;
+	border: 5px solid #fff;
+	box-sizing: border-box;
+}
+
+.circle-1 {
+	animation-delay: 0s;
+}
+
+.circle-2 {
+	animation-delay: -0.5s;
+}
+
+
+@keyframes spin {
+	0% {
+		transform: translate(-50%, -50%) scale(0);
+		opacity: 0.8;
+	}
+
+	50% {
+		transform: translate(-50%, -50%) scale(1);
+		opacity: 1;
+	}
+
+	100% {
+		transform: translate(-50%, -50%) scale(0);
+		opacity: 0.8;
+	}
+}

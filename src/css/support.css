@@ -1,0 +1,109 @@
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+body {
+    margin: 0;
+}
+
+.support {
+    width: 335px;
+    height: 352px;
+    background: radial-gradient(183.6% 183.01% at 59.76% -23.42%, #4F2EE8 18.03%, #FFFFFF 100%);
+    box-shadow: 0px 10px 10px rgba(245, 245, 247, 0.1);
+    border-radius: 16px;
+    margin: 0 auto;
+    padding-top: 24px;
+    padding-bottom: 20px; 
+}
+
+.support-title-wrapper{
+    display: inline-flex;
+    padding-left: 40px;
+    margin-bottom: 40px;
+}
+
+.support-title {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 1.14;
+    letter-spacing: -0.04em;
+    color: #FFFFFF;
+    height: 32px;
+    width: 205px;
+}
+
+.support-title-icon {
+    margin-left: 12px;
+}
+
+.support-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    width: 159px;
+    height: 188px;
+    margin-bottom: 16px;
+    margin-left: 40px;
+}
+
+.fund-number {
+    margin-right: 16px;
+    height: 18px;
+    font-family: 'DM Sans';
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.29;
+    letter-spacing: -0.04em;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.support-list-item {
+    display: flex;
+    align-items: center;
+    height: 32px;
+}
+
+.support-list-item:not(:last-child) {
+    margin-bottom: 20px;
+}
+
+.fund-link img {
+    max-height: 32px;
+    width: auto;
+}
+
+.support-button {
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+}
+
+@media screen and (min-width: 768px) {
+    .support {
+        height: 472px;
+    }
+    .support-list {
+        height: 292px;
+        margin-bottom: 32px;
+    }
+
+}
