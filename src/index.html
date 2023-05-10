@@ -6,19 +6,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vanilla App Template</title>
     <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="stylesheet" href="./css/header.css" />
+    <link rel="stylesheet" href="./css/category.css" />
+    <link rel="stylesheet" href="./css/support.css" />
+    <link rel="stylesheet" href="./css/bestsellers.css" />
+    <link rel="stylesheet" href="./css/shopping-list.css" />
+    <link rel="stylesheet" href="./css/autorization.css" />
+    <link rel="stylesheet" href="./css/spiner.css" />
+    <link rel="stylesheet" href="./css/modal.css" />
   </head>
   <body>
     <load ="partials/header.html" />
+    <div class="container">
+      <div class="index">
+        <div class="index-category-support">
+          <load ="partials/category.html" />
+          <load ="partials/support.html" />
+        </div>
+        <div class="index-bestsellers-div">
+          <load ="partials/bestsellers.html" />
+        </div>
+      </div>
+    </div>
+    <load ="partials/scroll-up.html" />
 
-    <section>
-      <h1>Lorem ipsum dolor sit amet.</h1>
-      <!-- Path to images as from index.html file -->
-      <img src="./img/javascript.svg" alt="" />
-    </section>
+    <load ="partials/modal.html" />
 
-    <!-- Loads the specified .html file -->
-    <load ="partials/vite-promo.html" />
-
-    <script type="module" src="/main.js"></script>
+    <script type="module" type="text/javascript" src="/main.js"></script>
+    <script type="module" type="text/javascript" src="./header.js"></script>
+    <script type="module" type="text/javascript" src="./category.js"></script>
+    <script type="module" type="text/javascript" src="./support.js"></script>
+    <script
+      type="module"
+      type="text/javascript"
+      src="./bestsellers.js"
+    ></script>
+    <script
+      type="module"
+      type="text/javascript"
+      src="./shoping-list.js"
+    ></script>
+    <script type="module" type="text/javascript" src="./modal.js"></script>
+    <script
+      type="module"
+      type="text/javascript"
+      src="./autorization.js"
+    ></script>
+    <script type="module" type="text/javascript" src="./auth.js"></script>
   </body>
 </html>
