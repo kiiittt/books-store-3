@@ -6,10 +6,10 @@
     modalBackdrop: document.querySelector('[data-modal-backdrop]'),
   };
 
-  refs.openModalBtn.addEventListener("click", toggleModalOpen);
-  refs.closeModalBtn.addEventListener("click", toggleModal);
-  refs.modalBackdrop.addEventListener("click", toggleModal);
-  window.addEventListener("keydown", handleKeyDown);
+  // refs.openModalBtn.addEventListener("click", toggleModalOpen);
+  // refs.closeModalBtn.addEventListener("click", toggleModal);
+  // refs.modalBackdrop.addEventListener("click", toggleModal);
+  // window.addEventListener("keydown", handleKeyDown);
 
   function toggleModalOpen() {
     refs.modalBackdrop.classList.toggle("is-hidden");
