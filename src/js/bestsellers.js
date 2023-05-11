@@ -1,39 +1,47 @@
 const bestsellersArea = document.querySelector('.bestsellers-area');
 const bestsellersList = document.querySelector('.bestsellers-list');
 
-const bestsellers = await getBestsellers();
+let w = document.documentElement.clientWidth || document.body.clientWidth || window.innerWidth;
 
-async function getBestsellers() {
-  return fetch('https://books-backend.p.goit.global/books/top-books')
-    .then(response => response.json())
-    .catch(error => console.log(error));
+// getBestsellersLog();
+
+
+
+
+
+
+// function getBestsellersLog(){
+//     fetch(`https://books-backend.p.goit.global/books/top-books`)
+//         .then(response => response.json())
+//         .then(bestsellers => console.log(bestsellers))
+//         .catch(error => console.log(error));
+// }
+
+if (w < 768) {
+    getBestsellersMobile();
+}
+else if ( w < 1440) {
+    getBestsellersTablet();
+}
+else if (w >= 1440) {
+    getBestsellersDesktop();
 }
 
-renderBestsellers();
 
-function renderBestsellers() {
-    if (window.screen.availWidth < 768) {
-      renderBestsellersMobile(bestsellers);
-    } else if (window.screen.availWidth >= 768 && window.screen.availWidth < 1440) {
-      renderBestsellersTablet(bestsellers);
-    } else {
-      renderBestsellersDesktop(bestsellers);
-    }
+function getBestsellersMobile(){
+    fetch(`https://books-backend.p.goit.global/books/top-books`)
+        .then(response => response.json())
+        .then(bestsellers => renderBestsellersMobile(bestsellers))
+        .catch(error => console.log(error));
 }
-
 function renderBestsellersMobile(bestsellers){
     bestsellersList.innerHTML = bestsellers.map((bestseller) => {
         return `<li class="bestsellers-list-item">
         <p class="bestsellers-general-category">${bestseller.list_name}</p>
         
         <div class="bestsellers-book-item">
-        <img src='${
-          bestseller.books[0].book_image
-        }' class="bestsellers-book-cover">
-        <p class="bestsellers-book-title">${formatBookName(
-          bestseller.books[0].title,
-          30
-        )}</p>
+        <img src='${bestseller.books[0].book_image}' class="bestsellers-book-cover">
+        <p class="bestsellers-book-title">${bestseller.books[0].title}</p>
         <p class="bestsellers-book-author">${bestseller.books[0].author}</p>
         </div>
     
@@ -42,7 +50,12 @@ function renderBestsellersMobile(bestsellers){
     }).join(" ");
 }
 
-
+function getBestsellersTablet(){
+    fetch(`https://books-backend.p.goit.global/books/top-books`)
+        .then(response => response.json())
+        .then(bestsellers => renderBestsellersTablet(bestsellers))
+        .catch(error => console.log(error));
+}
 function renderBestsellersTablet(bestsellers){
     bestsellersList.innerHTML = bestsellers.map((bestseller) => {
         return `<li class="bestsellers-list-item">
@@ -50,35 +63,20 @@ function renderBestsellersTablet(bestsellers){
         <div class="bestsellers-book-list">
 
         <div class="bestsellers-book-item" data-modal-open>
-        <img src='${
-          bestseller.books[0].book_image
-        }' class="bestsellers-book-cover">
-        <p class="bestsellers-book-title">${formatBookName(
-          bestseller.books[0].title,
-          20
-        )}</p>
+        <img src='${bestseller.books[0].book_image}' class="bestsellers-book-cover">
+        <p class="bestsellers-book-title">${bestseller.books[0].title}</p>
         <p class="bestsellers-book-author">${bestseller.books[0].author}</p>
         </div>
         
         <div class="bestsellers-book-item" data-modal-open>
-        <img src='${
-          bestseller.books[1].book_image
-        }' class="bestsellers-book-cover">
-        <p class="bestsellers-book-title">${formatBookName(
-          bestseller.books[1].title,
-          20
-        )}</p>
+        <img src='${bestseller.books[1].book_image}' class="bestsellers-book-cover">
+        <p class="bestsellers-book-title">${bestseller.books[1].title}</p>
         <p class="bestsellers-book-author">${bestseller.books[1].author}</p>
         </div>
         
         <div class="bestsellers-book-item" data-modal-open>
-        <img src='${
-          bestseller.books[2].book_image
-        }' class="bestsellers-book-cover">
-        <p class="bestsellers-book-title">${formatBookName(
-          bestseller.books[2].title,
-          20
-        )}</p>
+        <img src='${bestseller.books[2].book_image}' class="bestsellers-book-cover">
+        <p class="bestsellers-book-title">${bestseller.books[2].title}</p>
         <p class="bestsellers-book-author">${bestseller.books[2].author}</p>
         </div>
 
@@ -88,6 +86,12 @@ function renderBestsellersTablet(bestsellers){
     }).join(" ");
 }
 
+function getBestsellersDesktop(){
+    fetch(`https://books-backend.p.goit.global/books/top-books`)
+        .then(response => response.json())
+        .then(bestsellers => renderBestsellersDesktop(bestsellers))
+        .catch(error => console.log(error));
+}
 function renderBestsellersDesktop(bestsellers){
     bestsellersList.innerHTML = bestsellers.map((bestseller) => {
         return `<li class="bestsellers-list-item">
@@ -95,57 +99,32 @@ function renderBestsellersDesktop(bestsellers){
         <div class="bestsellers-book-list">
 
         <div class="bestsellers-book-item" data-modal-open>
-        <img src='${
-          bestseller.books[0].book_image
-        }' class="bestsellers-book-cover">
-        <p class="bestsellers-book-title">${formatBookName(
-          bestseller.books[0].title,
-          15
-        )}</p>
+        <img src='${bestseller.books[0].book_image}' class="bestsellers-book-cover">
+        <p class="bestsellers-book-title">${bestseller.books[0].title}</p>
         <p class="bestsellers-book-author">${bestseller.books[0].author}</p>
         </div>
 
         <div class="bestsellers-book-item" data-modal-open>
-        <img src='${
-          bestseller.books[1].book_image
-        }' class="bestsellers-book-cover">
-        <p class="bestsellers-book-title">${formatBookName(
-          bestseller.books[1].title,
-          15
-        )}</p>
+        <img src='${bestseller.books[1].book_image}' class="bestsellers-book-cover">
+        <p class="bestsellers-book-title">${bestseller.books[1].title}</p>
         <p class="bestsellers-book-author">${bestseller.books[1].author}</p>
         </div>
 
         <div class="bestsellers-book-item" data-modal-open>
-        <img src='${
-          bestseller.books[2].book_image
-        }' class="bestsellers-book-cover">
-        <p class="bestsellers-book-title">${formatBookName(
-          bestseller.books[2].title,
-          15
-        )}</p>
+        <img src='${bestseller.books[2].book_image}' class="bestsellers-book-cover">
+        <p class="bestsellers-book-title">${bestseller.books[2].title}</p>
         <p class="bestsellers-book-author">${bestseller.books[2].author}</p>
         </div>
 
         <div class="bestsellers-book-item" data-modal-open>
-        <img src='${
-          bestseller.books[3].book_image
-        }' class="bestsellers-book-cover">
-        <p class="bestsellers-book-title">${formatBookName(
-          bestseller.books[3].title,
-          15
-        )}</p>
+        <img src='${bestseller.books[3].book_image}' class="bestsellers-book-cover">
+        <p class="bestsellers-book-title">${bestseller.books[3].title}</p>
         <p class="bestsellers-book-author">${bestseller.books[3].author}</p>
         </div>
 
         <div class="bestsellers-book-item" data-modal-open>
-        <img src='${
-          bestseller.books[4].book_image
-        }' class="bestsellers-book-cover">
-        <p class="bestsellers-book-title">${formatBookName(
-          bestseller.books[4].title,
-          15
-        )}</p>
+        <img src='${bestseller.books[4].book_image}' class="bestsellers-book-cover">
+        <p class="bestsellers-book-title">${bestseller.books[4].title}</p>
         <p class="bestsellers-book-author">${bestseller.books[4].author}</p>
         </div>
 
@@ -154,23 +133,4 @@ function renderBestsellersDesktop(bestsellers){
         </li>
         `;
     }).join(" ");
-}
-
-function formatBookName(message, maxLength) {
-    let result;
-    if (message.length <= maxLength) {
-        result = message.slice(0, message.length);
-    } else {
-        result = message.slice(0, maxLength) + '...';
-    }
-    return result;
-}
-
-window.addEventListener('resize', e => {
-    clearBestsellers();
-    renderBestsellers();
-});
-
-function clearBestsellers() {
-    bestsellersList.innerHTML = '';
 }
