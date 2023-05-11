@@ -495,7 +495,6 @@ input:checked + .switch-slider:before {
 }
 
 @media screen and (max-width: 375px) {
-
   .main-menu-tablet-list {
     display: none;
   }
@@ -521,7 +520,6 @@ input:checked + .switch-slider:before {
   .sing-up-button-header {
     display: none;
   }
-
 }
 @media screen and (min-width: 768px) {
   .header {
