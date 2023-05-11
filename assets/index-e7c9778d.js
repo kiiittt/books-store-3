@@ -1,4 +1,4 @@
-import"./modal-893d4ce5.js";document.querySelector(".bestsellers-area");const d=document.querySelector(".bestsellers-list");let i=document.documentElement.clientWidth||document.body.clientWidth||window.innerWidth;i<768?f():i<1440?_():i>=1440&&v();function f(){fetch("https://books-backend.p.goit.global/books/top-books").then(t=>t.json()).then(t=>$(t)).catch(t=>console.log(t))}function $(t){d.innerHTML=t.map(e=>`<li class="bestsellers-list-item">
+import"./modal-976d7d08.js";document.querySelector(".bestsellers-area");const d=document.querySelector(".bestsellers-list");let i=document.documentElement.clientWidth||document.body.clientWidth||window.innerWidth;i<768?f():i<1440?_():i>=1440&&v();function f(){fetch("https://books-backend.p.goit.global/books/top-books").then(t=>t.json()).then(t=>$(t)).catch(t=>console.log(t))}function $(t){d.innerHTML=t.map(e=>`<li class="bestsellers-list-item">
         <p class="bestsellers-general-category">${e.list_name}</p>
         
 
