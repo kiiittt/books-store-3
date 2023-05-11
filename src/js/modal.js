@@ -11,7 +11,7 @@
 
   // refs.openModalBtn.addEventListener("click", toggleModalOpen);
   // refs.closeModalBtn.addEventListener("click", toggleModal);
-  refs.modalBackdrop.addEventListener("click", toggleModal);
+  // refs.modalBackdrop.addEventListener("click", toggleModal);
   window.addEventListener("keydown", handleKeyDown);
 
   function toggleModalOpen() {
