@@ -2,27 +2,21 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/books-store-3/assets/reading-4887d1fa.svg" />
+      <link rel="icon" type="image/svg+xml" href="/books-store-3/assets/reading-4887d1fa.svg" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bookshelf</title>
+    <title>Shopping list</title>
     
     
     
     
     
-    
-    
-    
-    <script type="module" crossorigin src="/books-store-3/assets/index-2ecaf585.js"></script>
-    <link rel="modulepreload" crossorigin href="/books-store-3/assets/modal-099728d1.js">
+
+    <script type="module" crossorigin src="/books-store-3/assets/modal-099728d1.js"></script>
     <link rel="stylesheet" href="/books-store-3/assets/modal-6c587a23.css">
-    <link rel="stylesheet" href="/books-store-3/assets/index-9449a326.css">
   </head>
   <body>
-
-
-    
-  <header class="header">
+    <header class="header">
   <div class="container wrapper">
     <a class="logo" href="./index.html">
       <svg
@@ -161,20 +155,9 @@
   </div>
 </div>
 
-  <div class="container">
-<div class="index">
-<div class="index-category-support">
-  <section class="category">
-  <ul class="category_list">
-    <li>
-      <button type="button" class="category_button category_all">
-        All Categories
-      </button>
-    </li>
-  </ul>
-</section>
-
-  <section class="support">
+    <div class="div-support-shoping container">
+      <div class="div-sprt-p3">
+    <section class="support">
     <div class="support-title-wrapper">
         <h1 class="support-title">Support Ukraine</h1>
         <svg class="support-title-icon" width="20" height="32">
@@ -189,66 +172,141 @@
             <use href="/books-store-3/assets/icons-1f2b14d6.svg#icon-support-arrow"></use>
         </svg>
     </button>
-</section>
-</div>
-<div class="index-bestsellers-div">
-  <section class="category_books_container">
-  <h2 class="category_books_title"></h2>
-  <ul class="category_books"></ul>
-</section>
-<section class="bestsellers-area">
-    <p class="bestsellers-main-title">Best Sellers <span class="bestsellers-main-title-books-blue-text">Books</span></p>
-    <ul class="bestsellers-list"></ul>
-</section>
-
-</div>
-</div>
-</div>
-  <div class="scroll-up_hidden"></div>
-
-  <div class="backdrop is-hidden" data-modal-backdrop>
-  <div class="modal" data-modal>
-    <div class="div-close-modal">
-    <button class="btn-close-modal" data-modal-close>
-      <svg class="svg-close" height="12" width="12">
-        <use href="/books-store-3/assets/symbol-defs-68b680e7.svg#icon-cross" class="use-close"></use>
-      </svg>
-    </button>      
+</section>   
     </div>
-    <div class="img-and-description">
-      <img class="img-modal" src="" alt="" />
-      <div class="div-text-modal">
-        <h1 class="item-modal">HELLO BEAUTIFUL</h1>
-        <h3 class="autor-name-modal">Ann Napolitano</h3>
-        <p class="description-modal">
-          In a homage to Louisa May Alcott’s “Little Women,” a young man’s dark
-          past resurfaces as he gets to the know the family of his college
-          sweetheart.
-        </p>
-        <ul class="ul-modal">
-          <li class="li-modal"><a href="" class="amazon-modal"></a></li>
-          <li class="li-modal"><a href="" class="book-modal"></a></li>
-          <li class="li-modal"><a href="" class="books-modal"></a></li>
+    <main>
+      <section class="container">
+        <h1 class="main-tag">
+          Shopping 
+          <span>List</span>
+        </h1>
+        <p class="shop-list-title">This page is empty, add some books and proceed to order.</p>
+        <img                         
+        srcset="../img/shop-img/img-start-shop@2x.png 2x"
+        src="../img/shop-img/img-start-shop.png" 
+        class="shop-list-start-img"  
+        src="../img/shop-img/img-start-shop.png" 
+        alt="#">
+      </section>
+      <!--  -->
+      <div class="container">
+        <ul class="gallery gallery-lib js-gallery">
+          <!-- Список <li> с карточками  -->
         </ul>
       </div>
-    </div>
-    <div class="div-btn-modal">
-    <button class="btn-modal" type="submit">ADD TO SHOPPING-LIST</button>
+
+      <div class="container-shop">
+        <ul class="gallery gallery-lib js-gallery">
+            <li class="gallery__item">
+                   
+              <button type="button" class="basket-button">
+                      <svg width="12px" height="12px">
+                          <use href="../img/shopping-list.svg#icon-basket"></use>
+                      </svg>
+              </button>
+
+                  <div class="title-book-cover">
+                      <img
+                      class="shopping-book-cover"
+                      src=""
+                      alt="book-cover"
+                      width="100"
+                      />
+                  </div>
+                    
+                      
+                    <div class="gallery__wrap">
+                      <div class="shop-wrap">
+                        <h2 class="name-book">HELLO BEAUTIFUL</h2>
+                        <p class="category-book">Hardcover fiction</p>
+                        <div class="basic-description-book">
+                          <p >David Burroughs was once a devoted father to his three-year-old son Matthew, living a ...</p>
+                        </div>
+                        </div>
+                      
+                      <div class="shop-meta">
+                        <p class="autor-book">Ann Napolitano</p>
+
+                        <ul class="customers-list">
+                          <li class="partner">
+                            <a href="" class="a-partner">
+                               <svg class="shop-icon" width="32" height="11">
+                                <use href="../img/modal-amazon.svg"></use>
+                              </svg>
+                            </a>
+                          </li>
+                          <li class="partner">
+                            <a href="" class="a-partner">
+                              <svg class="shop-icon" width="16" height="16">
+                                <use href="../img/symbol-defs.svg#icon-book"></use>
+                              </svg>
+                            </a>
+                          </li>
+                          <li class="partner">
+                            <a href="" class="a-partner">
+                              <svg class="shop-icon" width="16" height="16">
+                                <use href="../img/symbol-defs.svg#icon-books"></use>
+                              </svg>
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                      
+                    </div>
+                  </li>     
+        </ul>
+      </div>
+
+    
+     
+
+
+     
+      <div class="pagination-container">
+        <button type="button" class="pagination-button arrow-left">
+          <svg width="6.58px" height="12.83px" fill="#B4AFAF">
+              <use href="../img/shopping-list.svg#icon-left"></use>
+          </svg>
+          <svg width="6.58px" height="12.83px" fill="#B4AFAF">
+            <use href="../img/shopping-list.svg#icon-left"></use>
+        </svg>
+      </button>
+        <button type="button" class="pagination-button arrow-left">
+            <svg width="6.58px" height="12.83px" fill="#B4AFAF">
+                <use href="../img/shopping-list.svg#icon-left"></use>
+            </svg>
+        </button>
+        <!-- <button class="pagination-button first-button"></button> -->
+            <!-- <span class="dots" id="previous">...</span> -->
+            <button class="pagination-button pagination--current" data-index="1">
+              1
+            </button>
+            <button class="pagination-button" data-index="2">2</button>
+            <button class="pagination-button" data-index="3">3</button>
+            <!-- <span class="dots" id="after">...</span> -->
+            <button class="pagination-button last-button">...</button>
+        <button type="button" class="pagination-button arrow-right">
+            <svg width="6.58px" height="12.83px" fill="#000000">
+                <use href="../img/shopping-list.svg#icon-right"></use>
+            </svg>
+        </button>
+        <button type="button" class="pagination-button arrow-right">
+          <svg width="6.58px" height="12.83px" fill="#000000">
+              <use href="../img/shopping-list.svg#icon-right"></use>
+          </svg>
+          <svg width="6.58px" height="12.83px" fill="#000000">
+            <use href="../img/shopping-list.svg#icon-right"></use>
+        </svg>
+      </button>
     </div>
   </div>
-</div>
+      </main>
 
-
-
-
-
-    
-    
-    
-    
-    
-    
-    
       
+    
+    
+    
+    
   </body>
 </html>
+
