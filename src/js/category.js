@@ -5,10 +5,11 @@ const itemEl = document.querySelector('.item-category');
 const categoryBooks = document.querySelector('.category_books');
 
 const bestsellersContainer = document.querySelector('.bestsellers-area');
+
 const categoryBooksContainer = document.querySelector(
   '.category_books_container'
 );
-
+const categoryAll = document.querySelector('.category_all');
 // !!! Блок Категорії !!!
 // Надсилає запит на отримання списку категорій
 function fetchCategorys() {
@@ -22,7 +23,7 @@ function renderCategoryList(categorys) {
     .map(({ list_name }) => {
       return `
           <li class="item-category">
-            <button type = "button" class="link">${list_name}</button>          
+            <button type = "button" class="category_button">${list_name}</button>          
 
           </li>
       `;
@@ -40,7 +41,7 @@ fetchCategorys()
 categoryList.addEventListener('click', onButtonClick);
 
 function onButtonClick(event) {
-  if (event.target.nodeName !== 'BUTTON') {
+  if (event.target.className !== 'category_button') {
     return;
   }
 
@@ -65,20 +66,12 @@ function clearBooksList() {
 function renderBooksList(books, event) {
   bestsellersContainer.style.display = 'none';
   categoryBooksContainer.style.display = 'flex';
-  // присвоює ім'я категорії заголовку
-  const categoryBooksTitle = document.querySelector('.category_books_title');
-  const currentCategory = event.target.textContent;
-  categoryBooksTitle.textContent = currentCategory;
+  // присвоює ім'я категорії заголовку та колір
+  separatesWordsAddToTitle(event);
 
-  // Перевірка на наявність книг в масиві категорій
-  if (books.length === 0) {
-    const message = document.createElement('p');
-    message.textContent = 'Oops, there is no books in this category.';
-    message.classList.add('no-books-message');
-    categoryBooks.appendChild(message);
-    return;
-  }
-
+  // Перевірка на наявність книг в масиві
+  checksBooks(books);
+  // Відмальовка картки книги
   const markup = books
     .map(({ book_image, title, author }) => {
       return `<li class = "category_books_items">
@@ -90,10 +83,76 @@ function renderBooksList(books, event) {
     .join('');
   categoryBooks.insertAdjacentHTML('beforeend', markup);
 }
+// Перевірка на наявність книг в масиві
+function checksBooks(books) {
+  if (books.length === 0) {
+    const message = document.createElement('p');
+    message.textContent = 'Oops, there is no books in this category.';
+    message.classList.add('no-books-message');
+    categoryBooks.appendChild(message);
+    return;
+  }
+}
+// Перемикає категорії
+categoryAll.addEventListener('click', onBtnClickChangeCategory);
+function onBtnClickChangeCategory(event) {
+  bestsellersContainer.style.display = 'flex';
+  categoryBooksContainer.style.display = 'none';
 
+  const selectedCategory = event.target.className;
+  console.log(selectedCategory);
+
+  changeCategoryAllColor(selectedCategory);
+}
+// Додає назву категорії у блок категорій а також задає колір тексту
+function separatesWordsAddToTitle(event) {
+  const categoryBooksTitle = document.querySelector('.category_books_title');
+
+  const currentCategory = event.target.textContent;
+
+  const arrrayCurrentCategory = currentCategory.split(' ');
+
+  const lastElementBookTitle =
+    arrrayCurrentCategory[arrrayCurrentCategory.length - 1];
+  const arrrayWordsOfCategoryTitle = arrrayCurrentCategory.slice(
+    0,
+    arrrayCurrentCategory.length - 1
+  );
+  const wordsOfCategoryTitle = arrrayWordsOfCategoryTitle.join(' ');
+  categoryBooksTitle.textContent = wordsOfCategoryTitle;
+  const textEl = document.createElement('span');
+  textEl.classList = 'last_word_category_title';
+  textEl.textContent = lastElementBookTitle;
+  categoryBooksTitle.append(textEl);
+}
+// Змінює колір кнопки All Categories
+function changeCategoryAllColor(selectedCategory) {
+  const allCategories = document.querySelectorAll('.category_button');
+  const categoryAll = document.querySelector('.category_all');
+
+  allCategories.forEach(category => {
+    if (category.textContent !== selectedCategory) {
+      // Задає стилі "All Categories" по кліку
+      category.style.fontWeight = '400';
+      category.style.lineHeight = '1.12';
+      category.style.textTransform = 'none';
+      category.style.color = 'var(--color-of-category-text)';
+      // Задає стилі категоріям книг по кліку на категорію
+      categoryAll.style.fontWeight = '700';
+      categoryAll.style.lineHeight = '1.33';
+      categoryAll.style.textTransform = 'uppercase';
+      categoryAll.style.color = 'var(--color-of-categoryAll-text)';
+    } else {
+      category.style.fontWeight = '400';
+      category.style.lineHeight = '1.12';
+      category.style.textTransform = 'none';
+      category.style.color = 'var(--color-of-category-text)';
+    }
+  });
+}
 // Зміна кольору назви категорії та заголовку в блоці "Категорії"
 function changeCategoryColor(selectedCategory) {
-  const allCategories = document.querySelectorAll('.link');
+  const allCategories = document.querySelectorAll('.category_button');
   const categoryAll = document.querySelector('.category_all');
 
   // Меняем цвет для выбранной категории та заголовку категорії
