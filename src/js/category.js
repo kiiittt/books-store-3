@@ -76,12 +76,24 @@ function renderBooksList(books, event) {
     .map(({ book_image, title, author }) => {
       return `<li class = "category_books_items">
           <img src='${book_image}' alt='book-cover' class='bestsellers-book-cover'>
-             <p class='bestsellers-book-title book-text'>${title}</p>
+             <p class='bestsellers-book-title book-text'>${formatBookName(
+               title,
+               15
+             )}</p>
              <p class='bestsellers-book-author'>${author}</p></li>
       `;
     })
     .join('');
   categoryBooks.insertAdjacentHTML('beforeend', markup);
+}
+function formatBookName(message, maxLength) {
+  let result;
+  if (message.length <= maxLength) {
+    result = message.slice(0, message.length);
+  } else {
+    result = message.slice(0, maxLength) + '...';
+  }
+  return result;
 }
 // Перевірка на наявність книг в масиві
 function checksBooks(books) {
@@ -100,7 +112,6 @@ function onBtnClickChangeCategory(event) {
   categoryBooksContainer.style.display = 'none';
 
   const selectedCategory = event.target.className;
-  console.log(selectedCategory);
 
   changeCategoryAllColor(selectedCategory);
 }
@@ -197,6 +208,7 @@ function onTitleBestsellersClick(event) {
 
   const selectedCategory = event.target.textContent;
 
+  changeCategoryColor(selectedCategory);
   clearBooksList();
 
   return fetch(

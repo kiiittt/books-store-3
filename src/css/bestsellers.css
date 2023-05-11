@@ -95,6 +95,12 @@
   text-transform: uppercase;
   color: #111111;
   align-self: end;
+  transition-property: transform;
+  transition-duration: 500ms;
+}
+
+.bestsellers-button:hover{
+transform: scale(1.2);
 }
 
 @media screen and (min-width: 768px) {
