@@ -140,3 +140,82 @@ function formatBookName(message, maxLength) {
   }
   return result;
 }
+
+const seeMoreBtn = document.querySelector('.bestsellers-list');
+const categoryList = document.querySelector('.category_list');
+const itemEl = document.querySelector('.item-category');
+const categoryBooks = document.querySelector('.category_books');
+const bestsellersContainer = document.querySelector('.bestsellers-area');
+const categoryBooksContainer = document.querySelector(
+  '.category_books_container'
+);
+
+seeMoreBtn.addEventListener('click', openMoreBooks);
+
+function openMoreBooks(event) {
+  if (event.target.nodeName !== 'BUTTON') {
+    return;
+  }
+
+  const bookCategory = event.target.dataset.id;
+
+  // console.log(bookCategory);
+  return fetch(
+    `https://books-backend.p.goit.global/books/category?category=${bookCategory}`
+  )
+    .then(response => response.json())
+    .then(book => renderBooksList(book, event))
+    .catch(error => console.log(error));
+}
+
+function renderBooksList(books, event) {
+  bestsellersContainer.style.display = 'none';
+  categoryBooksContainer.style.display = 'flex';
+  // присвоює ім'я категорії заголовку та колір
+  separatesWordsAddToTitle(event);
+
+  // Перевірка на наявність книг в масиві
+  checksBooks(books);
+  // Відмальовка картки книги
+  const markup = books
+    .map(({ book_image, title, author }) => {
+      return `<li class = "category_books_items">
+          <img src='${book_image}' alt='book-cover' class='bestsellers-book-cover'>
+             <p class='bestsellers-book-title book-text'>${title}</p>
+             <p class='bestsellers-book-author'>${author}</p></li>
+      `;
+    })
+    .join('');
+  categoryBooks.insertAdjacentHTML('beforeend', markup);
+}
+
+function separatesWordsAddToTitle(event) {
+  const categoryBooksTitle = document.querySelector('.category_books_title');
+
+  const currentCategory = event.target.dataset.id;
+
+  const arrrayCurrentCategory = currentCategory.split(' ');
+
+  const lastElementBookTitle =
+    arrrayCurrentCategory[arrrayCurrentCategory.length - 1];
+  const arrrayWordsOfCategoryTitle = arrrayCurrentCategory.slice(
+    0,
+    arrrayCurrentCategory.length - 1
+  );
+  const wordsOfCategoryTitle = arrrayWordsOfCategoryTitle.join(' ');
+  categoryBooksTitle.textContent = wordsOfCategoryTitle;
+  const textEl = document.createElement('span');
+  textEl.classList = 'last_word_category_title';
+  textEl.textContent = lastElementBookTitle;
+  categoryBooksTitle.append(textEl);
+}
+
+function checksBooks(books) {
+  if (books.length === 0) {
+    const message = document.createElement('p');
+    message.textContent = 'Oops, there is no books in this category.';
+    message.classList.add('no-books-message');
+    categoryBooks.appendChild(message);
+    return;
+  }
+}
