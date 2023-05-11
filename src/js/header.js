@@ -21,6 +21,7 @@
 })();
 
 /* Change icon burger*/
+
 document.getElementById('open-button-menu').addEventListener(
   'click',
   function (e) {
@@ -33,6 +34,7 @@ document.getElementById('open-button-menu').addEventListener(
 );
 
 /* Dark and Light themes */
+
 const themToggleBtn = document.querySelector('.theme-toggle-button');
 
 const toggleTheme = (btn, theme = null) => {
@@ -55,6 +57,7 @@ if (
 }
 
 /* Active class for main and mobile menu */
+
 const activePage = window.location.pathname;
 const navLinks = document.querySelectorAll('.main-menu-tablet-list a, .main-menu-mobile-list a').forEach(link => {
   if(link.href.includes(`${activePage}`)){
