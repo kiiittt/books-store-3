@@ -514,7 +514,6 @@ input:checked + .switch-slider:before {
 }
 @media screen and (min-width: 375px) {
   .container {
-    width: 375px;
     margin: 0 auto;
     padding: 0 20px;
 
@@ -536,7 +535,6 @@ input:checked + .switch-slider:before {
   .container {
     width: 768px;
     margin: 0 auto;
-    padding: 0 32px;
   }
 
   .main-menu-tablet-list {
