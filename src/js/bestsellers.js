@@ -35,12 +35,14 @@ function renderBestsellersMobile(bestsellers) {
       return `<li class="bestsellers-list-item">
         <p class="bestsellers-general-category">${bestseller.list_name}</p>
         
-        <div class="bestsellers-book-item" data-id="${
-          bestseller.books[0]._id
-        }" data-modal-open>
+
+        <div class="bestsellers-book-item" >
         <img src='${
           bestseller.books[0].book_image
-        }' class="bestsellers-book-cover">
+        }' class="bestsellers-book-cover" data-id="${
+          bestseller.books[0]._id
+        }" data-modal-open>
+
         <p class="bestsellers-book-title">${formatBookName(
           bestseller.books[0].title,
           30
@@ -69,25 +71,28 @@ function renderBestsellersTablet(bestsellers) {
         <p class="bestsellers-general-category">${bestseller.list_name}</p>
         <div class="bestsellers-book-list">
 
-        <div class="bestsellers-book-item" data-id="${
-          bestseller.books[0]._id
-        }" data-modal-open>
+
+        <div class="bestsellers-book-item" >
         <img src='${
           bestseller.books[0].book_image
-        }' class="bestsellers-book-cover">
+        }' class="bestsellers-book-cover" data-id="${
+          bestseller.books[0]._id
+        }" data-modal-open>
+
         <p class="bestsellers-book-title">${formatBookName(
           bestseller.books[0].title,
           20
         )}</p>
         <p class="bestsellers-book-author">${bestseller.books[0].author}</p>
         </div>
-        
-        <div class="bestsellers-book-item" data-id="${
-          bestseller.books[1]._id
-        }" data-modal-open>
+
+        <div class="bestsellers-book-item" >
         <img src='${
           bestseller.books[1].book_image
-        }' class="bestsellers-book-cover">
+        }' class="bestsellers-book-cover" data-id="${
+          bestseller.books[1]._id
+        }" data-modal-open>
+
         <p class="bestsellers-book-title">${formatBookName(
           bestseller.books[1].title,
           20
@@ -95,12 +100,14 @@ function renderBestsellersTablet(bestsellers) {
         <p class="bestsellers-book-author">${bestseller.books[1].author}</p>
         </div>
         
-        <div class="bestsellers-book-item" data-id="${
-          bestseller.books[2]._id
-        }" data-modal-open>
+
+        <div class="bestsellers-book-item" >
         <img src='${
           bestseller.books[2].book_image
-        }' class="bestsellers-book-cover">
+        }' class="bestsellers-book-cover" data-id="${
+          bestseller.books[2]._id
+        }" data-modal-open>
+
         <p class="bestsellers-book-title">${formatBookName(
           bestseller.books[2].title,
           20
@@ -301,6 +308,50 @@ function checksBooks(books) {
   }
 }
 
+
+
+
+
+const modalEl = document.querySelector('.img-and-description');
+const bookDetails = document.querySelector('.bestsellers-area'); 
+bookDetails.addEventListener('click', openBookDetails);
+
+
+function openBookDetails(event) {
+  if (event.target.nodeName !== 'IMG') {
+    return;
+  }
+  const bookId = event.target.dataset.id;
+  console.log(bookId);
+
+  return fetch(`https://books-backend.p.goit.global/books/${bookId}`)
+    .then(response => response.json())
+    .then(book => renderBookModal(book))
+    .catch(error => console.log(error));
+  
+}
+
+
+function renderBookModal(book) {
+  modalEl.innerHTML = `<img class="img-modal" src="${book.book_image}" alt="Image cover" />
+      <div class="div-text-modal">
+        <h1 class="item-modal">${book.title}</h1>
+        <h3 class="autor-name-modal">${book.author}</h3>
+        <p class="description-modal">${book.description}</p>
+        <ul class="ul-modal">
+          <li class="li-modal">
+          <a href="${book.buy_links[0].url}" class="amazon-modal" target="_blank"></a>
+          </li>
+          <li class="li-modal">
+          <a href="${book.buy_links[1].url}" class="book-modal" target="_blank"></a>
+          </li>
+          <li class="li-modal">
+          <a href="${book.buy_links[4].url}" class="books-modal" target="_blank">
+          </a></li>
+        </ul>
+      </div>`;
+}
+
 // Зміна кольору назви категорії та заголовку в блоці "Категорії"
 function changeCategoryColor(selectedCategory) {
   const allCategories = document.querySelectorAll('.category_button');
@@ -327,4 +378,5 @@ function changeCategoryColor(selectedCategory) {
     }
   });
 }
+
 
