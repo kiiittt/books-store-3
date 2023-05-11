@@ -37,6 +37,10 @@ function renderBestsellersMobile(bestsellers){
         
         <div class="bestsellers-book-item" data-id="${bestseller.books[0]._id}" data-modal-open>
         <img src='${bestseller.books[0].book_image}' class="bestsellers-book-cover">
+        <div class="overlay">
+        <p>Quick view</p>
+        </div>
+        
         <p class="bestsellers-book-title">${formatBookName(bestseller.books[0].title, 30)}</p>
         <p class="bestsellers-book-author">${bestseller.books[0].author}</p>
         </div>
