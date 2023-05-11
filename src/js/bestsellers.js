@@ -1,9 +1,9 @@
 const bestsellersArea = document.querySelector('.bestsellers-area');
 const bestsellersList = document.querySelector('.bestsellers-list');
 
-const bestsellers = await getBestsellers();
+const bestsellers =  getBestsellers();
 
-async function getBestsellers() {
+function getBestsellers() {
   return fetch('https://books-backend.p.goit.global/books/top-books')
     .then(response => response.json())
     .catch(error => console.log(error));
