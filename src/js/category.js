@@ -177,3 +177,60 @@ function changeCategoryColor(selectedCategory) {
     }
   });
 }
+
+//
+//
+//
+//
+// Кліки в категорії Бесцелери по назві категорії книг !!!
+
+const bestsellersListEl = document.querySelector('.bestsellers-list');
+const bestsellersGeneralCategory = document.querySelector(
+  '.bestsellers-general-category'
+);
+bestsellersListEl.addEventListener('click', onTitleBestsellersClick);
+
+function onTitleBestsellersClick(event) {
+  if (event.target.className !== 'bestsellers-general-category') {
+    return;
+  }
+
+  const selectedCategory = event.target.textContent;
+
+  clearBooksList();
+
+  return fetch(
+    `https://books-backend.p.goit.global/books/category?category=${event.target.textContent}`
+  )
+    .then(response => response.json())
+    .then(book => renderBooksList(book, event))
+    .catch(error => console.log(error));
+}
+
+// .
+// .
+// .
+// .
+// .
+// .
+// .
+// .
+// .
+// .
+
+// .
+// .
+// .
+// .
+// .
+// .
+// .
+// .
+// .
+// .
+// .
+// .
+// .
+// .
+
+// .// .
