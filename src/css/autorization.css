@@ -1,0 +1,384 @@
+.modal-autor {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 335px;
+  height: 384px;
+
+  padding-top: 40px;
+  padding-bottom: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
+
+
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 2px 1px rgba(0, 0, 0, 0.2);
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 250ms var(--timing-function), visibility 250ms var(--timing-function);
+
+
+  background: #F6F6F6;
+  border: 2px solid #111111;
+  border-radius: 18px;
+}
+
+.form-input-name {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.33;
+
+  width: 293px;
+  height: 50px;
+  border: 0;
+  border: 2px solid #111111;
+  border-radius: 40px;
+  margin: 0;
+  padding-left: 24px;
+  padding-right: 50px;
+
+  color: #1a515d;
+}
+
+.form-input-name::placeholder {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.125;
+
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+
+
+  color: #111111;
+}
+
+.form-input + .form-input {
+  margin-top: 24px;
+}
+
+.modal-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+
+  width: 16px;
+  height: 16px;
+
+
+  border: none;
+  background-color: #F6F6F6;
+}
+
+.modal-close:hover,
+.modal-close:focus {
+  fill: #4F2EE8;
+
+  transition-property: fill;
+  transition-duration: 350ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.form--btn-submit {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.33;
+
+  margin-top: 24px;
+
+  text-transform: uppercase;
+
+  width: 293px;
+  height: 50px;
+  border-radius: 40px;
+  border: 0;
+  color: #F6F6F6;
+  background-color: #111111;
+}
+
+.form--btn-submit:hover,
+.form--btn-submit:focus {
+  color: #111111;
+  background-color: #6041ee;
+  border: 2px solid #111111;
+  box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.15);
+  
+  transition-property: background-color;
+  transition-duration: 350ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.signup-and-signin {
+  display: flex;
+  justify-content: center;
+  margin-top: 14px;
+}
+
+.form-button-end {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.29;  
+
+  border: none;
+  text-transform: uppercase;
+
+  background-color: #F6F6F6;
+}
+
+.form__btn-sign-up {
+  margin-right: 20px;
+
+  text-decoration-line: underline;
+
+  color: #4F2EE8;
+  
+}
+
+.form__btn-sign-in {
+  color: rgba(17, 17, 17, 0.5);
+}
+
+.form__btn-sign-in:hover,
+.form__btn-sign-in:focus {
+  color: #4F2EE8;
+
+  transition-property: color;
+  transition-duration: 350ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.form__btn-sign-up:hover,
+.form__btn-sign-up:focus {
+  color: #111111;
+
+  transition-property: color;
+  transition-duration: 350ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.svg-close-modal {
+  width: 10px;
+  height: 10px;
+}
+
+.form-input {
+  position: relative;
+}
+
+.svg-icon-mail-lock {
+  position: absolute;
+  top: 16px;
+  right: 25px;
+
+  width: 18px;
+  height: 18px;
+}
+
+/* new */
+
+.autr-profil-span {
+  width: 37px;
+  height: 37px;
+
+  border-radius: 50%;
+
+  background-color: #Ffffff;
+}
+
+.svg-profile-use {
+  margin: 9px;
+}
+
+.new-class-hidden {
+  display: none;
+}
+
+.new-class-hidden-min {
+  display: block;
+}
+
+.user-content-one {
+  position: relative;
+
+  margin: 0;
+  padding: 0;
+}
+
+.buton-profile-one {
+  width: 184px;
+  height: 45px;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  border: none;
+  border-radius: 36px;
+
+  color: #Ffffff;
+  background-color: #4F2EE8;
+}
+
+.new-log-out-button {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.29;
+
+  position: absolute;
+  top: 45px;
+  right: 0;
+
+  display: flex;
+
+  width: 184px;
+  height: 45px;
+
+  padding-left: 14px;
+  padding-right: 14px;
+  /* padding: 0; */
+
+  align-items: center;
+  justify-content: space-between;
+
+  background: #FFFFFF;
+  border: 1.5px solid #111111;
+  border-radius: 18px;
+}
+
+.new-class-for-button {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.29;
+
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  display: flex;
+
+  width: 184px;
+  height: 45px;
+
+  padding-left: 14px;
+  padding-right: 14px;
+  /* padding: 0; */
+
+  align-items: center;
+  justify-content: space-between;
+
+  background: #FFFFFF;
+  border: 1.5px solid #111111;
+  border-radius: 18px;
+}
+
+@media screen and (min-width: 767px) {
+  .modal-autor {
+    width: 579px;
+    height: 516px;
+  
+    padding-top: 80px;
+    padding-bottom: 40px;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  .form-input-name { 
+    font-size: 24px;
+    line-height: 1.33;
+
+    width: 499px;
+    height: 64px;
+
+    padding-left: 40px;
+    padding-right: 80px;
+  }
+
+  .form-input-name::placeholder {
+    font-size: 24px;
+    line-height: 1.33;
+  }
+
+  .form-input + .form-input {
+    margin-top: 28px;
+  }
+
+  .form--btn-submit {  
+    font-size: 24px;
+    line-height: 1.33;
+
+    margin-top: 40px;
+  
+    width: 499px;
+    height: 64px;
+
+  }
+
+  .modal-close {
+    top: 31px;
+    right: 31px;
+  
+    width: 24px;
+    height: 24px;
+  
+    border: none;
+    background-color: #F6F6F6;
+  }
+
+  .svg-close-modal {
+    width: 14px;
+    height: 14px;
+  }
+
+  .form-button-end {
+    font-size: 18px;
+    line-height: 1.33;  
+  }
+
+  .signup-and-signin {
+    margin-top: 20px;
+  }
+
+  .svg-icon-mail-lock {
+    top: 17px;
+    right: 35px;
+
+    width: 28px;
+    height: 28px;
+  }
+
+  .new-class-hidden {
+    display: block;
+  }
+
+  .new-class-hidden-min {
+    display: none;
+  } 
+}
+
+@media screen and (max-width: 767px) { 
+  .new-class-for-button {
+    display: none;
+  }
+}
+
+.new-class-for-buttons {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.29;
+
+  display: flex;
+
+  width: 184px;
+  height: 45px;
+
+  padding-left: 14px;
+  padding-right: 14px;
+  /* padding: 0; */
+
+  align-items: center;
+  justify-content: space-between;
+
+  background: #FFFFFF;
+  border: 1.5px solid #111111;
+  border-radius: 18px;
+}

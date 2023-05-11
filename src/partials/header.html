@@ -76,15 +76,6 @@
         <input type="checkbox" class="theme-toggle-button" />
         <span class="switch-slider"></span>
       </label>
-      <a href="#" class="user-profile-info-header"
-        ><span class="user-profile-avatar-header"></span>Stephen
-        <svg class="user-profile__icon-arrow-bottom">
-          <use href="./img/header-icon.svg#icon-arrow-bottom"></use></svg
-      ></a>
-      <!-- Кнопка sign up в header
-          <button type="button" class="sing-up-button-header">Sign up<svg class="log-out-sign-up-button__icon">
-          <use href="./pictures/symbol-defs.svg#icon-arrow"></use>
-        </svg></button> -->
       <button
         id="open-button-menu"
         class="open-mobile-menu-btn icon-burger"
@@ -92,6 +83,117 @@
         data-menu-open
         data-menu-close
       ></button>
-      </div>
+
+
+
+  <!-- Відкриття модалки -->
+      <button class="btn-signup new-class-for-button" type="button">
+        Sign up
+        <svg width="20" height="20">
+          <use href="../img/autorization-icon.svg#arrow-right"></use>
+        </svg>
+      </button>
+
+        <!-- Форма коли акаунт існує -->
+  <div class="user-info is-hidden new-class-hidden">
+		<div class="user-content user-content-one">
+			<button class="btn-profile buton-profile-one" role="button" aria-label="User Profile" type="button">
+				<span class="autr-profil-span">
+					<svg class="svg-profile-use" width="19" height="19">
+            <use href="../img/autorization-icon.svg#icon-user-profile"></use>
+          </svg>
+				</span>
+				User
+        <svg width="23" height="26">
+          <use href="../img/autorization-icon.svg#icon-user-menu"></use>
+        </svg>
+			</button>
+			<button id="signOutButton" class="sign-out-btn sign-out-btn-js is-hidden new-log-out-button" aria-label="Log Out">Log out
+        <svg width="20" height="20">
+          <use href="../img/autorization-icon.svg#arrow-right"></use>
+        </svg>
+			</button>
+		</div>
+	</div>
+
+  <!-- Форма модалки -->
+	<div class="backdrop auth-modal-js is-hidden" role="dialog">
+		<div class="modal-autor modal-js">
+			<form class="form-autorization" id="authForm" autocomplete="off">
+					<div class="form-input">
+						<input class="form-input-name" type="text" placeholder="Name" name="name" required>
+					</div>
+				<div class="form-input">
+					<input class="form-input-name" type="email" placeholder="Email" name="email" id="userEmail"
+						pattern="^[\w\.-]+@[\w\.-]+\.\w{2,4}$" required>
+            <svg class="svg-icon-mail-lock">
+              <use href="../img/autorization-icon.svg#icon-mail"></use>
+            </svg>
+				</div>
+				<div class="form-input">
+					<input class="form-input-name" type="password" placeholder="Password" name="password" id="userPassword" required>
+          <svg class="svg-icon-mail-lock">
+            <use href="../img/autorization-icon.svg#icon-lock"></use>
+          </svg>
+				</div>
+				<button id="signUpButton" class="form--btn-submit" type="submit">Sign up</button>
+				<button class="modal-close modal-close-js" type="button" aria-label="Close">
+          <svg class="svg-close-modal">
+            <use href="./img/autorization-icon.svg#icon-button-close"></use>
+          </svg>
+        </button>
+			</form>
+
+			<!-- кнопки переключення для входу та реєстрації -->
+			<div class="signup-and-signin">
+				<button type="button" class="form-button-end form__btn-sign-up active">Sign Up</button>
+				<button type="button" class="form-button-end form__btn-sign-in">Sign In</button>
+			</div>
+		</div>
+	</div>
+    </div>
   </div>
 </header>
+
+<div class="mobile-menu" data-menu>
+  <div class="mobile-menu-wrapper">
+
+
+  <!--  -->
+  <button class="btn-signup new-class-for-buttons" type="button">
+    Sign up
+    <svg width="20" height="20">
+      <use href="../img/autorization-icon.svg#arrow-right"></use>
+    </svg>
+  </button>
+  <!--  -->
+
+
+    <button type="button" class="log-out-button">
+      Log out
+      <svg class="log-out-sign-up-button__icon">
+        <use href="./img/header-icon.svg#icon-arrow"></use>
+      </svg>
+    </button>
+  </div>
+    <div class="background-books">
+      <ul class="background-books__row1" data-background-books__row1>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+      <ul class="background-books__row2" data-background-books__row2>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+      <ul class="background-books__row3" data-background-books__row3>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+</div>
