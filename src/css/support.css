@@ -97,6 +97,15 @@ body {
     margin: 0 auto;
 }
 
+.fund-logo{
+    transition-property: transform;
+     transition-duration: 500ms;
+}
+
+.fund-logo:hover{
+transform: scale(1.2);
+}
+
 @media screen and (min-width: 768px) {
     .support {
         height: 472px;

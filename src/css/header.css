@@ -72,7 +72,14 @@ body {
   display: block;
   width: 109px;
   height: 28px;
+  transition-property: transform;
+  transition-duration: 500ms;
 }
+
+.logo:hover{
+  transform: scale(1.1);
+}
+
 .btn-wrapper {
   display: flex;
   flex-direction: row;
