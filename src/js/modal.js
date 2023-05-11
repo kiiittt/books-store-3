@@ -7,7 +7,7 @@
   };
 
 
-  // console.log(refs.openModalBtn);
+  console.log(refs.openModalBtn);
 
   // refs.openModalBtn.addEventListener("click", toggleModalOpen);
   // refs.closeModalBtn.addEventListener("click", toggleModal);
