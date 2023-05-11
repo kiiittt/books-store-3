@@ -62,19 +62,19 @@ function renderBestsellersTablet(bestsellers){
         <p class="bestsellers-general-category">${bestseller.list_name}</p>
         <div class="bestsellers-book-list">
 
-        <div class="bestsellers-book-item">
+        <div class="bestsellers-book-item" data-modal-open>
         <img src='${bestseller.books[0].book_image}' class="bestsellers-book-cover">
         <p class="bestsellers-book-title">${bestseller.books[0].title}</p>
         <p class="bestsellers-book-author">${bestseller.books[0].author}</p>
         </div>
         
-        <div class="bestsellers-book-item">
+        <div class="bestsellers-book-item" data-modal-open>
         <img src='${bestseller.books[1].book_image}' class="bestsellers-book-cover">
         <p class="bestsellers-book-title">${bestseller.books[1].title}</p>
         <p class="bestsellers-book-author">${bestseller.books[1].author}</p>
         </div>
         
-        <div class="bestsellers-book-item">
+        <div class="bestsellers-book-item" data-modal-open>
         <img src='${bestseller.books[2].book_image}' class="bestsellers-book-cover">
         <p class="bestsellers-book-title">${bestseller.books[2].title}</p>
         <p class="bestsellers-book-author">${bestseller.books[2].author}</p>
@@ -98,31 +98,31 @@ function renderBestsellersDesktop(bestsellers){
         <p class="bestsellers-general-category">${bestseller.list_name}</p>
         <div class="bestsellers-book-list">
 
-        <div class="bestsellers-book-item">
+        <div class="bestsellers-book-item" data-modal-open>
         <img src='${bestseller.books[0].book_image}' class="bestsellers-book-cover">
         <p class="bestsellers-book-title">${bestseller.books[0].title}</p>
         <p class="bestsellers-book-author">${bestseller.books[0].author}</p>
         </div>
 
-        <div class="bestsellers-book-item">
+        <div class="bestsellers-book-item" data-modal-open>
         <img src='${bestseller.books[1].book_image}' class="bestsellers-book-cover">
         <p class="bestsellers-book-title">${bestseller.books[1].title}</p>
         <p class="bestsellers-book-author">${bestseller.books[1].author}</p>
         </div>
 
-        <div class="bestsellers-book-item">
+        <div class="bestsellers-book-item" data-modal-open>
         <img src='${bestseller.books[2].book_image}' class="bestsellers-book-cover">
         <p class="bestsellers-book-title">${bestseller.books[2].title}</p>
         <p class="bestsellers-book-author">${bestseller.books[2].author}</p>
         </div>
 
-        <div class="bestsellers-book-item">
+        <div class="bestsellers-book-item" data-modal-open>
         <img src='${bestseller.books[3].book_image}' class="bestsellers-book-cover">
         <p class="bestsellers-book-title">${bestseller.books[3].title}</p>
         <p class="bestsellers-book-author">${bestseller.books[3].author}</p>
         </div>
 
-        <div class="bestsellers-book-item">
+        <div class="bestsellers-book-item" data-modal-open>
         <img src='${bestseller.books[4].book_image}' class="bestsellers-book-cover">
         <p class="bestsellers-book-title">${bestseller.books[4].title}</p>
         <p class="bestsellers-book-author">${bestseller.books[4].author}</p>
