@@ -69,11 +69,23 @@
   }
 }
 
+@media screen and (min-width: 1440px) {
+  .category_list::-webkit-scrollbar {
+    width: 8px;
+    height: 167px;
+  }
+
+  .category_list::-webkit-scrollbar-thumb {
+    background-color: #e0e0e0;
+    border-radius: 12px;
+  }
+}
+
 .item-category {
   display: inline-flex;
 }
 
-.link {
+.category_button {
   border: none;
   list-style: none;
   font-family: 'DM Sans';
@@ -95,6 +107,8 @@
 }
 
 .category_all {
+  border: none;
+  list-style: none;
   font-family: 'DM Sans';
   font-style: normal;
   font-weight: 700;
@@ -104,6 +118,7 @@
   letter-spacing: -0.02em;
   text-transform: uppercase;
 
+  background-color: var(--main-bg-color);
   color: var(--color-of-categoryAll-text);
   @media screen and (min-width: 768px) {
     font-size: 18px;
@@ -124,6 +139,11 @@
     font-size: 48px;
     line-height: 1.08;
   }
+}
+
+.last_word_category_title {
+  margin-left: 8px;
+  color: #4f2ee8;
 }
 
 .category_books {
