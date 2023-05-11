@@ -11,8 +11,14 @@
   --yellow-color-for-pagination: #EAC645;
 }
 
+.container-shop {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 40px;
+  padding-bottom: 40px;
+}
 
-.container .main-tag {
+.container-shop .main-tag {
   font-family: 'DM Sans';
 
   font-weight: 700;
@@ -23,7 +29,7 @@
 
   color: var(--black-color-for-text);
 
-  margin-left: 20px;
+  margin-top: 104px;
 }
 
 .main-tag span{
@@ -31,7 +37,7 @@
 }
 
 
-.container .shop-list-title {
+.container-shop .shop-list-title {
   font-family: 'DM Sans';
 
   font-weight: 400;
@@ -80,17 +86,17 @@ margin-right: auto;
     margin: 0 4px;
     background-color: transparent;
     border-radius: 50%;
-    color: #000000;
+    color: var(--black-color-for-text);
     font-weight: 700;
     font-size: 18px;
     line-height: 1.22;
     z-index: 0;
-    border: 1px solid #111111;
+    border: 1px solid var(--black-color-for-text);
     }
         
     .pagination-button:hover {
-    background-color: #B92F2C;
-    color: #ffffff;
+    background-color: var(--black-color-for-text);
+    color: var(--white-color-for-block);
     border-radius: 50%;
     }
         
@@ -102,15 +108,15 @@ margin-right: auto;
     }
      
     .arrow-left{
-      background-color: #111111;
+      background-color: var(--black-color-for-text);
     }
 
     .arrow-right {
-      background-color: #EAC645;
+      background-color: var(--yellow-color-for-pagination);
     }
 
     .arrow-left:hover, .arrow-right:hover {
-    fill: #ffffff;
+    fill: var(--white-color-for-block);
     }
 
     @media screen and (max-width: 1439px) {
@@ -155,9 +161,14 @@ margin-right: auto;
 	height: 28px;
 	padding: 0;
 	border-radius: 50%;
-		background-color: #4F2EE8;
-    border: #4F2EE8;
+		background-color: var(--purple-color-for-text);
+    border: var(--purple-color-for-text);
 	cursor: pointer;
+  }
+
+  .basket-button > svg{
+    width: 16px; 
+    height: 16px;
   }
 
   .title-book-cover {
@@ -169,7 +180,7 @@ margin-right: auto;
 .shopping-book-cover {
   max-width: 100%;
   display: block;
-  border: 2px dashed tomato;
+  /* border: 2px dashed tomato; */
 }
 
   .gallery-lib {
@@ -180,6 +191,7 @@ margin-right: auto;
     display: flex;
     padding: 14px;
     font-family: 'DM Sans';
+    margin-bottom: 20px;
   }
 
 
@@ -209,7 +221,7 @@ margin-right: auto;
     letter-spacing: -0.04em;
     text-transform: uppercase;
     
-    color: #111111;
+    color: var(--black-color-for-text);
 
     margin-bottom: 4px;
   }
@@ -221,7 +233,7 @@ margin-right: auto;
     line-height: 1.17;
     letter-spacing: 0.03em;
     
-    color: #B4AFAF;
+    color: var(--gray-color-for-text);
 
     margin-bottom: 8px;
   }
@@ -233,19 +245,36 @@ margin-right: auto;
     line-height: 1.29;
     letter-spacing: -0.04em;
     
-    color: #111111;
+    color: var(--black-color-for-text);
 
     /* width: 193px; */
-/* height: 58px; */
-overflow: hidden;
+    height: 53px;
+    overflow: hidden;
 /* margin-bottom: 10px; */
   }
+
+  @media screen and (max-width: 1439px) {
+    .basic-description-book:hover {
+      transform: scale(1);
+      /* transform: translateY(-30%); */
+      height: 100%;
+      overflow-block: visible;
+      background-color: var(--white-color-for-block);
+    }
+  }
+
+  
 
   .gallery__wrap > .shop-meta {
   margin-top: 16px;
   /* margin-bottom: 14px; */
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+}
+
+.partner + .partner {
+  margin-left: 8px;
 }
 
   .autor-book {
@@ -255,22 +284,22 @@ overflow: hidden;
     line-height: 1.17;
     letter-spacing: -0.04em;
     
-    color: #B4AFAF;
+    color: var(--gray-color-for-text);
   }
 
 .customers-list {
   display: flex;
   flex-direction: row;
-  border: 2px dashed tomato;
+  /* border: 2px dashed tomato; */
 }
+
 
 
 @media screen and (min-width: 768px) {
 
 
   .gallery__item {
-    padding: 30px 24px;
-/* gap: 48px; */
+    padding: 24px;
     width: 704px;
     height: 213px;
   }
@@ -278,11 +307,32 @@ overflow: hidden;
   .basket-button {
     width: 34px;
 height: 34px;
-
 }
+
+.basket-button > svg{
+  width: 18px; 
+  height: 18px;
+}
+
 
   .title-book-cover {
     width: 116px;
   }
 
+  .partner + .partner {
+    margin-left: 16px;
+  }
+
+}
+
+@media screen and (min-width: 1440px) {
+
+.container-shop {
+  margin-left: 40px;
+}
+
+
+  .gallery__item {
+    width: 996px;
+  }
 }
