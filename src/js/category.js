@@ -73,9 +73,9 @@ function renderBooksList(books, event) {
   checksBooks(books);
   // Відмальовка картки книги
   const markup = books
-    .map(({ book_image, title, author }) => {
+    .map(({ book_image, title, author, _id }) => {
       return `<li class = "category_books_items">
-          <img src='${book_image}' alt='book-cover' class='bestsellers-book-cover'>
+          <img src='${book_image}' alt='book-cover' class='bestsellers-book-cover' data-id="${_id}">
              <p class='bestsellers-book-title book-text'>${formatBookName(
                title,
                15
@@ -246,3 +246,86 @@ function onTitleBestsellersClick(event) {
 // .
 
 // .// .
+
+const closeModalBtnCategory = document.querySelector('.svg-close');
+const modalCategory = document.querySelector('[data-modal]');
+
+categoryBooksContainer.addEventListener('click', toggleModalOpen);
+// closeModalBtnCategory.addEventListener('click', toggleModal);
+
+// window.addEventListener('keydown', handleKeyDown);
+
+function toggleModalOpen(event) {
+  if (event.target.className !== 'bestsellers-book-cover') {
+    return;
+  }
+  modalCategory.classList.toggle('is-hidden');
+
+  // document.body.style.overflow = refs.modal.classList.contains("is-hidden") ? "" : "hidden";
+}
+
+// .
+// .
+// .
+// .
+// .
+// .
+// .
+// .
+// .
+// .
+
+// .
+// .
+// .
+// .
+// .
+// .
+// .
+// .
+// .
+// .
+// .
+// .
+// .
+// .
+
+// .//
+
+const bookDetails = document.querySelectorAll('.bestsellers-list-item');
+
+categoryBooks.addEventListener('click', openBookDetails);
+
+const modalEl = document.querySelector('.img-and-description');
+
+function openBookDetails(event) {
+  if (event.target.className !== 'bestsellers-book-cover') {
+    return;
+  }
+  const bookId = event.target.dataset.id;
+
+  return fetch(`https://books-backend.p.goit.global/books/${bookId}`)
+    .then(response => response.json())
+    .then(book => renderBookModal(book))
+    .catch(error => console.log(error));
+}
+
+function renderBookModal(book) {
+  modalEl.innerHTML = `<img class="img-modal" src="${book.book_image}" alt="Image cover" />
+      <div class="div-text-modal">
+        <h1 class="item-modal">${book.title}</h1>
+        <h3 class="autor-name-modal">${book.author}</h3>
+        <p class="description-modal">${book.description}</p>
+        <ul class="ul-modal">
+          <li class="li-modal">
+          <a href="${book.buy_links[0].url}" class="amazon-modal" target="_blank"></a>
+          </li>
+          <li class="li-modal">
+          <a href="${book.buy_links[1].url}" class="book-modal" target="_blank"></a>
+          </li>
+          <li class="li-modal">
+          <a href="${book.buy_links[4].url}" class="books-modal" target="_blank">
+          </a></li>
+        </ul>
+      </div>`;
+}
