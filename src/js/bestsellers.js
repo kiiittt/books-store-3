@@ -394,7 +394,6 @@ const bookArray = JSON.parse(localStorage.getItem(BOOKS_DATA_KEY)) || [];
 
 
 const addBookToShoppingList = () => {
-    
     addShopingBtn.classList.add('is-hidden-modal');
     bookRemove.classList.remove('is-hidden-modal');
 
