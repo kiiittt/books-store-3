@@ -317,7 +317,7 @@ const bookDetails = document.querySelector('.bestsellers-area');
 bookDetails.addEventListener('click', openBookDetails);
 
 
-function openBookDetails(event) {
+ function openBookDetails(event) {
   if (event.target.nodeName !== 'IMG') {
     return;
   }
@@ -326,9 +326,12 @@ function openBookDetails(event) {
 
   return fetch(`https://books-backend.p.goit.global/books/${bookId}`)
     .then(response => response.json())
-    .then(book => renderBookModal(book))
+    .then(book => {renderBookModal(book)
+                    addBookShoping(book)
+                    removeBookShoping(book)}
+                )
     .catch(error => console.log(error));
-  
+
 }
 
 
@@ -380,3 +383,40 @@ function changeCategoryColor(selectedCategory) {
 }
 
 
+
+const addShopingBtn = document.querySelector('.btn-modal-js');
+const bookRemove = document.querySelector('.modal_remove-block-js');
+const removeShopingBtn = document.querySelector('.modal__remove-btn-js');
+const BOOKS_DATA_KEY = 'book-data-5';
+const bookArray = JSON.parse(localStorage.getItem(BOOKS_DATA_KEY)) || [];
+
+const addBookShoping = (bookId) => {
+    bookArray.push(bookId);
+  
+    bookRemove.classList.remove('is-hidden-modal');
+    addShopingBtn.classList.add('is-hidden-modal');
+  
+    saveBookShopping();
+  };
+  
+  const saveBookShopping = () => {
+    localStorage.setItem(BOOKS_DATA_KEY, JSON.stringify(bookArray));
+  };
+  
+  const removeBookShoping = (e) => {
+    bookRemove.classList.add('is-hidden-modal');
+    addShopingBtn.classList.remove('is-hidden-modal');
+  
+    // видалити id книги з масиву та localStorage
+    const bookId = e.target.dataset.bookId;
+    const index = bookArray.indexOf(bookId);
+    if (index > -1) {
+      bookArray.splice(index, 1);
+    }
+  
+    saveBookShopping();
+  };
+
+
+addShopingBtn.addEventListener('click', addBookShoping);
+removeShopingBtn.addEventListener('click', removeBookShoping);
