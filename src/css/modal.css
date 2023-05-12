@@ -21,10 +21,6 @@
   pointer-events: none;
 }
 
-.is-hidden-modal {
-  display: none;
-}
-
 .modal {
   background: var(--main-bg-color);
   border: 2px solid var(--first-text-color);
@@ -124,28 +120,6 @@
   height: 36px;
 }
 
-.modal__remove {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto;
-  margin-bottom: 8px;
-
-}
-
-.modal__btn-message {
-  width: 324px;
-  margin: 0 auto;
-  font-family: 'DM Sans';
-font-style: normal;
-font-weight: 400;
-font-size: 12px;
-line-height: 14px;
-text-align: center;
-letter-spacing: -0.04em;
-color: rgba(17, 17, 17, 0.5);
-}
-
 @media screen and (max-width: 767px) {
   .modal {
     position: absolute;
@@ -208,8 +182,7 @@ color: rgba(17, 17, 17, 0.5);
     color: var(--color-of-h2-category);
   }
 
-  .btn-modal,
-  .modal__remove {
+  .btn-modal {
     width: 211px;
     height: 46px;
     border: 2px solid #4f2ee8;
@@ -223,24 +196,11 @@ color: rgba(17, 17, 17, 0.5);
     color: var(--color-of-h2-category);
     background: var(--main-bg-color);
   }
-
-  .modal__remove {
-    width: 279px;
-  }
-
   .btn-modal:hover,
-  .btn-modal:focus,
-  .modal__remove:hover,
-  .modal__remove:focus {
+  .btn-modal:focus {
     color: #ffffff;
     background-color: #4f2ee8;
   }
-  .modal__btn-message {
-    width: 242px;
-    margin: 0 auto;
-    font-size: 12px;
-  }
-
 }
 
 @media screen and (min-width: 768px) and (max-width: 1439.99px) {
@@ -318,8 +278,7 @@ color: rgba(17, 17, 17, 0.5);
     justify-content: center;
   }
 
-  .btn-modal,
-  .modal__remove {
+  .btn-modal {
     width: 499px;
     height: 64px;
     border: 2px solid #4f2ee8;
@@ -335,9 +294,7 @@ color: rgba(17, 17, 17, 0.5);
   }
 
   .btn-modal:hover,
-  .btn-modal:focus,
-  .modal__remove:hover,
-  .modal__remove:focus {
+  .btn-modal:focus {
     color: #ffffff;
     background-color: #4f2ee8;
   }
@@ -424,8 +381,7 @@ color: rgba(17, 17, 17, 0.5);
     justify-content: center;
   }
 
-  .btn-modal,
-  .modal__remove {
+  .btn-modal {
     width: 499px;
     height: 64px;
     border: 2px solid #4f2ee8;
@@ -441,9 +397,7 @@ color: rgba(17, 17, 17, 0.5);
   }
 
   .btn-modal:hover,
-  .btn-modal:focus,
-  .modal__remove:hover,
-  .modal__remove:focus {
+  .btn-modal:focus {
     color: #ffffff;
     background-color: #4f2ee8;
   }
