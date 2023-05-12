@@ -44,32 +44,43 @@ import"./support-eaba1970.js";document.querySelector(".bestsellers-area");const 
         <div class="bestsellers-book-list">
 
         <div class="bestsellers-book-item"  >
+        <div class="test-wraper" >
         <img src='${t.books[0].book_image}' class="bestsellers-book-cover" data-id="${t.books[0]._id}" data-modal-open>
+      </div>
         <p class="bestsellers-book-title">${a(t.books[0].title,15)}</p>
         <p class="bestsellers-book-author">${t.books[0].author}</p>
         </div>
 
         <div class="bestsellers-book-item" >
+        <div class='test-wraper'>
         <img src='${t.books[1].book_image}' class="bestsellers-book-cover" data-id="${t.books[1]._id}" data-modal-open>
+      </div>
         <p class="bestsellers-book-title">${a(t.books[1].title,15)}</p>
         <p class="bestsellers-book-author">${t.books[1].author}</p>
         </div>
 
         <div class="bestsellers-book-item" >
+        <div class='test-wraper'>
         <img src='${t.books[2].book_image}' class="bestsellers-book-cover" data-id="${t.books[2]._id}" data-modal-open>
+      </div>
         <p class="bestsellers-book-title">${a(t.books[2].title,15)}</p>
         <p class="bestsellers-book-author">${t.books[2].author}</p>
         </div>
 
         <div class="bestsellers-book-item" >
+        <div class='test-wraper'>
         <img src='${t.books[3].book_image}' class="bestsellers-book-cover" data-id="${t.books[3]._id}" data-modal-open>
+      </div>
         <p class="bestsellers-book-title">${a(t.books[3].title,15)}</p>
         <p class="bestsellers-book-author">${t.books[3].author}</p>
         </div>
 
         <div class="bestsellers-book-item" >
+        <div class='test-wraper'>
         <img src='${t.books[4].book_image}' class="bestsellers-book-cover" data-id="${t.books[4]._id}" data-modal-open>
+      </div>
         <p class="bestsellers-book-title">${a(t.books[4].title,15)}</p>
+        
         <p class="bestsellers-book-author">${t.books[4].author}</p>
         </div>
 
