@@ -140,11 +140,13 @@ function renderBestsellersDesktop(bestsellers) {
         <div class="bestsellers-book-list">
 
         <div class="bestsellers-book-item"  >
+        <div class="test-wraper" >
         <img src='${
           bestseller.books[0].book_image
         }' class="bestsellers-book-cover" data-id="${
         bestseller.books[0]._id
       }" data-modal-open>
+      </div>
         <p class="bestsellers-book-title">${formatBookName(
           bestseller.books[0].title,
           15
@@ -153,11 +155,13 @@ function renderBestsellersDesktop(bestsellers) {
         </div>
 
         <div class="bestsellers-book-item" >
+        <div class='test-wraper'>
         <img src='${
           bestseller.books[1].book_image
         }' class="bestsellers-book-cover" data-id="${
         bestseller.books[1]._id
       }" data-modal-open>
+      </div>
         <p class="bestsellers-book-title">${formatBookName(
           bestseller.books[1].title,
           15
@@ -166,11 +170,13 @@ function renderBestsellersDesktop(bestsellers) {
         </div>
 
         <div class="bestsellers-book-item" >
+        <div class='test-wraper'>
         <img src='${
           bestseller.books[2].book_image
         }' class="bestsellers-book-cover" data-id="${
         bestseller.books[2]._id
       }" data-modal-open>
+      </div>
         <p class="bestsellers-book-title">${formatBookName(
           bestseller.books[2].title,
           15
@@ -179,11 +185,13 @@ function renderBestsellersDesktop(bestsellers) {
         </div>
 
         <div class="bestsellers-book-item" >
+        <div class='test-wraper'>
         <img src='${
           bestseller.books[3].book_image
         }' class="bestsellers-book-cover" data-id="${
         bestseller.books[3]._id
       }" data-modal-open>
+      </div>
         <p class="bestsellers-book-title">${formatBookName(
           bestseller.books[3].title,
           15
@@ -192,15 +200,18 @@ function renderBestsellersDesktop(bestsellers) {
         </div>
 
         <div class="bestsellers-book-item" >
+        <div class='test-wraper'>
         <img src='${
           bestseller.books[4].book_image
         }' class="bestsellers-book-cover" data-id="${
         bestseller.books[4]._id
       }" data-modal-open>
+      </div>
         <p class="bestsellers-book-title">${formatBookName(
           bestseller.books[4].title,
           15
         )}</p>
+        
         <p class="bestsellers-book-author">${bestseller.books[4].author}</p>
         </div>
 
