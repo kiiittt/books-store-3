@@ -27,7 +27,7 @@
 
   letter-spacing: -0.04em;
 
-  color: var(--black-color-for-text);
+  color: var(--color-of-h2-category);
 
   margin-top: 104px;
 }
@@ -45,7 +45,7 @@
   line-height: 129%;
   letter-spacing: -0.02em;
 
-  color: var(--black-color-with-60percentage);
+  color: var(--color-of-category-text);
 
   width: 244px;
   text-align: center;
@@ -54,6 +54,10 @@
   margin-bottom: 14px;
   margin-left: auto;
   margin-right: auto;
+}
+
+.div-shoping-cards{
+  width: 375px;
 }
 
 .shop-list-start-img {
@@ -327,12 +331,22 @@ height: 34px;
 
 @media screen and (min-width: 1440px) {
 
-.container-shop {
-  margin-left: 40px;
+.div-support-shoping{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
 }
 
+.container-shop {
+  margin-left: 40px;
+  margin-top: 115px;
+}
 
   .gallery__item {
+    width: 996px;
+  }
+
+  .div-shoping-cards{
     width: 996px;
   }
 }

@@ -13,7 +13,7 @@
   font-size: 32px;
   line-height: 38px;
   letter-spacing: -0.04em;
-  color: #111111;
+  color: var(--color-of-h2-category);
 }
 
 .bestsellers-main-title-books-blue-text {
@@ -39,7 +39,7 @@
   line-height: 18px;
   letter-spacing: 0.03em;
   text-transform: uppercase;
-  color: #b4afaf;
+  color: var(--main-bg-color);
   margin-bottom: 18px;
 }
 .bestsellers-book-item {
@@ -64,7 +64,7 @@
   line-height: 18px;
   letter-spacing: -0.04em;
   text-transform: uppercase;
-  color: #111111;
+  color: var(--color-of-h2-category);
   margin-bottom: 4px;
 }
 
@@ -91,14 +91,15 @@
   line-height: 1.29;
   letter-spacing: -0.01em;
   text-transform: uppercase;
-  color: #111111;
+  color: var(--color-of-h2-category);
+  background-color: var(--main-bg-color);
   align-self: end;
   transition-property: transform;
   transition-duration: 500ms;
 }
 
-.bestsellers-button:hover{
-transform: scale(1.2);
+.bestsellers-button:hover {
+  transform: scale(1.2);
 }
 
 @media screen and (min-width: 768px) {

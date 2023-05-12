@@ -4,6 +4,7 @@
   --color-of-categoryAll-text: #4f2ee8;
   --color-of-category-text: rgba(17, 17, 17, 0.6);
   --color-of-h2-category: #111111;
+
 }
 @media (prefers-color-scheme: dark) {
   :root:not([theme='light']) {
