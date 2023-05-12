@@ -313,9 +313,12 @@ function checksBooks(books) {
 
 
 const modalEl = document.querySelector('.img-and-description');
-const bookDetails = document.querySelector('.bestsellers-area'); 
-bookDetails.addEventListener('click', openBookDetails);
+const bookDetails = document.querySelectorAll('.bestsellers-list-item'); 
 
+
+for (let i = 0; i < bookDetails.length; i+=1) {
+bookDetails[i].addEventListener('click', openBookDetails);  
+}
 
 function openBookDetails(event) {
   if (event.target.nodeName !== 'IMG') {
