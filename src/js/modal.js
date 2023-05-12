@@ -1,12 +1,14 @@
 (() => {
   const refs = {
     openModalBtn: document.querySelector('.bestsellers-area'),
+    openModal: document.querySelector('.category_books_container'),
     closeModalBtn: document.querySelector('[data-modal-close]'),
     modal: document.querySelector('[data-modal]'),
     // modalBackdrop: document.querySelector('[data-modal-backdrop]'),
   };
 
   refs.openModalBtn.addEventListener("click", toggleModalOpen);
+  refs.openModal.addEventListener("click", toggleModalOpen);  
   refs.closeModalBtn.addEventListener("click", toggleModal);
   // refs.modalBackdrop.addEventListener("click", toggleModal);
   window.addEventListener("keydown", handleKeyDown);
