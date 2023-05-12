@@ -23,7 +23,7 @@
 
 .modal {
   background: var(--main-bg-color);
-  border: 2px solid #111111;
+  border: 2px solid var(--first-text-color);
   border-radius: 18px;
 }
 
