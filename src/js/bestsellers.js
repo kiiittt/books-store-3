@@ -1,229 +1,91 @@
 const bestsellersArea = document.querySelector('.bestsellers-area');
 const bestsellersList = document.querySelector('.bestsellers-list');
 
-let w =
-  document.documentElement.clientWidth ||
-  document.body.clientWidth ||
-  window.innerWidth;
+let bestsellersArray = [];
+const getBestseller = async () => {
+  const response = await fetch(
+    `https://books-backend.p.goit.global/books/top-books`
+  );
+  const bestsellers = await response.json();
+  return bestsellers;
+};
 
-// getBestsellersLog();
+getBestseller()
+  .then(bestsellers => {
+    bestsellersArray = bestsellers;
+    getBooksNumber();
+    bestsellersMarkup(bestsellersArray);
+  })
+  .catch(error => console.error(error));
 
-// function getBestsellersLog(){
-//     fetch(`https://books-backend.p.goit.global/books/top-books`)
-//         .then(response => response.json())
-//         .then(bestsellers => console.log(bestsellers))
-//         .catch(error => console.log(error));
-// }
+let booksNumber = 0;
+let titleLength = 0;
 
-if (w < 768) {
-  getBestsellersMobile();
-} else if (w < 1440) {
-  getBestsellersTablet();
-} else if (w >= 1440) {
-  getBestsellersDesktop();
+
+function getBooksNumber() {
+  if (window.screen.availWidth < 768) {
+    booksNumber = 1;
+    titleLength = 30;
+  } else if (
+    window.screen.availWidth >= 768 &&
+    window.screen.availWidth < 1440
+  ) {
+    booksNumber = 3;
+    titleLength = 20;
+  } else {
+    booksNumber = 5;
+    titleLength = 15;
+  }
 }
 
-function getBestsellersMobile() {
-  fetch(`https://books-backend.p.goit.global/books/top-books`)
-    .then(response => response.json())
-    .then(bestsellers => renderBestsellersMobile(bestsellers))
-    .catch(error => console.log(error));
-}
-function renderBestsellersMobile(bestsellers) {
-  bestsellersList.innerHTML = bestsellers
-    .map(bestseller => {
-      return `<li class="bestsellers-list-item">
-        <p class="bestsellers-general-category">${bestseller.list_name}</p>
-        
-
-        <div class="bestsellers-book-item" >
-        <img src='${
-          bestseller.books[0].book_image
-        }' class="bestsellers-book-cover" data-id="${
-        bestseller.books[0]._id
-      }" data-modal-open>
-
-        <p class="bestsellers-book-title">${formatBookName(
-          bestseller.books[0].title,
-          30
-        )}</p>
-        <p class="bestsellers-book-author">${bestseller.books[0].author}</p>
-        </div>
-    
-        <button class="bestsellers-button" data-id="${
-          bestseller.list_name
-        }">See more</button>
+function bestsellersMarkup(bestsellers) {
+  getBooksNumber();
+  let categoryMarkup = '';
+  for (let i = 0; i < bestsellers.length; i++) {
+    const category = bestsellers[i].list_name;
+    categoryMarkup += `
+        <li class="bestsellers-list-item">
+            <p class="bestsellers-general-category">${category}</p>
+            <div class="bestsellers-book-list">`;
+    const books = bestsellers[i].books;
+    for (let j = 0; j < books.length; j++) {
+      if (j === booksNumber) {
+        break;
+      }
+      const book = books[j];
+      categoryMarkup += `
+              <div class="bestsellers-book-item" >
+                <div class="test-wraper" >
+                  <img src="${
+                    book.book_image
+                  }" alt="book-cover" class="bestsellers-book-cover" data-id="${
+        book._id
+      }" loading="lazy" data-modal-open>
+                </div>
+                <p class="bestsellers-book-title">${formatBookName(
+                  book.title,
+                  titleLength
+                )}</p>
+                <p class="bestsellers-book-author">${book.author}</p>
+              </div>`;
+    }
+    categoryMarkup += `
+            </div>
+            <button class="bestsellers-button" data-id="${bestsellers[i].list_name}">See more</button>
         </li>`;
-    })
-    .join(' ');
+  }
+  bestsellersList.innerHTML = categoryMarkup;
   addListener();
 }
 
-function getBestsellersTablet() {
-  fetch(`https://books-backend.p.goit.global/books/top-books`)
-    .then(response => response.json())
-    .then(bestsellers => renderBestsellersTablet(bestsellers))
-    .catch(error => console.log(error));
-}
-function renderBestsellersTablet(bestsellers) {
-  bestsellersList.innerHTML = bestsellers
-    .map(bestseller => {
-      return `<li class="bestsellers-list-item">
-        <p class="bestsellers-general-category">${bestseller.list_name}</p>
-        <div class="bestsellers-book-list">
+window.addEventListener('resize', e => {
+  clearBestsellers();
+  getBooksNumber();
+  bestsellersMarkup(bestsellersArray);
+});
 
-
-        <div class="bestsellers-book-item" >
-        <img src='${
-          bestseller.books[0].book_image
-        }' class="bestsellers-book-cover" data-id="${
-        bestseller.books[0]._id
-      }" data-modal-open>
-
-        <p class="bestsellers-book-title">${formatBookName(
-          bestseller.books[0].title,
-          20
-        )}</p>
-        <p class="bestsellers-book-author">${bestseller.books[0].author}</p>
-        </div>
-
-        <div class="bestsellers-book-item" >
-        <img src='${
-          bestseller.books[1].book_image
-        }' class="bestsellers-book-cover" data-id="${
-        bestseller.books[1]._id
-      }" data-modal-open>
-
-        <p class="bestsellers-book-title">${formatBookName(
-          bestseller.books[1].title,
-          20
-        )}</p>
-        <p class="bestsellers-book-author">${bestseller.books[1].author}</p>
-        </div>
-        
-
-        <div class="bestsellers-book-item" >
-        <img src='${
-          bestseller.books[2].book_image
-        }' class="bestsellers-book-cover" data-id="${
-        bestseller.books[2]._id
-      }" data-modal-open>
-
-        <p class="bestsellers-book-title">${formatBookName(
-          bestseller.books[2].title,
-          20
-        )}</p>
-        <p class="bestsellers-book-author">${bestseller.books[2].author}</p>
-        </div>
-
-        </div>
-        <button class="bestsellers-button" data-id="${
-          bestseller.list_name
-        }">See more</button>
-        </li>`;
-    })
-    .join(' ');
-  addListener();
-}
-
-function getBestsellersDesktop() {
-  fetch(`https://books-backend.p.goit.global/books/top-books`)
-    .then(response => response.json())
-    .then(bestsellers => renderBestsellersDesktop(bestsellers))
-    .catch(error => console.log(error));
-}
-function renderBestsellersDesktop(bestsellers) {
-  bestsellersList.innerHTML = bestsellers
-    .map(bestseller => {
-      return `<li class="bestsellers-list-item">
-        <p class="bestsellers-general-category">${bestseller.list_name}</p>
-        <div class="bestsellers-book-list">
-
-        <div class="bestsellers-book-item"  >
-        <div class="test-wraper" >
-        <img src='${
-          bestseller.books[0].book_image
-        }' class="bestsellers-book-cover" data-id="${
-        bestseller.books[0]._id
-      }" data-modal-open>
-      </div>
-        <p class="bestsellers-book-title">${formatBookName(
-          bestseller.books[0].title,
-          15
-        )}</p>
-        <p class="bestsellers-book-author">${bestseller.books[0].author}</p>
-        </div>
-
-        <div class="bestsellers-book-item" >
-        <div class='test-wraper'>
-        <img src='${
-          bestseller.books[1].book_image
-        }' class="bestsellers-book-cover" data-id="${
-        bestseller.books[1]._id
-      }" data-modal-open>
-      </div>
-        <p class="bestsellers-book-title">${formatBookName(
-          bestseller.books[1].title,
-          15
-        )}</p>
-        <p class="bestsellers-book-author">${bestseller.books[1].author}</p>
-        </div>
-
-        <div class="bestsellers-book-item" >
-        <div class='test-wraper'>
-        <img src='${
-          bestseller.books[2].book_image
-        }' class="bestsellers-book-cover" data-id="${
-        bestseller.books[2]._id
-      }" data-modal-open>
-      </div>
-        <p class="bestsellers-book-title">${formatBookName(
-          bestseller.books[2].title,
-          15
-        )}</p>
-        <p class="bestsellers-book-author">${bestseller.books[2].author}</p>
-        </div>
-
-        <div class="bestsellers-book-item" >
-        <div class='test-wraper'>
-        <img src='${
-          bestseller.books[3].book_image
-        }' class="bestsellers-book-cover" data-id="${
-        bestseller.books[3]._id
-      }" data-modal-open>
-      </div>
-        <p class="bestsellers-book-title">${formatBookName(
-          bestseller.books[3].title,
-          15
-        )}</p>
-        <p class="bestsellers-book-author">${bestseller.books[3].author}</p>
-        </div>
-
-        <div class="bestsellers-book-item" >
-        <div class='test-wraper'>
-        <img src='${
-          bestseller.books[4].book_image
-        }' class="bestsellers-book-cover" data-id="${
-        bestseller.books[4]._id
-      }" data-modal-open>
-      </div>
-        <p class="bestsellers-book-title">${formatBookName(
-          bestseller.books[4].title,
-          15
-        )}</p>
-        
-        <p class="bestsellers-book-author">${bestseller.books[4].author}</p>
-        </div>
-
-        </div>
-        <button class="bestsellers-button" data-id="${
-          bestseller.list_name
-        }">See more</button>
-        </li>
-        `;
-    })
-    .join(' ');
-  addListener();
+function clearBestsellers() {
+  bestsellersList.innerHTML = '';
 }
 
 function formatBookName(message, maxLength) {
@@ -276,11 +138,9 @@ function renderBooksList(books, event) {
   checksBooks(books);
   // Відмальовка картки книги
   const markup = books
-    .map(({ book_image, title, author, _id }) => {
+    .map(({ book_image, title, author }) => {
       return `<li class = "category_books_items">
-          <div class="test-wraper">
-          <img src='${book_image}' alt='book-cover' class='bestsellers-book-cover' data-id="${_id}">
-          </div>
+          <img src='${book_image}' alt='book-cover' class='bestsellers-book-cover'>
              <p class='bestsellers-book-title book-text'>${formatBookName(
                title,
                15
@@ -338,7 +198,6 @@ function openBookDetails(event) {
     return;
   }
   const bookId = event.target.dataset.id;
-  console.log(bookId);
 
   return fetch(`https://books-backend.p.goit.global/books/${bookId}`)
     .then(response => response.json())
