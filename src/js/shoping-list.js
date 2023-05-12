@@ -42,8 +42,11 @@ function showAdd() {
 //     }
 //   }
 
-  function createGalleryMarkup(books) {
-    return books
+const storedBooks = JSON.parse(localStorage.getItem(BOOKS_DATA_KEY));
+
+
+  function createGalleryMarkup(storedBooks) {
+    return storedBooks
       .map(book => {
         const genres = genresListFormat(movie.genre_ids);
         const movieYear = movieReleaseYearFormat(movie);
@@ -91,6 +94,8 @@ function showAdd() {
       })
       .join('');
   }
+  
+  createGalleryMarkup();
 
 // return '<ul class="shopping-carts">
 // <li class="shopping-list">

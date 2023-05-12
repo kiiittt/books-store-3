@@ -208,8 +208,14 @@ function renderBestsellersDesktop(bestsellers) {
         }">See more</button>
         </li>
         `;
+        addButtonListner();
     })
     .join(' ');
+}
+
+function addButtonListner() {
+    const buttunModal = document.querySelector('.btn-modal');
+    buttunModal.addEventListener('click', addBookToShoppingList);
 }
 
 function formatBookName(message, maxLength) {
@@ -322,14 +328,13 @@ bookDetails.addEventListener('click', openBookDetails);
     return;
   }
   const bookId = event.target.dataset.id;
-//   console.log(bookId);
+  console.log(bookId);
 
   return fetch(`https://books-backend.p.goit.global/books/${bookId}`)
     .then(response => response.json())
     .then(book => {renderBookModal(book)
-        addBookToShoppingList(book),
+        addBookToShoppingList(book)
         removeBookFromShoppingList(book)}
-                                  
     )
     .catch(error => console.log(error));
 
@@ -388,33 +393,31 @@ function changeCategoryColor(selectedCategory) {
 const addShopingBtn = document.querySelector('.btn-modal-js');
 const removeShopingBtn = document.querySelector('.modal__remove-btn-js');
 const bookRemove = document.querySelector('.modal_remove-block-js');
-const BOOKS_DATA_KEY = 'books data-330';
+const BOOKS_DATA_KEY = 'books data-0';
 const bookArray = JSON.parse(localStorage.getItem(BOOKS_DATA_KEY)) || [];
 
+
+
 const addBookToShoppingList = (bookId) => {
-      bookArray.push(bookId);
-      localStorage.setItem(BOOKS_DATA_KEY, JSON.stringify(bookArray));
-        
-      console.log(bookId);
-      
+    bookArray.push(bookId);
+    localStorage.setItem(BOOKS_DATA_KEY, JSON.stringify(bookArray));
+    console.log(bookId);
     
     addShopingBtn.classList.add('is-hidden-modal');
     bookRemove.classList.remove('is-hidden-modal');
-  };
-  
-  const removeBookFromShoppingList = (bookId) => {
-    const index = bookArray.findIndex(book => book._id === bookId);
-    if (index > -1) {
-      bookArray.splice(index, 1);
-      localStorage.setItem(BOOKS_DATA_KEY, JSON.stringify(bookArray));
+
+}
+
+const removeBookFromShoppingList = (book) => {
+    const storedBooks = JSON.parse(localStorage.getItem(BOOKS_DATA_KEY));
+    const bookIndex = storedBooks.indexOf(book);
+    if (bookIndex !== -1) {
+    storedBooks.splice(bookIndex, 1);
+    localStorage.setItem(BOOKS_DATA_KEY, JSON.stringify(storedBooks));
     }
-    
     addShopingBtn.classList.remove('is-hidden-modal');
     bookRemove.classList.add('is-hidden-modal');
-  };
-
-
+    }
 
 addShopingBtn.addEventListener('click', addBookToShoppingList);
 removeShopingBtn.addEventListener('click', removeBookFromShoppingList);
-

@@ -33,23 +33,34 @@
   --trans-speed-4: 0.4s ease;
   --trans-speed-5: 0.5s ease;
   --trans-speed-8: 0.8s ease;
+  --main-bg-color: #ffffff;
+  --header-bg-color: #ffffff;
+  --color-of-categoryAll-text: #4f2ee8;
+  --color-of-category-text: rgba(17, 17, 17, 0.6);
+  --color-of-h2-category: #111111;
+
 }
 
 :root[theme='dark'],
 :root:not([theme]) {
-    --main-bg-color: #202024;
-    --header-bg-color: #111111;
-    --header-border-color: #ffffff;
-    --header-text-color: #ffffff;
-    --header-logo-color: #ffffff;
-    --first-titles-color: #ffffff;
-    --second-titles-color: #4f2ee8;
-    --first-text-color: #ffffff;
-    --link-color1: #ffffff;
-    --header-burger-icon: url('../img/burger-icon-dark.svg');
-    --header-close-icon: url('../img/close-icon-dark.svg');
-}
+  --main-bg-color: #202024;
+  --header-bg-color: #111111;
+  --header-border-color: #ffffff;
+  --header-text-color: #ffffff;
+  --header-logo-color: #ffffff;
+  --first-titles-color: #ffffff;
+  --second-titles-color: #4f2ee8;
+  --first-text-color: #ffffff;
+  --link-color1: #ffffff;
+  --header-burger-icon: url('../img/burger-icon-dark.svg');
+  --header-close-icon: url('../img/close-icon-dark.svg');
+  --main-bg-color: #202024;
+  --header-bg-color: #111111;
+  --color-of-categoryAll-text: #eac645;
+  --color-of-category-text: rgba(255, 255, 255, 0.6);
+  --color-of-h2-category: #ffffff;
 
+}
 
 body {
   margin: auto;
@@ -104,6 +115,12 @@ img {
   margin-top: 110px;
   margin-left: auto;
   margin-right: auto;
+}
+
+.div-support-shoping{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 @media screen and (max-width: 768px) {
