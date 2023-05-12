@@ -41,9 +41,8 @@ function showAdd() {
 //       document.querySelectorAll('.gallery__item').forEach(card => card.remove());
 //     }
 //   }
-
-  function createGalleryMarkup(books) {
-    return books
+  function createGalleryMarkup(storedBooks) {
+    return storedBooks
       .map(book => {
         const genres = genresListFormat(movie.genre_ids);
         const movieYear = movieReleaseYearFormat(movie);
@@ -56,33 +55,33 @@ function showAdd() {
         <img
           class="gallery__img"
           src="${poster}"
-          alt="${book.title ?? book.name}"
+          alt="${book.book_image}"
           width
           loading="lazy"/>
 
         <div class="gallery__wrap">
-          <h2 class="name-book">${book.title ?? book.name}</h2>
+          <h2 class="name-book">${book.title}</h2>
           <div class="gallery__info">
             <p class="category-book"></p>
             <svg class="svg-remove-list">
                   <use></use>
                 </svg>
-                <p class="basic-description-book"></p>
-                <p class="autor-book"></p>
+                <p class="basic-description-book">${book.description}</p>
+                <p class="autor-book">${book.author}</p>
                 <ul class="internet-marcets">
                   <li class="123">
                     <svg class="amazon">
-                      <use href="./img/shop-img/sprite.svg#amazon" ></use>
+                      <use href="./img/shop-img/sprite.svg#amazon" >${book.buy_links[0].url}</use>
                     </svg>
                   </li>
                   <li class="123">
                     <svg>
-                      <use href=""></use>
+                      <use href="${book.buy_links[1].url}"></use>
                     </svg>
                   </li>
                   <li class="123">
                     <svg>
-                      <use href=""></use>
+                      <use href="${book.buy_links[4].url}"></use>
                     </svg>
                   </li>
           </div>
