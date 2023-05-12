@@ -276,9 +276,11 @@ function renderBooksList(books, event) {
   checksBooks(books);
   // Відмальовка картки книги
   const markup = books
-    .map(({ book_image, title, author }) => {
+    .map(({ book_image, title, author, _id }) => {
       return `<li class = "category_books_items">
-          <img src='${book_image}' alt='book-cover' class='bestsellers-book-cover'>
+          <div class="test-wraper">
+          <img src='${book_image}' alt='book-cover' class='bestsellers-book-cover' data-id="${_id}">
+          </div>
              <p class='bestsellers-book-title book-text'>${formatBookName(
                title,
                15
