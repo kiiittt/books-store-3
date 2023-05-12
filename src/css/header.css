@@ -54,7 +54,6 @@ body {
   z-index: 100;
   width: 100%;
   height: 64px;
-  background-color: var(--header-bg-color);
   /* border: 1.5px solid var(--header-border-color);
   border-radius: 0 0 8px 8px; */
 }
@@ -711,5 +710,6 @@ input:checked + .switch-slider:before {
 
 .containers {
   border: 1.5px solid var(--header-border-color);
-  border-radius: 0 0 8px 8px
+  border-radius: 0 0 8px 8px;
+    background-color: var(--header-bg-color);
 }

@@ -35,26 +35,34 @@ document.getElementById('open-button-menu').addEventListener(
 
 /* Dark and Light themes */
 
-const themToggleBtn = document.querySelector('.theme-toggle-button');
+const themeToggleBtn = document.querySelector('.theme-toggle-button');
 
-const toggleTheme = (btn, theme = null) => {
+const toggleTheme = () => {
   const currentTheme = document.documentElement.getAttribute('theme');
 
-  if (theme === 'dark' || !currentTheme || currentTheme === 'dark') {
+  if (currentTheme === 'dark') {
     document.documentElement.setAttribute('theme', 'light');
+    localStorage.setItem('theme', 'light');
   } else {
     document.documentElement.setAttribute('theme', 'dark');
+    localStorage.setItem('theme', 'dark');
   }
 };
 
-themToggleBtn.addEventListener('click', () => toggleTheme(themToggleBtn));
+themeToggleBtn.addEventListener('click', toggleTheme);
 
-if (
+// Проверяем сохраненное состояние темы в локальном хранилище
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme) {
+  document.documentElement.setAttribute('theme', savedTheme);
+} else if (
   window.matchMedia &&
   window.matchMedia('(prefers-color-scheme: dark)').matches
 ) {
-  toggleTheme(themToggleBtn, 'dark');
+  toggleTheme();
 }
+
+
 
 /* Active class for main and mobile menu */
 
