@@ -26,8 +26,8 @@
 }
 
 .modal {
-  background: #ffffff;
-  border: 2px solid #111111;
+  background: var(--main-bg-color);
+  border: 2px solid var(--first-text-color);
   border-radius: 18px;
 }
 
@@ -37,16 +37,20 @@
   padding: 0;
   height: 24px;
   width: 24px;
-  border: 0;
+  border: none;
+  outline: none;
   cursor: pointer;
+  color: var(--main-bg-color);
 }
 
 .svg-close {
   height: 100%;
   width: 100%;
-  border: 0;
+  border: none;
+  outline: none;
   cursor: pointer;
-  fill: var(--dark);
+  fill: var(--header-text-color);
+  background-color: var(--main-bg-color);
 }
 
 .use-close {
@@ -154,7 +158,7 @@ color: rgba(17, 17, 17, 0.5);
     align-items: center;
     width: 98vw;
     max-width: 335px;
-    background: #ffffff;
+    background: var(--main-bg-color);
     border: 2px solid #111111;
     border-radius: 18px;
   }
@@ -178,7 +182,7 @@ color: rgba(17, 17, 17, 0.5);
     font-weight: 700;
     font-size: 16px;
     letter-spacing: -0.04em;
-    color: #111111;
+    color: var(--header-text-color);
   }
 
   .autor-name-modal {
@@ -190,7 +194,7 @@ color: rgba(17, 17, 17, 0.5);
     font-size: 12px;
     line-height: 14px;
     letter-spacing: -0.04em;
-    color: #b4afaf;
+    color: var(--color-of-category-text);
   }
 
   .description-modal {
@@ -201,7 +205,7 @@ color: rgba(17, 17, 17, 0.5);
     font-size: 14px;
     line-height: 18px;
     letter-spacing: -0.04em;
-    color: #111111;
+    color: var(--color-of-h2-category);
   }
 
   .btn-modal,
@@ -216,7 +220,8 @@ color: rgba(17, 17, 17, 0.5);
     line-height: 18px;
     letter-spacing: -0.01em;
     text-transform: uppercase;
-    color: var(--dark);
+    color: var(--color-of-h2-category);
+    background: var(--main-bg-color);
   }
 
   .modal__remove {
@@ -247,7 +252,7 @@ color: rgba(17, 17, 17, 0.5);
     padding: 40px 20px;
     width: 579px;
     min-height: 465px;
-    background-color: #ffffff;
+    background: var(--main-bg-color);
     overflow-y: auto;
   }
 
@@ -282,7 +287,7 @@ color: rgba(17, 17, 17, 0.5);
     font-size: 24px;
     line-height: 28px;
     letter-spacing: -0.04em;
-    color: #111111;
+    color: var(--header-text-color);
   }
 
   .autor-name-modal {
@@ -294,7 +299,7 @@ color: rgba(17, 17, 17, 0.5);
     font-size: 14px;
     line-height: 18px;
     letter-spacing: -0.04em;
-    color: #b4afaf;
+    color: var(--color-of-category-text);
   }
 
   .description-modal {
@@ -305,7 +310,7 @@ color: rgba(17, 17, 17, 0.5);
     font-size: 14px;
     line-height: 18px;
     letter-spacing: -0.04em;
-    color: #111111;
+    color: var(--color-of-h2-category);
   }
 
   .div-btn-modal {
@@ -325,7 +330,8 @@ color: rgba(17, 17, 17, 0.5);
     line-height: 24px;
     letter-spacing: -0.01em;
     text-transform: uppercase;
-    color: var(--dark);
+    color: var(--color-of-h2-category);
+    background: var(--main-bg-color);
   }
 
   .btn-modal:hover,
@@ -346,7 +352,7 @@ color: rgba(17, 17, 17, 0.5);
     padding: 40px 20px;
     width: 579px;
     min-height: 465px;
-    background-color: #ffffff;
+    background: var(--main-bg-color);
     overflow-y: auto;
   }
 
@@ -387,7 +393,7 @@ color: rgba(17, 17, 17, 0.5);
     font-size: 24px;
     line-height: 28px;
     letter-spacing: -0.04em;
-    color: #111111;
+    color: var(--header-text-color);
   }
 
   .autor-name-modal {
@@ -399,7 +405,7 @@ color: rgba(17, 17, 17, 0.5);
     font-size: 14px;
     line-height: 18px;
     letter-spacing: -0.04em;
-    color: #b4afaf;
+    color: var(--color-of-category-text);
   }
 
   .description-modal {
@@ -410,7 +416,7 @@ color: rgba(17, 17, 17, 0.5);
     font-size: 14px;
     line-height: 18px;
     letter-spacing: -0.04em;
-    color: #111111;
+    color: var(--color-of-h2-category);
   }
 
   .div-btn-modal {
@@ -430,7 +436,8 @@ color: rgba(17, 17, 17, 0.5);
     line-height: 24px;
     letter-spacing: -0.01em;
     text-transform: uppercase;
-    color: var(--dark);
+    color: var(--color-of-h2-category);
+    background: var(--main-bg-color);
   }
 
   .btn-modal:hover,

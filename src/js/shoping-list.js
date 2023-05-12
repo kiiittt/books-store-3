@@ -41,10 +41,6 @@ function showAdd() {
 //       document.querySelectorAll('.gallery__item').forEach(card => card.remove());
 //     }
 //   }
-
-const storedBooks = JSON.parse(localStorage.getItem(BOOKS_DATA_KEY));
-
-
   function createGalleryMarkup(storedBooks) {
     return storedBooks
       .map(book => {
@@ -94,8 +90,6 @@ const storedBooks = JSON.parse(localStorage.getItem(BOOKS_DATA_KEY));
       })
       .join('');
   }
-  
-  createGalleryMarkup();
 
 // return '<ul class="shopping-carts">
 // <li class="shopping-list">

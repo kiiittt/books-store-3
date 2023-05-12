@@ -208,14 +208,8 @@ function renderBestsellersDesktop(bestsellers) {
         }">See more</button>
         </li>
         `;
-        addButtonListner();
     })
     .join(' ');
-}
-
-function addButtonListner() {
-    const buttunModal = document.querySelector('.btn-modal');
-    buttunModal.addEventListener('click', addBookToShoppingList);
 }
 
 function formatBookName(message, maxLength) {
@@ -361,6 +355,7 @@ function renderBookModal(book) {
       </div>`;
 }
 
+
 // Зміна кольору назви категорії та заголовку в блоці "Категорії"
 function changeCategoryColor(selectedCategory) {
   const allCategories = document.querySelectorAll('.category_button');
@@ -393,31 +388,21 @@ function changeCategoryColor(selectedCategory) {
 const addShopingBtn = document.querySelector('.btn-modal-js');
 const removeShopingBtn = document.querySelector('.modal__remove-btn-js');
 const bookRemove = document.querySelector('.modal_remove-block-js');
-const BOOKS_DATA_KEY = 'books data-0';
+const BOOKS_DATA_KEY = 'books data-1';
 const bookArray = JSON.parse(localStorage.getItem(BOOKS_DATA_KEY)) || [];
 
 
 
-const addBookToShoppingList = (bookId) => {
-    bookArray.push(bookId);
-    localStorage.setItem(BOOKS_DATA_KEY, JSON.stringify(bookArray));
-    console.log(bookId);
+const addBookToShoppingList = () => {
     
     addShopingBtn.classList.add('is-hidden-modal');
     bookRemove.classList.remove('is-hidden-modal');
 
 }
 
-const removeBookFromShoppingList = (book) => {
-    const storedBooks = JSON.parse(localStorage.getItem(BOOKS_DATA_KEY));
-    const bookIndex = storedBooks.indexOf(book);
-    if (bookIndex !== -1) {
-    storedBooks.splice(bookIndex, 1);
-    localStorage.setItem(BOOKS_DATA_KEY, JSON.stringify(storedBooks));
-    }
+const removeBookFromShoppingList = () => {
     addShopingBtn.classList.remove('is-hidden-modal');
     bookRemove.classList.add('is-hidden-modal');
-    }
-
+}
 addShopingBtn.addEventListener('click', addBookToShoppingList);
 removeShopingBtn.addEventListener('click', removeBookFromShoppingList);
