@@ -40,8 +40,8 @@ function renderBestsellersMobile(bestsellers) {
         <img src='${
           bestseller.books[0].book_image
         }' class="bestsellers-book-cover" data-id="${
-          bestseller.books[0]._id
-        }" data-modal-open>
+        bestseller.books[0]._id
+      }" data-modal-open>
 
         <p class="bestsellers-book-title">${formatBookName(
           bestseller.books[0].title,
@@ -76,8 +76,8 @@ function renderBestsellersTablet(bestsellers) {
         <img src='${
           bestseller.books[0].book_image
         }' class="bestsellers-book-cover" data-id="${
-          bestseller.books[0]._id
-        }" data-modal-open>
+        bestseller.books[0]._id
+      }" data-modal-open>
 
         <p class="bestsellers-book-title">${formatBookName(
           bestseller.books[0].title,
@@ -90,8 +90,8 @@ function renderBestsellersTablet(bestsellers) {
         <img src='${
           bestseller.books[1].book_image
         }' class="bestsellers-book-cover" data-id="${
-          bestseller.books[1]._id
-        }" data-modal-open>
+        bestseller.books[1]._id
+      }" data-modal-open>
 
         <p class="bestsellers-book-title">${formatBookName(
           bestseller.books[1].title,
@@ -105,8 +105,8 @@ function renderBestsellersTablet(bestsellers) {
         <img src='${
           bestseller.books[2].book_image
         }' class="bestsellers-book-cover" data-id="${
-          bestseller.books[2]._id
-        }" data-modal-open>
+        bestseller.books[2]._id
+      }" data-modal-open>
 
         <p class="bestsellers-book-title">${formatBookName(
           bestseller.books[2].title,
@@ -222,7 +222,6 @@ function formatBookName(message, maxLength) {
   return result;
 }
 
-
 const seeMoreBtn = document.querySelector('.bestsellers-list');
 const categoryList = document.querySelector('.category_list');
 const itemEl = document.querySelector('.item-category');
@@ -308,22 +307,19 @@ function checksBooks(books) {
   }
 }
 
-
-
-
-
 const modalEl = document.querySelector('.img-and-description');
-const bookDetails = document.querySelectorAll('.bestsellers-list-item'); 
 
+const bookDetails = document.querySelectorAll('.bestsellers-list-item'); 
 
 for (let i = 0; i < bookDetails.length; i+=1) {
 bookDetails[i].addEventListener('click', openBookDetails);  
 }
 
 function openBookDetails(event) {
-  if (event.target.nodeName !== 'IMG') {
+  if (event.target.className !== 'bestsellers-book-cover') {
     return;
   }
+  console.log(event.target.className);
   const bookId = event.target.dataset.id;
   console.log(bookId);
 
@@ -331,9 +327,7 @@ function openBookDetails(event) {
     .then(response => response.json())
     .then(book => renderBookModal(book))
     .catch(error => console.log(error));
-  
 }
-
 
 function renderBookModal(book) {
   modalEl.innerHTML = `<img class="img-modal" src="${book.book_image}" alt="Image cover" />
@@ -381,5 +375,3 @@ function changeCategoryColor(selectedCategory) {
     }
   });
 }
-
-
