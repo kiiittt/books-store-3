@@ -11,11 +11,45 @@
 @import url('https://fonts.cdnfonts.com/css/dm-sans');
 
 :root {
-  --dark: #111111;
-  --ligthDark: #202024;
-  --violet: #4f2ee8;
-  --yellow: #eac645;
+  --main-bg-color: #ffffff;
+  --header-bg-color: #ffffff;
+  --header-border-color: #111111;
+  --header-text-color: #111111;
+  --header-logo-color: #000000;
+  --first-titles-color: #111111;
+  --second-titles-color: #4f2ee8;
+  --first-text-color: #000000;
+  --first-button-color: #ffffff;
+  --second-button-color: #4f2ee8;
+  --border-button-color: #111111;
+  --text-button-color1: #111111;
+  --text-button-color2: #ffffff;
+  --menu-text-color1: #111111;
+  --link-color1: #111111;
+  --header-burger-icon: url('../img/burger-icon-light.svg');
+  --header-close-icon: url('../img/close-icon-light.svg');
+  --trans-speed-2: 0.2s ease;
+  --trans-speed-3: 0.3s ease;
+  --trans-speed-4: 0.4s ease;
+  --trans-speed-5: 0.5s ease;
+  --trans-speed-8: 0.8s ease;
 }
+
+:root[theme='dark'],
+:root:not([theme]) {
+    --main-bg-color: #202024;
+    --header-bg-color: #111111;
+    --header-border-color: #ffffff;
+    --header-text-color: #ffffff;
+    --header-logo-color: #ffffff;
+    --first-titles-color: #ffffff;
+    --second-titles-color: #4f2ee8;
+    --first-text-color: #ffffff;
+    --link-color1: #ffffff;
+    --header-burger-icon: url('../img/burger-icon-dark.svg');
+    --header-close-icon: url('../img/close-icon-dark.svg');
+}
+
 
 body {
   margin: auto;
@@ -24,6 +58,7 @@ body {
   font-size: 16px;
   letter-spacing: 0.04em;
   min-width: 320px;
+  background-color: var(--main-bg-color);
 }
 
 textarea {
@@ -114,8 +149,8 @@ img {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-right: 0;
-    margin-left: 0;
+    margin-right: auto;
+    margin-left: auto;
   }
 }
 

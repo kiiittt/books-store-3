@@ -1,9 +1,7 @@
 .bestsellers-area {
   display: flex;
   flex-direction: column;
-  width: 375px;
-  padding-left: 20px;
-  padding-right: 20px;
+  width: 335px;
   margin: 0 auto;
 }
 
@@ -106,8 +104,6 @@ transform: scale(1.2);
 @media screen and (min-width: 768px) {
   .bestsellers-area {
     width: 768px;
-    padding-left: 32px;
-    padding-right: 32px;
   }
 
   .bestsellers-main-title {

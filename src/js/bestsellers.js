@@ -322,14 +322,15 @@ bookDetails.addEventListener('click', openBookDetails);
     return;
   }
   const bookId = event.target.dataset.id;
-  console.log(bookId);
+//   console.log(bookId);
 
   return fetch(`https://books-backend.p.goit.global/books/${bookId}`)
     .then(response => response.json())
     .then(book => {renderBookModal(book)
-                    addBookShoping(book)
-                    removeBookShoping(book)}
-                )
+        addBookToShoppingList(book),
+        removeBookFromShoppingList(book)}
+                                  
+    )
     .catch(error => console.log(error));
 
 }
@@ -385,38 +386,35 @@ function changeCategoryColor(selectedCategory) {
 
 
 const addShopingBtn = document.querySelector('.btn-modal-js');
-const bookRemove = document.querySelector('.modal_remove-block-js');
 const removeShopingBtn = document.querySelector('.modal__remove-btn-js');
-const BOOKS_DATA_KEY = 'book-data-5';
+const bookRemove = document.querySelector('.modal_remove-block-js');
+const BOOKS_DATA_KEY = 'books data-330';
 const bookArray = JSON.parse(localStorage.getItem(BOOKS_DATA_KEY)) || [];
 
-const addBookShoping = (bookId) => {
-    bookArray.push(bookId);
-  
-    bookRemove.classList.remove('is-hidden-modal');
+const addBookToShoppingList = (bookId) => {
+      bookArray.push(bookId);
+      localStorage.setItem(BOOKS_DATA_KEY, JSON.stringify(bookArray));
+        
+      console.log(bookId);
+      
+    
     addShopingBtn.classList.add('is-hidden-modal');
-  
-    saveBookShopping();
+    bookRemove.classList.remove('is-hidden-modal');
   };
   
-  const saveBookShopping = () => {
-    localStorage.setItem(BOOKS_DATA_KEY, JSON.stringify(bookArray));
-  };
-  
-  const removeBookShoping = (e) => {
-    bookRemove.classList.add('is-hidden-modal');
-    addShopingBtn.classList.remove('is-hidden-modal');
-  
-    // видалити id книги з масиву та localStorage
-    const bookId = e.target.dataset.bookId;
-    const index = bookArray.indexOf(bookId);
+  const removeBookFromShoppingList = (bookId) => {
+    const index = bookArray.findIndex(book => book._id === bookId);
     if (index > -1) {
       bookArray.splice(index, 1);
+      localStorage.setItem(BOOKS_DATA_KEY, JSON.stringify(bookArray));
     }
-  
-    saveBookShopping();
+    
+    addShopingBtn.classList.remove('is-hidden-modal');
+    bookRemove.classList.add('is-hidden-modal');
   };
 
 
-addShopingBtn.addEventListener('click', addBookShoping);
-removeShopingBtn.addEventListener('click', removeBookShoping);
+
+addShopingBtn.addEventListener('click', addBookToShoppingList);
+removeShopingBtn.addEventListener('click', removeBookFromShoppingList);
+
