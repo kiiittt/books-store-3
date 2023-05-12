@@ -70,7 +70,7 @@
   }
 }
 
-@media screen and (max-width: 1440px) {
+@media screen and (max-width: 768px) {
   .category_books_container{
     padding-left: 32px;
     padding-right: 32px;
