@@ -56,6 +56,7 @@ function renderBestsellersMobile(bestsellers) {
         </li>`;
     })
     .join(' ');
+  addListener();
 }
 
 function getBestsellersTablet() {
@@ -122,6 +123,7 @@ function renderBestsellersTablet(bestsellers) {
         </li>`;
     })
     .join(' ');
+  addListener();
 }
 
 function getBestsellersDesktop() {
@@ -137,12 +139,12 @@ function renderBestsellersDesktop(bestsellers) {
         <p class="bestsellers-general-category">${bestseller.list_name}</p>
         <div class="bestsellers-book-list">
 
-        <div class="bestsellers-book-item" data-id="${
-          bestseller.books[0]._id
-        }" data-modal-open>
+        <div class="bestsellers-book-item"  >
         <img src='${
           bestseller.books[0].book_image
-        }' class="bestsellers-book-cover">
+        }' class="bestsellers-book-cover" data-id="${
+        bestseller.books[0]._id
+      }" data-modal-open>
         <p class="bestsellers-book-title">${formatBookName(
           bestseller.books[0].title,
           15
@@ -150,12 +152,12 @@ function renderBestsellersDesktop(bestsellers) {
         <p class="bestsellers-book-author">${bestseller.books[0].author}</p>
         </div>
 
-        <div class="bestsellers-book-item" data-id="${
-          bestseller.books[1]._id
-        }" data-modal-open>
+        <div class="bestsellers-book-item" >
         <img src='${
           bestseller.books[1].book_image
-        }' class="bestsellers-book-cover">
+        }' class="bestsellers-book-cover" data-id="${
+        bestseller.books[1]._id
+      }" data-modal-open>
         <p class="bestsellers-book-title">${formatBookName(
           bestseller.books[1].title,
           15
@@ -163,12 +165,12 @@ function renderBestsellersDesktop(bestsellers) {
         <p class="bestsellers-book-author">${bestseller.books[1].author}</p>
         </div>
 
-        <div class="bestsellers-book-item" data-id="${
-          bestseller.books[2]._id
-        }" data-modal-open>
+        <div class="bestsellers-book-item" >
         <img src='${
           bestseller.books[2].book_image
-        }' class="bestsellers-book-cover">
+        }' class="bestsellers-book-cover" data-id="${
+        bestseller.books[2]._id
+      }" data-modal-open>
         <p class="bestsellers-book-title">${formatBookName(
           bestseller.books[2].title,
           15
@@ -176,12 +178,12 @@ function renderBestsellersDesktop(bestsellers) {
         <p class="bestsellers-book-author">${bestseller.books[2].author}</p>
         </div>
 
-        <div class="bestsellers-book-item" data-id="${
-          bestseller.books[3]._id
-        }" data-modal-open>
+        <div class="bestsellers-book-item" >
         <img src='${
           bestseller.books[3].book_image
-        }' class="bestsellers-book-cover">
+        }' class="bestsellers-book-cover" data-id="${
+        bestseller.books[3]._id
+      }" data-modal-open>
         <p class="bestsellers-book-title">${formatBookName(
           bestseller.books[3].title,
           15
@@ -189,12 +191,12 @@ function renderBestsellersDesktop(bestsellers) {
         <p class="bestsellers-book-author">${bestseller.books[3].author}</p>
         </div>
 
-        <div class="bestsellers-book-item" data-id="${
-          bestseller.books[4]._id
-        }" data-modal-open>
+        <div class="bestsellers-book-item" >
         <img src='${
           bestseller.books[4].book_image
-        }' class="bestsellers-book-cover">
+        }' class="bestsellers-book-cover" data-id="${
+        bestseller.books[4]._id
+      }" data-modal-open>
         <p class="bestsellers-book-title">${formatBookName(
           bestseller.books[4].title,
           15
@@ -210,6 +212,7 @@ function renderBestsellersDesktop(bestsellers) {
         `;
     })
     .join(' ');
+  addListener();
 }
 
 function formatBookName(message, maxLength) {
@@ -307,19 +310,20 @@ function checksBooks(books) {
   }
 }
 
-const modalEl = document.querySelector('.img-and-description');
+function addListener() {
+  const bookDetails = document.querySelectorAll('.bestsellers-list-item');
 
-const bookDetails = document.querySelectorAll('.bestsellers-list-item'); 
-
-for (let i = 0; i < bookDetails.length; i+=1) {
-bookDetails[i].addEventListener('click', openBookDetails);  
+  for (let i = 0; i < bookDetails.length; i += 1) {
+    bookDetails[i].addEventListener('click', openBookDetails);
+  }
 }
+
+const modalEl = document.querySelector('.img-and-description');
 
 function openBookDetails(event) {
   if (event.target.className !== 'bestsellers-book-cover') {
     return;
   }
-  console.log(event.target.className);
   const bookId = event.target.dataset.id;
   console.log(bookId);
 
