@@ -1,14 +1,27 @@
-const bestsellersArea = document.querySelector('.bestsellers-area');
+import { Spiner } from './spinner';
+
+const spinner = new Spiner();
+
+// const bestsellersArea = document.querySelector('.bestsellers-area');
 const bestsellersList = document.querySelector('.bestsellers-list');
 
 let bestsellersArray = [];
 const getBestseller = async () => {
+  spinner.show(); 
   const response = await fetch(
     `https://books-backend.p.goit.global/books/top-books`
   );
-  const bestsellers = await response.json();
-  return bestsellers;
+  if (response.ok) {
+    const bestsellers = await response.json();
+    bestsellersArray = bestsellers;
+    getBooksNumber();
+    bestsellersMarkup(bestsellersArray);
+  } else {
+    console.error('Error fetching books:', response.status);
+  }
+  spinner.hide(); 
 };
+
 
 getBestseller()
   .then(bestsellers => {
@@ -38,41 +51,45 @@ function getBooksNumber() {
 }
 
 function bestsellersMarkup(bestsellers) {
+  if (!bestsellers || bestsellers.length === 0) {
+    return;
+  }
+
   getBooksNumber();
   let categoryMarkup = '';
   for (let i = 0; i < bestsellers.length; i++) {
     const category = bestsellers[i].list_name;
     categoryMarkup += `
-        <li class="bestsellers-list-item">
-            <p class="bestsellers-general-category">${category}</p>
-            <div class="bestsellers-book-list">`;
+      <li class="bestsellers-list-item">
+        <p class="bestsellers-general-category">${category}</p>
+        <div class="bestsellers-book-list">`;
+
     const books = bestsellers[i].books;
+    if (!books || books.length === 0) {
+      continue;
+    }
+
     for (let j = 0; j < books.length; j++) {
       if (j === booksNumber) {
         break;
       }
       const book = books[j];
       categoryMarkup += `
-              <div class="bestsellers-book-item" >
-                <div class="test-wraper" >
-                  <img src="${
-                    book.book_image
-                  }" alt="book-cover" class="bestsellers-book-cover" data-id="${
-        book._id
-      }" loading="lazy" data-modal-open>
-                </div>
-                <p class="bestsellers-book-title">${formatBookName(
-                  book.title,
-                  titleLength
-                )}</p>
-                <p class="bestsellers-book-author">${book.author}</p>
-              </div>`;
+        <div class="bestsellers-book-item">
+          <div class="test-wraper">
+            <img src="${book.book_image}" alt="book-cover" class="bestsellers-book-cover" data-id="${book._id}" loading="lazy" data-modal-open>
+          </div>
+          <p class="bestsellers-book-title">${formatBookName(book.title, titleLength)}</p>
+          <p class="bestsellers-book-author">${book.author}</p>
+        </div>`;
     }
+
     categoryMarkup += `
-            </div>
-            <button class="bestsellers-button" data-id="${bestsellers[i].list_name}">See more</button>
-        </li>`;
+        </div>
+        <button class="bestsellers-button" data-id="${bestsellers[i].list_name}">See more</button>
+      </li>`;
   }
+
   bestsellersList.innerHTML = categoryMarkup;
   addListener();
 }
@@ -199,10 +216,14 @@ function openBookDetails(event) {
     return;
   }
   const bookId = event.target.dataset.id;
+  spinner.show();
 
   return fetch(`https://books-backend.p.goit.global/books/${bookId}`)
     .then(response => response.json())
-    .then(book => renderBookModal(book))
+    .then(book => {
+      renderBookModal(book);
+      spinner.hide();
+    })
     .catch(error => console.log(error));
 }
 
@@ -254,10 +275,10 @@ function changeCategoryColor(selectedCategory) {
 }
 
 const addShopingBtn = document.querySelector('.btn-modal-add-js');
-const BOOKS_DATA_KEY = 'books data-0';
+const BOOKS_DATA_KEY = 'books-data-01';
 let bookArray = JSON.parse(localStorage.getItem(BOOKS_DATA_KEY)) || [];
 
-
+addShopingBtn.addEventListener('click', addToLocalStorage);
 
 function addToLocalStorage() {
   const bookId = document.querySelector('.book-modal').dataset.bookId;
@@ -268,5 +289,3 @@ function addToLocalStorage() {
   bookArray.push(bookData);
   localStorage.setItem(BOOKS_DATA_KEY, JSON.stringify(bookArray));
 }
-
-addShopingBtn.addEventListener('click', addToLocalStorage);

@@ -1,5 +1,6 @@
 import Pagination from 'tui-pagination';
 
+
 const addToListBtn = document.querySelector('button[data-value=""]');
 
 // watchedArray();
@@ -38,21 +39,22 @@ function showAdd() {
 //       document.querySelectorAll('.gallery__item').forEach(card => card.remove());
 //     }
 //   }
-
 const jsGallery = document.querySelector('.js-gallery');
-const BOOKS_DATA_KEY = 'books data-0';
+const BOOKS_DATA_KEY = 'books-data-01';
 let bookArray = JSON.parse(localStorage.getItem(BOOKS_DATA_KEY)) || [];
 
 const storedBookData = localStorage.getItem(BOOKS_DATA_KEY);
 
 if (storedBookData) {
-  // Розпарсити збережені дані з рядка назад у масив або об'єкт
+  // Parse the saved data back into an array or object
   bookArray = JSON.parse(storedBookData);
 
   // console.log(bookArray);
 } else {
-  console.log('Дані книг не знайдено у локальному сховищі');
+  console.log('No book data found in local storage');
 }
+
+
 
 function createGalleryMarkup(books) {
   return books
@@ -104,12 +106,12 @@ function createGalleryMarkup(books) {
     .join('');
 }
 
-
-if (jsGallery){
-jsGallery.innerHTML = createGalleryMarkup(bookArray);
+if (jsGallery) {
+  jsGallery.innerHTML = createGalleryMarkup(bookArray);
 } else {
-  console.log ('Елемента з класом "js-gallery" не знайдено')
+  console.log('Element with class "js-gallery" not found');
 }
+
 
 
 // function createGalleryMarkup(books) {

@@ -1,8 +1,12 @@
-const scrollUpButton = document.querySelector('.scroll-up_hidden');
+const container = document.querySelector('.container');
+
+const scrollUpButton = document.createElement('div');
+scrollUpButton.classList.add('scroll-up_hidden');
 
 const trackScroll = () => {
   const scrollOffset = window.pageYOffset;
   const windowHeight = document.documentElement.clientHeight;
+
   if (scrollOffset > windowHeight) {
     scrollUpButton.classList.add('scroll-up');
   } else {
@@ -19,3 +23,5 @@ const scrollToTop = () => {
 
 scrollUpButton.addEventListener('click', scrollToTop);
 window.addEventListener('scroll', trackScroll);
+
+container.appendChild(scrollUpButton);
