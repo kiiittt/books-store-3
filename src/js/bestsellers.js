@@ -21,7 +21,6 @@ getBestseller()
 let booksNumber = 0;
 let titleLength = 0;
 
-
 function getBooksNumber() {
   if (window.screen.availWidth < 768) {
     booksNumber = 1;
@@ -215,13 +214,13 @@ function renderBookModal(book) {
         <p class="description-modal">${book.description}</p>
         <ul class="ul-modal">
           <li class="li-modal">
-          <a href="${book.buy_links[0].url}" class="amazon-modal" target="_blank"></a>
+          <a href="${book.buy_links[0].url}" class="amazon-modal" target="_blank" data-book-id="${book._id}"></a>
           </li>
           <li class="li-modal">
-          <a href="${book.buy_links[1].url}" class="book-modal" target="_blank"></a>
+          <a href="${book.buy_links[1].url}" class="book-modal" target="_blank" data-book-id="${book._id}"></a>
           </li>
           <li class="li-modal">
-          <a href="${book.buy_links[4].url}" class="books-modal" target="_blank">
+          <a href="${book.buy_links[4].url}" class="books-modal" target="_blank" data-book-id="${book._id}">
           </a></li>
         </ul>
       </div>`;
@@ -253,3 +252,21 @@ function changeCategoryColor(selectedCategory) {
     }
   });
 }
+
+const addShopingBtn = document.querySelector('.btn-modal-add-js');
+const BOOKS_DATA_KEY = 'books data-0';
+let bookArray = JSON.parse(localStorage.getItem(BOOKS_DATA_KEY)) || [];
+
+
+
+function addToLocalStorage() {
+  const bookId = document.querySelector('.book-modal').dataset.bookId;
+  const bookData = {
+    id: bookId,
+  };
+
+  bookArray.push(bookData);
+  localStorage.setItem(BOOKS_DATA_KEY, JSON.stringify(bookArray));
+}
+
+addShopingBtn.addEventListener('click', addToLocalStorage);
