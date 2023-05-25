@@ -1,15 +1,15 @@
+import { Spiner } from './spinner';
+const spinner = new Spiner();
+
+
 const categoryList = document.querySelector('.category_list');
-
-const itemEl = document.querySelector('.item-category');
-
+// const itemEl = document.querySelector('.item-category'); // оскільки не використовується закоментував
 const categoryBooks = document.querySelector('.category_books');
-
 const bestsellersContainer = document.querySelector('.bestsellers-area');
-
-const categoryBooksContainer = document.querySelector(
-  '.category_books_container'
-);
+const categoryBooksContainer = document.querySelector('.category_books_container');
 const categoryAll = document.querySelector('.category_all');
+
+
 // !!! Блок Категорії !!!
 // Надсилає запит на отримання списку категорій
 function fetchCategorys() {
@@ -49,14 +49,22 @@ function onButtonClick(event) {
 
   changeCategoryColor(selectedCategory);
   clearBooksList();
+  spinner.show(); 
 
-  return fetch(
+ return fetch(
     `https://books-backend.p.goit.global/books/category?category=${event.target.textContent}`
   )
     .then(response => response.json())
-    .then(book => renderBooksList(book, event))
-    .catch(error => console.log(error));
+    .then(book => {
+      renderBooksList(book, event);
+      spinner.hide(); 
+    })
+    .catch(error => {
+      console.log(error);
+      spinner.hide();
+    });
 }
+spinner.hide();
 
 // Очищення книг попередньої категорії
 function clearBooksList() {
@@ -191,10 +199,6 @@ function changeCategoryColor(selectedCategory) {
   });
 }
 
-//
-//
-//
-//
 // Кліки в категорії Бесцелери по назві категорії книг !!!
 
 const bestsellersListEl = document.querySelector('.bestsellers-list');
@@ -221,34 +225,6 @@ function onTitleBestsellersClick(event) {
     .catch(error => console.log(error));
 }
 
-// .
-// .
-// .
-// .
-// .
-// .
-// .
-// .
-// .
-// .
-
-// .
-// .
-// .
-// .
-// .
-// .
-// .
-// .
-// .
-// .
-// .
-// .
-// .
-// .
-
-// .// .
-
 const closeModalBtnCategory = document.querySelector('.svg-close');
 const modalCategory = document.querySelector('[data-modal]');
 
@@ -266,33 +242,6 @@ function toggleModalOpen(event) {
   // document.body.style.overflow = refs.modal.classList.contains("is-hidden") ? "" : "hidden";
 }
 
-// .
-// .
-// .
-// .
-// .
-// .
-// .
-// .
-// .
-// .
-
-// .
-// .
-// .
-// .
-// .
-// .
-// .
-// .
-// .
-// .
-// .
-// .
-// .
-// .
-
-// .//
 
 const bookDetails = document.querySelectorAll('.bestsellers-list-item');
 
@@ -304,12 +253,20 @@ function openBookDetails(event) {
   if (event.target.className !== 'bestsellers-book-cover') {
     return;
   }
+  spinner.show();
+
   const bookId = event.target.dataset.id;
 
   return fetch(`https://books-backend.p.goit.global/books/${bookId}`)
     .then(response => response.json())
-    .then(book => renderBookModal(book))
-    .catch(error => console.log(error));
+    .then(book => {
+      renderBookModal(book);
+      spinner.hide();
+    })
+    .catch(error => {
+      console.log(error);
+      spinner.hide();
+    });
 }
 
 function renderBookModal(book) {
@@ -330,34 +287,5 @@ function renderBookModal(book) {
           </a></li>
         </ul>
       </div>`;
+
 }
-// .
-// .
-// .
-// .
-// .
-// .
-// .
-// .
-// .
-// .
-// .
-// .
-// .
-// .
-// .
-// .
-// .
-// .
-// .
-// .
-// .
-// .
-// .
-// .
-// .
-// .
-// .
-// .
-// .
-// .
