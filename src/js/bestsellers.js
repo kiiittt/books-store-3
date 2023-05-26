@@ -7,7 +7,7 @@ const bestsellersList = document.querySelector('.bestsellers-list');
 
 let bestsellersArray = [];
 const getBestseller = async () => {
-  spinner.show(); 
+  spinner.show();
   const response = await fetch(
     `https://books-backend.p.goit.global/books/top-books`
   );
@@ -19,9 +19,8 @@ const getBestseller = async () => {
   } else {
     console.error('Error fetching books:', response.status);
   }
-  spinner.hide(); 
+  spinner.hide();
 };
-
 
 getBestseller()
   .then(bestsellers => {
@@ -77,9 +76,16 @@ function bestsellersMarkup(bestsellers) {
       categoryMarkup += `
         <div class="bestsellers-book-item">
           <div class="test-wraper">
-            <img src="${book.book_image}" alt="book-cover" class="bestsellers-book-cover" data-id="${book._id}" loading="lazy" data-modal-open>
+            <img src="${
+              book.book_image
+            }" alt="book-cover" class="bestsellers-book-cover" data-id="${
+        book._id
+      }" loading="lazy" data-modal-open>
           </div>
-          <p class="bestsellers-book-title">${formatBookName(book.title, titleLength)}</p>
+          <p class="bestsellers-book-title">${formatBookName(
+            book.title,
+            titleLength
+          )}</p>
           <p class="bestsellers-book-author">${book.author}</p>
         </div>`;
     }
@@ -215,16 +221,22 @@ function openBookDetails(event) {
   if (event.target.className !== 'bestsellers-book-cover') {
     return;
   }
+
   const bookId = event.target.dataset.id;
   spinner.show();
 
-  return fetch(`https://books-backend.p.goit.global/books/${bookId}`)
+  modalEl.innerHTML = '<p>Loading...</p>';
+
+  fetch(`https://books-backend.p.goit.global/books/${bookId}`)
     .then(response => response.json())
     .then(book => {
       renderBookModal(book);
       spinner.hide();
     })
-    .catch(error => console.log(error));
+    .catch(error => {
+      console.log(error);
+      spinner.hide();
+    });
 }
 
 function renderBookModal(book) {

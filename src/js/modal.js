@@ -7,7 +7,6 @@
     // modalBackdrop: document.querySelector('[data-modal-backdrop]'),
   };
 
-
   refs.openModalBtn.addEventListener('click', toggleModalOpen);
   refs.closeModalBtn.addEventListener('click', toggleModal);
 

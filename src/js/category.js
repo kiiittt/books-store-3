@@ -1,14 +1,14 @@
 import { Spiner } from './spinner';
 const spinner = new Spiner();
 
-
 const categoryList = document.querySelector('.category_list');
 // const itemEl = document.querySelector('.item-category'); // оскільки не використовується закоментував
 const categoryBooks = document.querySelector('.category_books');
 const bestsellersContainer = document.querySelector('.bestsellers-area');
-const categoryBooksContainer = document.querySelector('.category_books_container');
+const categoryBooksContainer = document.querySelector(
+  '.category_books_container'
+);
 const categoryAll = document.querySelector('.category_all');
-
 
 // !!! Блок Категорії !!!
 // Надсилає запит на отримання списку категорій
@@ -23,8 +23,7 @@ function renderCategoryList(categorys) {
     .map(({ list_name }) => {
       return `
           <li class="item-category">
-            <button type = "button" class="category_button">${list_name}</button>          
-
+            <button type = "button" class="category_button">${list_name}</button>
           </li>
       `;
     })
@@ -49,15 +48,15 @@ function onButtonClick(event) {
 
   changeCategoryColor(selectedCategory);
   clearBooksList();
-  spinner.show(); 
+  spinner.show();
 
- return fetch(
+  return fetch(
     `https://books-backend.p.goit.global/books/category?category=${event.target.textContent}`
   )
     .then(response => response.json())
     .then(book => {
       renderBooksList(book, event);
-      spinner.hide(); 
+      spinner.hide();
     })
     .catch(error => {
       console.log(error);
@@ -200,7 +199,6 @@ function changeCategoryColor(selectedCategory) {
 }
 
 // Кліки в категорії Бесцелери по назві категорії книг !!!
-
 const bestsellersListEl = document.querySelector('.bestsellers-list');
 const bestsellersGeneralCategory = document.querySelector(
   '.bestsellers-general-category'
@@ -242,7 +240,6 @@ function toggleModalOpen(event) {
   // document.body.style.overflow = refs.modal.classList.contains("is-hidden") ? "" : "hidden";
 }
 
-
 const bookDetails = document.querySelectorAll('.bestsellers-list-item');
 
 categoryBooks.addEventListener('click', openBookDetails);
@@ -256,6 +253,8 @@ function openBookDetails(event) {
   spinner.show();
 
   const bookId = event.target.dataset.id;
+
+  modalEl.innerHTML = '<p>Loading...</p>';
 
   return fetch(`https://books-backend.p.goit.global/books/${bookId}`)
     .then(response => response.json())
@@ -287,5 +286,4 @@ function renderBookModal(book) {
           </a></li>
         </ul>
       </div>`;
-
 }
