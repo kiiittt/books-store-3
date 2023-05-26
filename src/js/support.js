@@ -1,4 +1,4 @@
-import { funds } from './support-export/support-funds'
+import { funds } from './support-export/support-funds';
 
 const supportList = document.querySelector('.support-list');
 const supportBtn = document.querySelector('.support-button');
@@ -9,21 +9,18 @@ let perPage = 0;
 
 getPage();
 
-window.addEventListener('resize', () => {
+window.addEventListener('resize', handleResize);
+supportBtn.addEventListener('click', onShowMoreFunds);
+
+function handleResize() {
   clearFunds();
   position = 0;
   page = 0;
   getPage();
-});
-
-supportBtn.addEventListener('click', onShowMoreFunds);
+}
 
 function getPage() {
-  if (window.innerWidth < 768) {
-    perPage = 4;
-  } else {
-    perPage = 6;
-  }
+  perPage = window.innerWidth < 768 ? 4 : 6;
   const fundsElements = getArrayElements(page, perPage, funds);
   supportMarkup(fundsElements);
 }
@@ -35,17 +32,19 @@ function getArrayElements(currentPage, pageSize, array) {
 }
 
 function supportMarkup(array) {
-  const markup = array.map(({ title, url, img, img2x }) => {
-    position += 1;
-    const fundNumber = addLeadingZero(position);
-    return `
+  const markup = array
+    .map(({ title, url, img, img2x }) => {
+      position += 1;
+      const fundNumber = addLeadingZero(position);
+      return `
       <li class="support-list-item"> 
         <span class="fund-number">${fundNumber}</span>
         <a class="fund-link" href="${url}" target="_blank">
           <img class="fund-logo" srcset="${img} 1x, ${img2x} 2x" src="${img}" alt="${title}"/>
         </a>
       </li>`;
-  }).join('');
+    })
+    .join('');
 
   supportList.innerHTML = markup;
 }

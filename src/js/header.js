@@ -39,37 +39,40 @@ const themeToggleBtn = document.querySelector('.theme-toggle-button');
 
 const toggleTheme = () => {
   const currentTheme = document.documentElement.getAttribute('theme');
+  const isChecked = themeToggleBtn.checked;
 
-  if (currentTheme === 'dark') {
+  if (currentTheme === 'dark' && !isChecked) {
     document.documentElement.setAttribute('theme', 'light');
     localStorage.setItem('theme', 'light');
-  } else {
+  } else if (currentTheme === 'light' && isChecked) {
     document.documentElement.setAttribute('theme', 'dark');
     localStorage.setItem('theme', 'dark');
   }
 };
 
-themeToggleBtn.addEventListener('click', toggleTheme);
+themeToggleBtn.addEventListener('change', toggleTheme);
 
-// Проверяем сохраненное состояние темы в локальном хранилище
 const savedTheme = localStorage.getItem('theme');
 if (savedTheme) {
   document.documentElement.setAttribute('theme', savedTheme);
-} else if (
-  window.matchMedia &&
-  window.matchMedia('(prefers-color-scheme: dark)').matches
-) {
-  toggleTheme();
 }
 
+const savedCheckboxState = localStorage.getItem('checkboxState');
+if (savedCheckboxState === 'checked') {
+  themeToggleBtn.checked = true;
+}
 
+themeToggleBtn.addEventListener('change', () => {
+  const checkboxState = themeToggleBtn.checked ? 'checked' : 'unchecked';
+  localStorage.setItem('checkboxState', checkboxState);
+});
 
-/* Active class for main and mobile menu */
-
+//Сторінка на якій ми перебуваємо
 const activePage = window.location.pathname;
-const navLinks = document.querySelectorAll('.main-menu-tablet-list a, .main-menu-mobile-list a').forEach(link => {
-  if(link.href.includes(`${activePage}`)){
-    link.classList.add('current');
-      }
-})
-
+const navLinks = document
+  .querySelectorAll('.main-menu-tablet-list a, .main-menu-mobile-list a')
+  .forEach(link => {
+    if (link.href.includes(`${activePage}`)) {
+      link.classList.add('current');
+    }
+  });
