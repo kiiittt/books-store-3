@@ -12,10 +12,11 @@ const categoryAll = document.querySelector('.category_all');
 
 // !!! Блок Категорії !!!
 // Надсилає запит на отримання списку категорій
-function fetchCategorys() {
-  return fetch('https://books-backend.p.goit.global/books/category-list').then(
-    response => response.json()
+async function fetchCategorys() {
+  const response = await fetch(
+    'https://books-backend.p.goit.global/books/category-list'
   );
+  return await response.json();
 }
 // відмальовує розмітку блоку категорії
 function renderCategoryList(categorys) {
@@ -138,6 +139,14 @@ function separatesWordsAddToTitle(event) {
     0,
     arrrayCurrentCategory.length - 1
   );
+
+  // замінив arrrayCurrentCategory.length - 1 нa .at(-1) новий синтаксис, працює так само але краще ще не чіпати
+  // const lastElementBookTitle = arrrayCurrentCategory.at(-1);
+  // const arrrayWordsOfCategoryTitle = arrrayCurrentCategory.slice(
+  //   0,
+  //   arrrayCurrentCategory.at(-1)
+  // );
+
   const wordsOfCategoryTitle = arrrayWordsOfCategoryTitle.join(' ');
   categoryBooksTitle.textContent = wordsOfCategoryTitle;
   const textEl = document.createElement('span');

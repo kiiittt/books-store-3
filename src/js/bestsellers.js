@@ -139,12 +139,21 @@ function openMoreBooks(event) {
   const bookCategory = event.target.dataset.id;
   changeCategoryColor(bookCategory);
   // console.log(bookCategory);
+
+  spinner.show();
+
   return fetch(
     `https://books-backend.p.goit.global/books/category?category=${bookCategory}`
   )
     .then(response => response.json())
-    .then(book => renderBooksList(book, event))
-    .catch(error => console.log(error));
+    .then(book => {
+      renderBooksList(book, event);
+      spinner.hide();
+    })
+    .catch(error => {
+      console.log(error);
+      spinner.hide();
+    });
 }
 // Очищення книг попередньої категорії
 function clearBooksList() {
