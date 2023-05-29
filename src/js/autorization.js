@@ -15,6 +15,10 @@ function closeIsModal() {
   authModal.classList.add('is-hidden');
 }
 
+function backdropClose() {
+  authModal.classList.add('is-hidden');
+}
+
 function onBtnSignIn() {
   btnSignUp.classList.remove('active');
   btnSignIn.classList.add('active');
@@ -36,6 +40,8 @@ function onBtnSignUp() {
 	</div>
  `;
 }
+
+btnSubmit.addEventListener('click', backdropClose)
 btnSignIn.addEventListener('click', onBtnSignIn);
 btnSignUp.addEventListener('click', onBtnSignUp);
 openSignUp.addEventListener('click', openModal);

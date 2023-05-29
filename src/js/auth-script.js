@@ -7,10 +7,8 @@ import {
   updateProfile,
   signOut,
 } from 'https://www.gstatic.com/firebasejs/9.21.0/firebase-auth.js';
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
+// Конфігурація Firebase для вашого веб-додатку
 const firebaseConfig = {
   apiKey: 'AIzaSyD8Kd3K0g3O4pf6MJ2ISuj7niFF7gY68-M',
   authDomain: 'authentication-f6359.firebaseapp.com',
@@ -20,7 +18,7 @@ const firebaseConfig = {
   appId: '1:490964966849:web:f93da1cfe963d7548da340',
 };
 
-// Initialize Firebase
+// Ініціалізуємо Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
@@ -30,15 +28,15 @@ const signOutButton = document.querySelector('#signOutButton');
 const userBtnInfo = document.querySelector('.user-info');
 const signUpBtn = document.querySelector('.btn-signup');
 const modalWindow = document.querySelector('.modal-js');
+const backdropAuth = document.querySelector('.backdrop-auth');
 const formBtnSubmit = document.querySelector('.form--btn-submit');
 const btnProfile = document.querySelector('.btn-profile');
 
-// Стан профілю
-const checkAuthState = async () => {
+// Перевірка стану аутентифікації
+const checkAuthState = () => {
   onAuthStateChanged(auth, user => {
     if (user) {
-      userBtnInfo.querySelector('span').nextSibling.textContent =
-        capitalizeFirstLetter(user.displayName);
+      userBtnInfo.querySelector('span').nextSibling.textContent = user.displayName;
       signUpBtn.classList.add('is-hidden');
       userBtnInfo.classList.remove('is-hidden');
       signOutButton.classList.add('is-hidden');
@@ -57,6 +55,7 @@ const userSignUp = (name, email, password) => {
     .then(userSignUpCreate => {
       const user = userSignUpCreate.user;
       console.log(user);
+      backdropAuth.classList.add('is-hidden');
       modalWindow.classList.add('is-hidden');
       return updateProfile(auth.currentUser, {
         displayName: name,
@@ -73,7 +72,7 @@ const userSignUp = (name, email, password) => {
     });
 };
 
-// Функція входу користувача
+// Функція для входу користувача
 const userSignIn = (email, password) => {
   signInWithEmailAndPassword(auth, email, password)
     .then(userSignUpCreate => {
@@ -87,7 +86,7 @@ const userSignIn = (email, password) => {
     });
 };
 
-// Функція виходу користувача
+// Функція для виходу користувача
 const userSignOut = () => {
   signOut(auth)
     .then(() => {
@@ -114,22 +113,24 @@ function handleFormSubmit(e) {
   } else if (formBtnSubmit.textContent.toLowerCase() === 'sign in') {
     userSignIn(userEmail, userPassword);
   } else {
-    alert('Something went wrong');
+    alert('Щось пішло не так');
   }
 }
 
-// Функція для відкриття і закритта профілю щоб вийти з сторінки
+// Функція для відкриття і закриття профілю для виходу зі сторінки
 const profileUser = () => {
   signOutButton.classList.toggle('is-hidden');
 };
 
-signUpButton.addEventListener('click', userSignUp);
-signUpButton.addEventListener('click', userSignIn);
-signOutButton.addEventListener('click', userSignOut);
-authForm.addEventListener('submit', handleFormSubmit);
+signUpButton.onclick = () => {
+  userSignUp()
+};
+
+signOutButton.onclick = () => {
+  userSignOut()
+};
+
+authForm.onsubmit = handleFormSubmit;
+
 btnProfile.addEventListener('click', profileUser);
 
-// Функція для приведення першої літери до toUpperCase
-function capitalizeFirstLetter(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-}

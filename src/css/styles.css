@@ -38,7 +38,6 @@
   --color-of-categoryAll-text: #4f2ee8;
   --color-of-category-text: rgba(17, 17, 17, 0.6);
   --color-of-h2-category: #111111;
-
 }
 
 :root[theme='dark'],
@@ -117,7 +116,7 @@ img {
   margin-right: auto;
 }
 
-.div-support-shoping{
+.div-support-shoping {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -155,6 +154,7 @@ img {
     padding-left: 32px;
     padding-right: 32px;
   }
+
   .index-category-support {
     display: flex;
     padding: auto;
