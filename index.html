@@ -16,10 +16,10 @@
   
   
   
-  <script type="module" crossorigin src="/books-store-3/assets/index-626dbf30.js"></script>
-  <link rel="modulepreload" crossorigin href="/books-store-3/assets/autorization-7405e359.js">
-  <link rel="stylesheet" href="/books-store-3/assets/autorization-2ab9faf0.css">
-  <link rel="stylesheet" href="/books-store-3/assets/index-5c1463c1.css">
+  <script type="module" crossorigin src="/books-store-3/assets/index-4f74d230.js"></script>
+  <link rel="modulepreload" crossorigin href="/books-store-3/assets/auth-script-f59c8234.js">
+  <link rel="stylesheet" href="/books-store-3/assets/auth-script-c12e891c.css">
+  <link rel="stylesheet" href="/books-store-3/assets/index-262bc860.css">
 </head>
 
 <body>
@@ -104,7 +104,7 @@
       </div>
 
       <!-- Форма модалки -->
-      <div class="backdrop auth-modal-js is-hidden" role="dialog">
+      <div class="backdrop-auth auth-modal-js is-hidden" role="dialog">
         <div class="modal-auth modal-js modal-autor">
           <form id="authForm" class="auth-form-container" autocomplete="off">
             <div class="form-add">
@@ -113,8 +113,7 @@
               </div>
             </div>
             <div class="form-input">
-              <input type="email" class="input-auth" placeholder="Email" name="email" id="userEmail"
-                pattern="^[\w\.-]+@[\w\.-]+\.\w{2,4}$" required>
+              <input type="email" class="input-auth" placeholder="Email" name="email" id="userEmail" required>
               <svg class="icon-mail-auth icon-input" style="width: 28px; height: 28px">
                 <use href="/books-store-3/assets/autorization-icon-1a8ea4e0.svg#icon-mail"></use>
               </svg>
@@ -122,14 +121,9 @@
             <div class="form-input">
               <input type="password" class="input-auth input-email-js" placeholder="Password" name="password"
                 id="userPassword" required>
-              <button type="button" id="btn-open-password">
-                <svg class="icon-lock-auth icon-input" style="width: 28px; height: 28px">
-                  <use href="/books-store-3/assets/autorization-icon-1a8ea4e0.svg#icon-lock"></use>
-                </svg>
-                <svg class="icon-lock-auth icon-input is-hidden" style="width: 28px; height: 28px">
-                  <use href="/books-store-3/assets/autorization-icon-1a8ea4e0.svg#icon-lock-open"></use>
-                </svg>
-              </button>
+              <svg class="icon-lock-auth icon-input" style="width: 28px; height: 28px">
+                <use href="/books-store-3/assets/autorization-icon-1a8ea4e0.svg#icon-lock"></use>
+              </svg>
             </div>
             <button id="signUpButton" class="form--btn-submit" type="submit">Sign Up</button>
             <button class="modal-close modal-close-js" type="button" aria-label="Close">
