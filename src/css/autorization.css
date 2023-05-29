@@ -129,7 +129,11 @@
 	color: #111111;
 }
 
-.auth-form-container>.form-input:nth-child(n+2) {
+.form-input:nth-child(1) {
+	margin-bottom: 28px;
+}
+
+.form-input:nth-child(3) {
 	margin-top: 28px;
 }
 
@@ -174,4 +178,15 @@
 .active {
 	color: #4F2EE8;
 	text-decoration-line: underline;
+}
+
+.backdrop-auth {
+	position: fixed;
+	z-index: 100;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(17, 17, 17, 0.4);
+	overflow: hidden;
 }
