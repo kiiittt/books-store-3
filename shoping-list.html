@@ -14,7 +14,7 @@
     
 
     <script type="module" crossorigin src="/books-store-3/assets/auth-script-f59c8234.js"></script>
-    <link rel="stylesheet" href="/books-store-3/assets/auth-script-c12e891c.css">
+    <link rel="stylesheet" href="/books-store-3/assets/auth-script-f4997265.css">
   </head>
   <body>
     <div class="container">
@@ -77,8 +77,14 @@
         <input type="checkbox" class="theme-toggle-button" />
         <span class="switch-slider"></span>
       </label>
-      <!-- Відкриття модалки -->
-      <button class="btn-signup" type="button">Sign up</button>
+      <!-- Відкриття модалки / Реєстрація на сайт-->
+      <button class="btn-signup" type="button">Sign up
+        <span>
+          <svg class="arrow-auth-sing">
+            <use href="/books-store-3/assets/header-icon-94ec588c.svg#icon-arrow"></use>
+          </svg>
+        </span>
+      </button>
 
       <!-- Форма коли акаунт існує -->
       <div class="user-info is-hidden">
@@ -90,7 +96,11 @@
             User
           </button>
           <button id="signOutButton" class="sign-out-btn sign-out-btn-js is-hidden" aria-label="Log Out">Log out
-            <span>-></span> <!--стрілка від тексту яка веде в виході, замінити на svg-->
+            <span>
+              <svg class="arrow-auth">
+                <use href="/books-store-3/assets/header-icon-94ec588c.svg#icon-arrow"></use>
+              </svg>
+            </span>
           </button>
         </div>
       </div>
