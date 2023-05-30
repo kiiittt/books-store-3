@@ -190,3 +190,77 @@
 	background: rgba(17, 17, 17, 0.4);
 	overflow: hidden;
 }
+
+.btn-signup {
+	display: flex;
+	align-items: center;
+	gap: 90px;
+	padding-left: 14px;
+	width: 184px;
+	height: 48px;
+	background-color: #4F2EE8;
+	border: 1.5px solid #111111;
+	border-radius: 18px;
+	font-family: 'DM Sans';
+	font-style: normal;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 18px;
+	letter-spacing: -0.04em;
+	color: #FFFFFF;
+}
+
+.btn-signup.is-hidden {
+	display: none;
+}
+
+.arrow-auth-sing {
+	width: 20px;
+	height: 20px;
+	display: flex;
+}
+
+.btn-profile {
+	width: 184px;
+	height: 45px;
+	background-color: #4F2EE8;
+	border-radius: 36px;
+	border-color: transparent;
+	font-family: 'DM Sans';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 22px;
+	line-height: 29px;
+	letter-spacing: -0.02em;
+	color: #FFFFFF;
+}
+
+.user-info.is-hidden {
+	display: none;
+}
+
+.sign-out-btn {
+	position: absolute;
+	width: 184px;
+	height: 48px;
+	color: #111;
+	background-color: #fff;
+	border: 1.5px solid #111;
+	border-radius: 18px;
+	justify-content: center;
+	align-items: center;
+	gap: 90px;
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 18px;
+	display: flex;
+	font-family: 'DM Sans';
+	letter-spacing: -0.04em;
+}
+
+
+.arrow-auth {
+	width: 20px;
+	height: 20px;
+	display: flex;
+}
