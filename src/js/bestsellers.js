@@ -103,7 +103,8 @@ function bestsellersMarkup(bestsellers) {
 window.addEventListener('resize', e => {
   clearBestsellers();
   getBooksNumber();
-  bestsellersMarkup(bestsellersArray);
+  // bestsellersMarkup(bestsellersArray);
+  getBestseller();
 });
 
 function clearBestsellers() {
@@ -121,8 +122,8 @@ function formatBookName(message, maxLength) {
 }
 
 const seeMoreBtn = document.querySelector('.bestsellers-list');
-const categoryList = document.querySelector('.category_list');
-const itemEl = document.querySelector('.item-category');
+// const categoryList = document.querySelector('.category_list');
+// const itemEl = document.querySelector('.item-category');
 const categoryBooks = document.querySelector('.category_books');
 const bestsellersContainer = document.querySelector('.bestsellers-area');
 const categoryBooksContainer = document.querySelector(
@@ -225,6 +226,9 @@ function addListener() {
 }
 
 const modalEl = document.querySelector('.img-and-description');
+const addShopingBtn = document.querySelector('.btn-modal-add-js');
+const BOOKS_DATA_KEY = 'books';
+let books = JSON.parse(localStorage.getItem(BOOKS_DATA_KEY)) || [];
 
 function openBookDetails(event) {
   if (event.target.className !== 'bestsellers-book-cover') {
@@ -247,8 +251,10 @@ function openBookDetails(event) {
       spinner.hide();
     });
 }
+let selectedBook = null;
 
 function renderBookModal(book) {
+  
   modalEl.innerHTML = `<img class="img-modal" src="${book.book_image}" alt="Image cover" />
       <div class="div-text-modal">
         <h1 class="item-modal">${book.title}</h1>
@@ -256,16 +262,24 @@ function renderBookModal(book) {
         <p class="description-modal">${book.description}</p>
         <ul class="ul-modal">
           <li class="li-modal">
-          <a href="${book.buy_links[0].url}" class="amazon-modal" target="_blank" data-book-id="${book._id}"></a>
+            <a href="${book.buy_links[0].url}" class="amazon-modal" target="_blank" data-book-id="${book._id}"></a>
           </li>
           <li class="li-modal">
-          <a href="${book.buy_links[1].url}" class="book-modal" target="_blank" data-book-id="${book._id}"></a>
+            <a href="${book.buy_links[1].url}" class="book-modal" target="_blank" data-book-id="${book._id}"></a>
           </li>
           <li class="li-modal">
-          <a href="${book.buy_links[4].url}" class="books-modal" target="_blank" data-book-id="${book._id}">
+            <a href="${book.buy_links[4].url}" class="books-modal" target="_blank" data-book-id="${book._id}">
           </a></li>
         </ul>
       </div>`;
+  selectedBook = book;
+  if (books.find(book => book._id === selectedBook._id)) {
+    addShopingBtn.textContent = 'REMOVE FROM THE SHOPPING LIST';
+    underModalBtnText.classList.remove('visually-hidden');
+  } else {
+    addShopingBtn.textContent = 'ADD TO SHOPPING LIST';
+    underModalBtnText.classList.add('visually-hidden');
+  }
 }
 
 // Зміна кольору назви категорії та заголовку в блоці "Категорії"
@@ -295,18 +309,30 @@ function changeCategoryColor(selectedCategory) {
   });
 }
 
-const addShopingBtn = document.querySelector('.btn-modal-add-js');
-const BOOKS_DATA_KEY = 'books-data-01';
-let bookArray = JSON.parse(localStorage.getItem(BOOKS_DATA_KEY)) || [];
-
 addShopingBtn.addEventListener('click', addToLocalStorage);
 
-function addToLocalStorage() {
-  const bookId = document.querySelector('.book-modal').dataset.bookId;
-  const bookData = {
-    id: bookId,
-  };
+const underModalBtnText = document.querySelector('.under-modal-btn-text');
 
-  bookArray.push(bookData);
-  localStorage.setItem(BOOKS_DATA_KEY, JSON.stringify(bookArray));
+function addToLocalStorage() {
+
+  if (books.find(book => book._id === selectedBook._id)) {
+    const index = books.findIndex(book => book._id === selectedBook._id);
+    books.splice(index, 1);
+    localStorage.setItem('books', JSON.stringify(books));
+    addShopingBtn.textContent = 'ADD TO SHOPPING LIST';
+    underModalBtnText.classList.add('visually-hidden');
+  } else {
+    books.push(selectedBook);
+    localStorage.setItem(BOOKS_DATA_KEY, JSON.stringify(books));
+    addShopingBtn.textContent = 'REMOVE FROM THE SHOPPING LIST';
+    underModalBtnText.classList.remove('visually-hidden');
+  }
+  
+  // const bookId = document.querySelector('.book-modal').dataset.bookId;
+  // const bookData = {
+  //   id: bookId,
+  // };
+
+  // bookArray.push(bookData);
+  // localStorage.setItem(BOOKS_DATA_KEY, JSON.stringify(bookArray));
 }

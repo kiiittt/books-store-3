@@ -60,7 +60,7 @@
   flex-direction: column;
   align-self: center;
   justify-content: center;
-  width: 375px;
+  min-width: 335px;
 }
 
 .shop-list-start-img {
@@ -76,6 +76,9 @@
 .shop-list-start-img {
   width: 265px;
   height: 198px;
+}
+.container-shop-gallery {
+  margin-top: 40px;
 }
 
 /* -------------------------------- */
@@ -142,6 +145,10 @@
   .div-sprt-p3 {
     margin-top: 120px;
   }
+  .container-shopping-list {
+    display: flex;
+    flex-direction: row;
+  }
 }
 
 /* -------Book------------- */
@@ -193,6 +200,7 @@
 
 .gallery-lib {
   display: flex;
+  flex-direction: column;
 }
 
 .gallery__item {
@@ -214,9 +222,9 @@
   flex-grow: 1;
 }
 
-.gallery__item + .gallery__item {
+/* .gallery__item + .gallery__item {
   margin-top: 20px;
-}
+} */
 
 .name-book {
   font-style: normal;
@@ -341,7 +349,7 @@
 
   .container-shop {
     margin-left: 40px;
-    margin-top: 115px;
+    /* margin-top: 115px; */
   }
 
   .gallery__item {
