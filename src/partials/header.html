@@ -58,7 +58,7 @@
         <span class="switch-slider"></span>
       </label>
       <!-- Відкриття модалки / Реєстрація на сайт-->
-      <button class="btn-signup" type="button">Sign up
+      <button class="btn-signup is-hidden-x" type="button">Sign up
         <span>
           <svg class="arrow-auth-sing">
             <use href="./img/header-icon.svg#icon-arrow"></use>
@@ -67,7 +67,7 @@
       </button>
 
       <!-- Форма коли акаунт існує -->
-      <div class="user-info is-hidden">
+      <div class="user-info is-hidden is-hidden-x">
         <div class="user-content">
           <button class="btn-profile" role="button" aria-label="User Profile" type="button">
             <span>
@@ -96,14 +96,14 @@
             </div>
             <div class="form-input">
               <input type="email" class="input-auth" placeholder="Email" name="email" id="userEmail" required>
-              <svg class="icon-mail-auth icon-input" style="width: 28px; height: 28px">
+              <svg class="icon-mail-auth icon-input">
                 <use href="./img/autorization-icon.svg#icon-mail"></use>
               </svg>
             </div>
             <div class="form-input">
               <input type="password" class="input-auth input-email-js" placeholder="Password" name="password"
                 id="userPassword" required>
-              <svg class="icon-lock-auth icon-input" style="width: 28px; height: 28px">
+              <svg class="icon-lock-auth icon-input">
                 <use href="./img/autorization-icon.svg#icon-lock"></use>
               </svg>
             </div>
@@ -132,7 +132,6 @@
 <div class="mobile-menu" data-menu>
   <div class="mobile-menu-wrapper">
     <div class="mobile-elements-wrapper">
-      <a href=" " class="user-profile-info"><span class="user-profile-avatar"></span>Stephen</a>
       <ul class="main-menu-mobile-list">
         <li>
           <a href="./index.html" class="main-menu-mobile-list__link">Home</a>
@@ -144,11 +143,6 @@
             </svg></a>
         </li>
       </ul>
-      <button type="button" class="log-out-button">
-        Log out<svg class="log-out-sign-up-button__icon">
-          <use href="./img/header-icon.svg#icon-arrow"></use>
-        </svg>
-      </button>
     </div>
     <div class="background-books">
       <ul class="background-books__row1" data-background-books__row1>
