@@ -163,8 +163,7 @@
 	left: 20px;
 	width: 184px;
 	height: 45px;
-	background-color: #4F2EE8;
-	border-radius: 36px;
+	background-color: transparent;
 	border-color: transparent;
 	font-family: 'DM Sans';
 	font-style: normal;
@@ -175,6 +174,9 @@
 	color: #FFFFFF;
 }
 
+.btn-profile.is-hidden-menu {
+	display: none;
+}
 
 .user-info.is-hidden {
 	display: none;
@@ -182,8 +184,10 @@
 }
 
 .sign-out-btn {
-	position: absolute;
-	width: 184px;
+	position: fixed;
+	bottom: 20px;
+	left: 20px;
+	width: 118px;
 	height: 48px;
 	color: #111;
 	background-color: #fff;
@@ -191,13 +195,17 @@
 	border-radius: 18px;
 	justify-content: center;
 	align-items: center;
-	gap: 90px;
+	gap: 4px;
 	font-size: 14px;
 	font-weight: 500;
 	line-height: 18px;
 	display: flex;
 	font-family: 'DM Sans';
 	letter-spacing: -0.04em;
+}
+
+.sign-out-btn.is-hidden-menu {
+	display: none;
 }
 
 .arrow-auth {
@@ -207,7 +215,8 @@
 }
 
 @media screen and (min-width: 768px) {
-	.btn-profile {
+	.btn-profile{
+		margin-top: 48px;
 		position: static;
 		width: 184px;
 		height: 45px;
@@ -221,6 +230,11 @@
 		line-height: 29px;
 		letter-spacing: -0.02em;
 		color: #FFFFFF;
+	}
+	.sign-out-btn {
+		position: static;
+		width: 184px;
+		gap: 90px;
 	}
 	
 	.btn-signup {
