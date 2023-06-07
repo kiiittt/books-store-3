@@ -355,9 +355,7 @@
   line-height: 1.12;
   letter-spacing: -0.04em;
   text-transform: uppercase;
-
-  color: var(--black-color-for-text);
-
+  color: var(--header-text-color);
   margin-bottom: 4px;
 }
 
@@ -380,7 +378,7 @@
   line-height: 1.29;
   letter-spacing: -0.04em;
 
-  color: var(--black-color-for-text);
+  color: var(--color-of-h2-category);
 
   /* width: 193px; */
   height: 53px;
