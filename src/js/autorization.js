@@ -1,5 +1,6 @@
 const openSignUp = document.querySelector('.btn-signup');
 const userInfo = document.querySelector('.user-info');
+const btnProfile = document.querySelector('.btn-profile');
 const hederBurger = document.querySelector('#open-button-menu');
 const closeModal = document.querySelector('.modal-close-js');
 const authModal = document.querySelector('.auth-modal-js');
@@ -9,6 +10,7 @@ const btnSignIn = document.querySelector('.form__btn-sign-in');
 const formInputAdd = document.querySelector('.form-add');
 const inputName = document.querySelector('.form-input-name');
 const mobileMenu = document.querySelector('.mobile-menu');
+
 
 const dropSingUp = () => {
     openSignUp.classList.toggle('is-hidden-x');
@@ -49,8 +51,8 @@ function onBtnSignUp() {
  `;
 }
 
-hederBurger.addEventListener('click', dropSingUp)
-btnSubmit.addEventListener('click', backdropClose)
+hederBurger.addEventListener('click', dropSingUp);
+btnSubmit.addEventListener('click', backdropClose);
 btnSignIn.addEventListener('click', onBtnSignIn);
 btnSignUp.addEventListener('click', onBtnSignUp);
 openSignUp.addEventListener('click', openModal);

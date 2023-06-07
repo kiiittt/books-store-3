@@ -158,6 +158,9 @@
 }
 
 .btn-profile {
+	position: absolute;
+	top: 104px;
+	left: 20px;
 	width: 184px;
 	height: 45px;
 	background-color: #4F2EE8;
@@ -171,6 +174,7 @@
 	letter-spacing: -0.02em;
 	color: #FFFFFF;
 }
+
 
 .user-info.is-hidden {
 	display: none;
@@ -204,6 +208,7 @@
 
 @media screen and (min-width: 768px) {
 	.btn-profile {
+		position: static;
 		width: 184px;
 		height: 45px;
 		background-color: #4F2EE8;
@@ -239,6 +244,9 @@
 	}
 	.btn-signup.is-hidden-x {
 		display: flex;
+	}
+	.btn-signup.is-hidden {
+		display: none;
 	}
 
 	.modal-auth {
