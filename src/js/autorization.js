@@ -10,11 +10,20 @@ const btnSignIn = document.querySelector('.form__btn-sign-in');
 const formInputAdd = document.querySelector('.form-add');
 const inputName = document.querySelector('.form-input-name');
 const mobileMenu = document.querySelector('.mobile-menu');
+const singBtnOut = document.querySelector('.sign-out-btn-js');
 
 
 const dropSingUp = () => {
     openSignUp.classList.toggle('is-hidden-x');
     userInfo.classList.toggle('is-hidden-x');
+
+    if(hederBurger.classList.contains('icon-close')) {
+      btnProfile.classList.remove('is-hidden-menu');
+      singBtnOut.classList.remove('is-hidden-menu');
+    } else {
+      btnProfile.classList.add('is-hidden-menu');
+      singBtnOut.classList.add('is-hidden-menu');
+    }
 }
 
 function openModal() {
