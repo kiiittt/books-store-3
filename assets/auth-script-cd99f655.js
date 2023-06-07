@@ -24,29 +24,17 @@ import{initializeApp as ht}from"https://www.gstatic.com/firebasejs/9.21.0/fireba
           </div>
           <div class="shop-meta">
             <p class="autor-book">${c.author}</p>
-            <ul class="customers-list">
-              <li class="partner">
-                <a href="${c.buy_links[0].url}" class="a-partner" target="_blank" data-book-id="${c._id}">
-                  <svg class="shop-icon" width="32" height="11">
-                    <use href="../img/symbol-defs.svg#icon-amazon"></use>
-                  </svg>
-                </a>
-              </li>
-              <li class="partner">
-                <a href="${c.buy_links[1].url}" class="a-partner" target="_blank" data-book-id="${c._id}">
-                  <svg class="shop-icon" width="16" height="16">
-                    <use href=""../img/symbol-defs.svg#icon-book></use>
-                  </svg>
-                </a>
-              </li>
-              <li class="partner">
-                <a href="${c.buy_links[4].url}" class="a-partner" target="_blank" data-book-id="${c._id}">
-                  <svg class="shop-icon" width="32" height="11">
-                    <use href="../img/symbol-defs.svg#icon-book-shop"></use>
-                  </svg>
-                </a>
-              </li>
-            </ul>
+        <ul class="ul-shopping">
+          <li class="li-shopping">
+            <a href="${c.buy_links[0].url}" class="amazon-shopping" target="_blank" data-book-id="${c._id}"></a>
+          </li>
+          <li class="li-shopping">
+            <a href="${c.buy_links[1].url}" class="book-shopping" target="_blank" data-book-id="${c._id}"></a>
+          </li>
+          <li class="li-shopping">
+            <a href="${c.buy_links[4].url}" class="books-shopping" target="_blank" data-book-id="${c._id}">
+          </a></li>
+        </ul>
           </div>
         </div>
       </li>`}Lt.innerHTML=_,kt()}function kt(){const x=document.querySelectorAll(".basket-button");for(let _=0;_<x.length;_+=1)x[_].addEventListener("click",It)}function It(x){const _=x.target.dataset.shoppingListBookId,a=T.findIndex(c=>c._id===_);T.splice(a,1),localStorage.setItem("books",JSON.stringify(T)),et(T),T.length===0&&(Q.classList.remove("visually-hidden"),tt.classList.remove("visually-hidden"))}const nt=[{title:"Save the Children",url:"https://www.savethechildren.net/what-we-do/emergencies/ukraine-crisis",img:"https://funds-imgs.s3.eu-north-1.amazonaws.com/Fund1.png",img2x:"https://funds-imgs.s3.eu-north-1.amazonaws.com/Fund1%402x.png"},{title:"Project HOPE",url:"https://www.projecthope.org/country/ukraine/",img:"https://funds-imgs.s3.eu-north-1.amazonaws.com/Fund2.png",img2x:"https://funds-imgs.s3.eu-north-1.amazonaws.com/Fund2%402x.png"},{title:"UNITED24",url:"https://u24.gov.ua/uk",img:"https://funds-imgs.s3.eu-north-1.amazonaws.com/Fund3.png",img2x:"https://funds-imgs.s3.eu-north-1.amazonaws.com/Fund3%402x.png"},{title:"International Medical Corps",url:"https://internationalmedicalcorps.org/country/ukraine/",img:"https://funds-imgs.s3.eu-north-1.amazonaws.com/Fund4.png",img2x:"https://funds-imgs.s3.eu-north-1.amazonaws.com/Fund4%402x.png"},{title:"Medicins Sans Frontieres",url:"https://www.msf.org/ukraine",img:"https://funds-imgs.s3.eu-north-1.amazonaws.com/Fund5.png",img2x:"https://funds-imgs.s3.eu-north-1.amazonaws.com/Fund5%402x.png"},{title:"RAZOM",url:"https://www.razomforukraine.org/",img:"https://funds-imgs.s3.eu-north-1.amazonaws.com/Fund6.png",img2x:"https://funds-imgs.s3.eu-north-1.amazonaws.com/Fund6%402x.png"},{title:"Action against hunger",url:"https://www.actionagainsthunger.org/location/europe/ukraine/",img:"https://funds-imgs.s3.eu-north-1.amazonaws.com/Fund7.png",img2x:"https://funds-imgs.s3.eu-north-1.amazonaws.com/Fund7%402x.png"},{title:"World vision",url:"https://www.wvi.org/emergencies/ukraine",img:"https://funds-imgs.s3.eu-north-1.amazonaws.com/Fund8.png",img2x:"https://funds-imgs.s3.eu-north-1.amazonaws.com/Fund8%402x.png"},{title:"Serhiy Prytula Charity Foundation",url:"https://prytulafoundation.org/en",img:"https://funds-imgs.s3.eu-north-1.amazonaws.com/Fund9.png",img2x:"https://funds-imgs.s3.eu-north-1.amazonaws.com/Fund9%402x.png"}],st=document.querySelector(".support-list"),Mt=document.querySelector(".support-button");let j=0,H=0,V=0;G();window.addEventListener("resize",wt);Mt.addEventListener("click",Tt);function wt(){it(),j=0,H=0,G()}function G(){V=window.innerWidth<768?4:6;const x=Bt(H,V,nt);Ot(x)}function Bt(x,_,a){const c=x*_,e=c+_;return a.slice(c,e)}function Ot(x){const _=x.map(({title:a,url:c,img:e,img2x:n})=>(j+=1,`
