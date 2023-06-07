@@ -195,3 +195,7 @@
 .category_books_items:hover .test-wraper::before {
   transform: translateY(0);
 }
+
+.category_books_items:hover{
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.38);
+}
