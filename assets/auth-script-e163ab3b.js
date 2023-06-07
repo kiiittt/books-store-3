@@ -2,7 +2,7 @@ import{initializeApp as ht}from"https://www.gstatic.com/firebasejs/9.21.0/fireba
       <li class="gallery__item">
         <button type="button" class="basket-button" data-shopping-list-book-id="${c._id}">
           <svg>
-            <use href="./img/shopping-list.svg#icon-basket"></use>
+            <use href="../img/shopping-list.svg#icon-basket"></use>
           </svg>
         </button>
 
