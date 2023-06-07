@@ -49,6 +49,10 @@
   margin-bottom: 8px;
 }
 
+.bestsellers-book-item:hover{
+  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.38);
+}
+
 .bestsellers-book-cover {
   border-radius: 8px;
   /* width: 335px; */
