@@ -131,6 +131,128 @@
   fill: var(--white-color-for-block);
 }
 
+.ul-shopping {
+  display: flex;
+  align-self: start;
+  margin-bottom: 40px;
+}
+
+.li-shopping {
+  display: flex;
+  align-items: center;
+}
+
+.li-shopping:not(:last-child) {
+  margin-right: 20px;
+}
+
+.amazon-shopping {
+  display: flex;
+  align-items: center;
+  width: 62px;
+  height: 36px;
+}
+
+.amazon-shopping::before {
+  content: '';
+  display: block;
+  background-image: url(../img/modal-amazon.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+}
+
+.book-shopping {
+  width: 33px;
+  height: 32px;
+}
+
+.book-shopping::before {
+  content: '';
+  display: block;
+  background-image: url(../img/modal-book.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 33px;
+  height: 32px;
+}
+
+.books-shopping {
+  width: 38px;
+  height: 36px;
+}
+
+.books-shopping::before {
+  content: '';
+  display: block;
+  background-image: url(../img/modal-books.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 38px;
+  height: 36px;
+}
+
+@media screen and (max-width: 468px) {
+
+  .li-shopping:not(:last-child) {
+  margin-right: 8px;
+}
+
+  .amazon-shopping {
+  display: flex;
+  align-items: center;
+  width: 32px;
+  height: 11px;
+}
+
+.amazon-shopping::before {
+  content: '';
+  display: block;
+  background-image: url(../img/modal-amazon.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+}
+
+.book-shopping {
+  width: 16px;
+  height: 16px;
+}
+
+.book-shopping::before {
+  content: '';
+  display: block;
+  background-image: url(../img/modal-book.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 16px;
+  height: 16px;
+}
+
+.books-shopping {
+  width: 16px;
+  height: 16px;
+}
+
+.books-shopping::before {
+  content: '';
+  display: block;
+  background-image: url(../img/modal-books.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 16px;
+  height: 16px;
+}
+}
+
 @media screen and (max-width: 1439px) {
   .div-sprt-p3 {
     display: none;
@@ -185,6 +307,7 @@
 .basket-button > svg {
   width: 16px;
   height: 16px;
+  fill: #d0d0d0;
 }
 
 .title-book-cover {
@@ -233,9 +356,7 @@
   line-height: 1.12;
   letter-spacing: -0.04em;
   text-transform: uppercase;
-
-  color: var(--black-color-for-text);
-
+  color: var(--header-text-color);
   margin-bottom: 4px;
 }
 
@@ -258,7 +379,7 @@
   line-height: 1.29;
   letter-spacing: -0.04em;
 
-  color: var(--black-color-for-text);
+  color: var(--color-of-h2-category);
 
   /* width: 193px; */
   height: 53px;
@@ -360,3 +481,5 @@
     width: 996px;
   }
 }
+
+

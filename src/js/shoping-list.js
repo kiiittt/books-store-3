@@ -1,4 +1,5 @@
 import Pagination from 'tui-pagination';
+import basket from '../img/shopping-list.svg#icon-basket';
 
 
 // const addToListBtn = document.querySelector('button[data-value=""]');
@@ -67,7 +68,7 @@ function createGalleryMarkup(books) {
       <li class="gallery__item">
         <button type="button" class="basket-button" data-shopping-list-book-id="${book._id}">
           <svg>
-            <use href="/img/shopping-list.svg#icon-basket"></use>
+            <use href="${basket}"></use>
           </svg>
         </button>
 
@@ -89,29 +90,17 @@ function createGalleryMarkup(books) {
           </div>
           <div class="shop-meta">
             <p class="autor-book">${book.author}</p>
-            <ul class="customers-list">
-              <li class="partner">
-                <a href="${book.buy_links[0].url}" class="a-partner" target="_blank" data-book-id="${book._id}">
-                  <svg class="shop-icon" width="32" height="11">
-                    <use href="../img/symbol-defs.svg#icon-amazon"></use>
-                  </svg>
-                </a>
-              </li>
-              <li class="partner">
-                <a href="${book.buy_links[1].url}" class="a-partner" target="_blank" data-book-id="${book._id}">
-                  <svg class="shop-icon" width="16" height="16">
-                    <use href=""../img/symbol-defs.svg#icon-book></use>
-                  </svg>
-                </a>
-              </li>
-              <li class="partner">
-                <a href="${book.buy_links[4].url}" class="a-partner" target="_blank" data-book-id="${book._id}">
-                  <svg class="shop-icon" width="32" height="11">
-                    <use href="../img/symbol-defs.svg#icon-book-shop"></use>
-                  </svg>
-                </a>
-              </li>
-            </ul>
+        <ul class="ul-shopping">
+          <li class="li-shopping">
+            <a href="${book.buy_links[0].url}" class="amazon-shopping" target="_blank" data-book-id="${book._id}"></a>
+          </li>
+          <li class="li-shopping">
+            <a href="${book.buy_links[1].url}" class="book-shopping" target="_blank" data-book-id="${book._id}"></a>
+          </li>
+          <li class="li-shopping">
+            <a href="${book.buy_links[4].url}" class="books-shopping" target="_blank" data-book-id="${book._id}">
+          </a></li>
+        </ul>
           </div>
         </div>
       </li>`;
@@ -163,21 +152,21 @@ function createGalleryMarkup(books) {
 //             <p class="autor-book">${book.author}</p>
 //             <ul class="internet-marcets">
 //               <li class="123">
-//                 <a href="${book.buy_links[0].url}" class="amazon-modal" target="_blank">
+//                 <a href="${book.buy_links[0].url}" class="amazon-shopping" target="_blank">
 //                   <svg class="amazon">
 //                     <use href="../img/shop-img/sprite.svg#amazon"></use>
 //                   </svg>
 //                 </a>
 //               </li>
 //               <li class="123">
-//                 <a href="${book.buy_links[1].url}" class="book-modal" target="_blank">
+//                 <a href="${book.buy_links[1].url}" class="book-shopping" target="_blank">
 //                   <svg class="book">
 //                     <use href="../img/shop-img/sprite.svg#amazon"></use>
 //                   </svg>
 //                 </a>
 //               </li>
 //               <li class="123">
-//                 <a href="${book.buy_links[4].url}" class="books-modal" target="_blank">
+//                 <a href="${book.buy_links[4].url}" class="books-shopping" target="_blank">
 //                 <svg class="books">
 //                     <use href="../img/shop-img/sprite.svg#amazon"></use>
 //                   </svg>
