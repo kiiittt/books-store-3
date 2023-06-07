@@ -1,4 +1,5 @@
 import Pagination from 'tui-pagination';
+import basket from '../img/shopping-list.svg#icon-basket';
 
 
 // const addToListBtn = document.querySelector('button[data-value=""]');
@@ -67,7 +68,7 @@ function createGalleryMarkup(books) {
       <li class="gallery__item">
         <button type="button" class="basket-button" data-shopping-list-book-id="${book._id}">
           <svg>
-            <use href="../img/shopping-list.svg#icon-basket"></use>
+            <use href="${basket}"></use>
           </svg>
         </button>
 

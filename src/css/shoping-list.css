@@ -307,6 +307,7 @@
 .basket-button > svg {
   width: 16px;
   height: 16px;
+  fill: #d0d0d0;
 }
 
 .title-book-cover {
