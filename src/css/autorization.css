@@ -231,12 +231,17 @@
 		letter-spacing: -0.02em;
 		color: #FFFFFF;
 	}
+	.btn-profile.is-hidden-menu {
+		display: block;
+	}
 	.sign-out-btn {
 		position: static;
 		width: 184px;
 		gap: 90px;
 	}
-	
+	.btn-profile.is-hidden-menu {
+		display: block;
+	}
 	.btn-signup {
 		position: static;
 		display: flex;
@@ -326,5 +331,10 @@
 		text-transform: uppercase;
 		color: #F3F3F3;
 	}
-	
+	.arrow-auth-1 {
+		width: 24px;
+		height: 26px;
+		fill: red;
+		z-index: 10999999;
+	}
 }
