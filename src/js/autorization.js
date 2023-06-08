@@ -12,19 +12,26 @@ const inputName = document.querySelector('.form-input-name');
 const mobileMenu = document.querySelector('.mobile-menu');
 const singBtnOut = document.querySelector('.sign-out-btn-js');
 
-
 const dropSingUp = () => {
-    openSignUp.classList.toggle('is-hidden-x');
-    userInfo.classList.toggle('is-hidden-x');
+  openSignUp.classList.toggle('is-hidden-x');
+  userInfo.classList.toggle('is-hidden-x');
 
-    if(hederBurger.classList.contains('icon-close')) {
+  const screenSmall = window.screen.availWidth < 768;
+  const screenBig = window.screen.availWidth > 768;
+  const headerBurgerTrueOrFalse = hederBurger.classList.contains('icon-close');
+
+  switch (true) {
+    case screenSmall && headerBurgerTrueOrFalse:
       btnProfile.classList.remove('is-hidden-menu');
       singBtnOut.classList.remove('is-hidden-menu');
-    } else {
-      btnProfile.classList.add('is-hidden-menu');
+      break;
+    case screenBig:
+      btnProfile.classList.remove('is-hidden-menu');
       singBtnOut.classList.add('is-hidden-menu');
-    }
-}
+    case screenSmall:
+      btnProfile.classList.add('is-hidden-menu');
+  }
+};
 
 function openModal() {
   authModal.classList.remove('is-hidden');
