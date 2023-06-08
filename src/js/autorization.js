@@ -11,6 +11,7 @@ const formInputAdd = document.querySelector('.form-add');
 const inputName = document.querySelector('.form-input-name');
 const mobileMenu = document.querySelector('.mobile-menu');
 const singBtnOut = document.querySelector('.sign-out-btn-js');
+const signOutButton = document.querySelector('#signOutButton');
 
 const dropSingUp = () => {
   openSignUp.classList.toggle('is-hidden-x');
@@ -24,12 +25,16 @@ const dropSingUp = () => {
     case screenSmall && headerBurgerTrueOrFalse:
       btnProfile.classList.remove('is-hidden-menu');
       singBtnOut.classList.remove('is-hidden-menu');
+      signOutButton.classList.remove('is-hidden');
       break;
     case screenBig:
       btnProfile.classList.remove('is-hidden-menu');
       singBtnOut.classList.add('is-hidden-menu');
+      break;
     case screenSmall:
+      signOutButton.classList.add('is-hidden');
       btnProfile.classList.add('is-hidden-menu');
+      break;
   }
 };
 

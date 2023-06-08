@@ -31,15 +31,16 @@ const modalWindow = document.querySelector('.modal-js');
 const backdropAuth = document.querySelector('.backdrop-auth');
 const formBtnSubmit = document.querySelector('.form--btn-submit');
 const btnProfile = document.querySelector('.btn-profile');
+const hederBurger = document.querySelector('#open-button-menu');
 
 // Перевірка стану аутентифікації
 const checkAuthState = () => {
   onAuthStateChanged(auth, user => {
     if (user) {
-      userBtnInfo.querySelector('span').nextSibling.textContent = user.displayName;
+      userBtnInfo.querySelector('span').nextSibling.textContent =
+        user.displayName;
       signUpBtn.classList.add('is-hidden');
       userBtnInfo.classList.remove('is-hidden');
-      signOutButton.classList.add('is-hidden');
     } else {
       signUpBtn.classList.remove('is-hidden');
       userBtnInfo.classList.add('is-hidden');
@@ -113,24 +114,26 @@ function handleFormSubmit(e) {
   } else if (formBtnSubmit.textContent.toLowerCase() === 'sign in') {
     userSignIn(userEmail, userPassword);
   } else {
-    alert('Щось пішло не так');
+    alert('Something went wrong');
   }
 }
 
 // Функція для відкриття і закриття профілю для виходу зі сторінки
 const profileUser = () => {
-  signOutButton.classList.toggle('is-hidden');
+  const screenSmall = window.screen.availWidth < 768;
+  if (!screenSmall) {
+    signOutButton.classList.toggle('is-hidden');
+  }
 };
 
 signUpButton.onclick = () => {
-  userSignUp()
+  userSignUp();
 };
 
 signOutButton.onclick = () => {
-  userSignOut()
+  userSignOut();
 };
 
 authForm.onsubmit = handleFormSubmit;
 
 btnProfile.addEventListener('click', profileUser);
-
