@@ -144,9 +144,11 @@
 	letter-spacing: -0.04em;
 	color: #FFFFFF;
 }
+
 .btn-signup.is-hidden-x {
 	display: none;
 }
+
 .btn-signup.is-hidden {
 	display: none;
 }
@@ -215,7 +217,7 @@
 }
 
 @media screen and (min-width: 768px) {
-	.btn-profile{
+	.btn-profile {
 		margin-top: 48px;
 		position: static;
 		width: 184px;
@@ -231,17 +233,21 @@
 		letter-spacing: -0.02em;
 		color: #FFFFFF;
 	}
+
 	.btn-profile.is-hidden-menu {
 		display: block;
 	}
+
 	.sign-out-btn {
 		position: static;
 		width: 184px;
 		gap: 90px;
 	}
+
 	.btn-profile.is-hidden-menu {
 		display: block;
 	}
+
 	.btn-signup {
 		position: static;
 		display: flex;
@@ -261,9 +267,11 @@
 		letter-spacing: -0.04em;
 		color: #FFFFFF;
 	}
+
 	.btn-signup.is-hidden-x {
 		display: flex;
 	}
+
 	.btn-signup.is-hidden {
 		display: none;
 	}
@@ -287,7 +295,7 @@
 		align-items: center;
 	}
 
-	
+
 	.modal-close {
 		position: absolute;
 		top: 31px;
@@ -302,7 +310,7 @@
 		position: absolute;
 		top: 18px;
 		right: 32px;
-	}	
+	}
 
 	.input-auth {
 		width: 499px;
@@ -331,10 +339,5 @@
 		text-transform: uppercase;
 		color: #F3F3F3;
 	}
-	.arrow-auth-1 {
-		width: 24px;
-		height: 26px;
-		fill: red;
-		z-index: 10999999;
-	}
+
 }
