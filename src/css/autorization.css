@@ -24,6 +24,7 @@
 	right: 14px;
 	background-color: transparent;
 	border-color: transparent;
+	fill: var(--icon-close);
 }
 
 .input-auth {
@@ -34,10 +35,11 @@
 	flex-direction: row;
 	align-items: center;
 	gap: 10px;
-	border: 2px solid #111111;
+	border: 2px solid var(--header-border-color);
 	border-radius: 40px;
 	font-family: 'DM Sans';
 	font-style: normal;
+	background-color: var(--main-bg-color);
 }
 
 .form-input {
@@ -50,6 +52,7 @@
 	right: 24px;
 	width: 18px;
 	height: 18px;
+	fill: var(--header-border-color);
 }
 
 .input-auth::placeholder {
@@ -58,7 +61,7 @@
 	line-height: 1.125;
 	letter-spacing: -0.01em;
 	text-transform: uppercase;
-	color: #111111;
+	color: var(--header-border-color);
 }
 
 .form-input:nth-child(1) {
@@ -75,12 +78,12 @@
 	margin-top: 24px;
 	margin-bottom: 14px;
 	padding: 16px 116px;
-	background: #111111;
+	background: var(--color-for-btn-auth-modal);
 	border-radius: 40px;
 	border-color: transparent;
 	letter-spacing: -0.01em;
 	text-transform: uppercase;
-	color: #F3F3F3;
+	color: var(--color-for-btn-auth-modal-text);
 }
 
 .signup-and-signin {
@@ -93,14 +96,13 @@
 .form-btn-auth-style {
 	font-family: 'DM Sans';
 	font-style: normal;
-	font-weight: 700;
 	font-size: 18px;
 	line-height: 24px;
 	letter-spacing: -0.01em;
 	text-transform: uppercase;
 	border-color: transparent;
 	background-color: transparent;
-	color: rgba(17, 17, 17, 0.5);
+	color: var(--color-btn-uo-in);
 }
 
 .form-btn-auth-style+.form-btn-auth-style {
@@ -108,6 +110,7 @@
 }
 
 .active {
+	font-weight: 700;
 	color: #4F2EE8;
 	text-decoration-line: underline;
 }
@@ -133,8 +136,8 @@
 	padding-left: 14px;
 	width: 184px;
 	height: 48px;
-	background-color: #4F2EE8;
-	border: 1.5px solid #111111;
+	background-color: var(--color-btn-sit-up);
+	border: 1.5px solid var(--header-border-color);
 	border-radius: 18px;
 	font-family: 'DM Sans';
 	font-style: normal;
@@ -222,7 +225,7 @@
 		position: static;
 		width: 184px;
 		height: 45px;
-		background-color: #4F2EE8;
+		background-color: var(--color-btn-profile);
 		border-radius: 36px;
 		border-color: transparent;
 		font-family: 'DM Sans';
@@ -256,8 +259,8 @@
 		padding-left: 14px;
 		width: 184px;
 		height: 48px;
-		background-color: #4F2EE8;
-		border: 1.5px solid #111111;
+		background-color: var(--color-btn-sit-up);
+		border: 1.5px solid var(--header-border-color);
 		border-radius: 18px;
 		font-family: 'DM Sans';
 		font-style: normal;
@@ -283,7 +286,7 @@
 		transform: translate(-50%, -50%);
 		width: 579px;
 		background: var(--main-bg-color);
-		border: 2px solid #111111;
+		border: 2px solid var(--header-border-color);
 		border-radius: 18px;
 		overflow-y: auto;
 	}
@@ -294,7 +297,6 @@
 		flex-direction: column;
 		align-items: center;
 	}
-
 
 	.modal-close {
 		position: absolute;
@@ -310,6 +312,7 @@
 		position: absolute;
 		top: 18px;
 		right: 32px;
+		fill: var(--header-border-color);
 	}
 
 	.input-auth {
@@ -320,7 +323,7 @@
 		flex-direction: row;
 		align-items: center;
 		gap: 10px;
-		border: 2px solid #111111;
+		border: 2px solid var(--header-border-color);
 		border-radius: 40px;
 		font-family: 'DM Sans';
 		font-style: normal;
@@ -329,15 +332,19 @@
 	.form--btn-submit {
 		width: 499px;
 		height: 64px;
+		font-family: 'DM Sans';
+		font-style: normal;
+		font-weight: 700;
+		font-size: 18px;
+		line-height: 24px;
 		margin-top: 40px;
 		margin-bottom: 20px;
 		padding: 20px 173px;
-		background: #111111;
+		background: var(--color-for-btn-auth-modal);
 		border-radius: 40px;
 		border-color: transparent;
-		letter-spacing: -0.01em;
 		text-transform: uppercase;
-		color: #F3F3F3;
+		color: var(--color-for-btn-auth-modal-text);
 	}
 
 }

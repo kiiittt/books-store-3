@@ -76,3 +76,17 @@ const navLinks = document
       link.classList.add('current');
     }
   });
+
+document
+  .getElementById('open-button-menu')
+  .addEventListener('click', function () {
+    const expanded = this.getAttribute('aria-expanded');
+    const newExpandedValue = expanded === 'true' ? 'false' : 'true';
+    this.setAttribute('aria-expanded', newExpandedValue);
+
+    if (newExpandedValue === 'true') {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+  });
