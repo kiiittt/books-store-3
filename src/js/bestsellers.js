@@ -254,7 +254,6 @@ function openBookDetails(event) {
 let selectedBook = null;
 
 function renderBookModal(book) {
-  
   modalEl.innerHTML = `<img class="img-modal" src="${book.book_image}" alt="Image cover" />
       <div class="div-text-modal">
         <h1 class="item-modal">${book.title}</h1>
@@ -314,7 +313,6 @@ addShopingBtn.addEventListener('click', addToLocalStorage);
 const underModalBtnText = document.querySelector('.under-modal-btn-text');
 
 function addToLocalStorage() {
-
   if (books.find(book => book._id === selectedBook._id)) {
     const index = books.findIndex(book => book._id === selectedBook._id);
     books.splice(index, 1);
@@ -327,7 +325,7 @@ function addToLocalStorage() {
     addShopingBtn.textContent = 'REMOVE FROM THE SHOPPING LIST';
     underModalBtnText.classList.remove('visually-hidden');
   }
-  
+
   // const bookId = document.querySelector('.book-modal').dataset.bookId;
   // const bookData = {
   //   id: bookId,

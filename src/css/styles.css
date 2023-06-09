@@ -38,6 +38,11 @@
   --color-of-categoryAll-text: #4f2ee8;
   --color-of-category-text: rgba(17, 17, 17, 0.6);
   --color-of-h2-category: #111111;
+  --color-for-btn-auth-modal-text: #F3F3F3;
+  --color-for-btn-auth-modal: #111111;
+  --icon-close: #111111;
+  --color-btn-uo-in: rgba(17, 17, 17, 0.5);
+  --color-btn-sit-up: #4F2EE8;
 }
 
 :root[theme='dark'],
@@ -58,7 +63,11 @@
   --color-of-categoryAll-text: #eac645;
   --color-of-category-text: rgba(255, 255, 255, 0.6);
   --color-of-h2-category: #ffffff;
-
+  --color-for-btn-auth-modal-text: #111111;
+  --color-for-btn-auth-modal: #F3F3F3;
+  --icon-close: #F6F6F6;
+  --color-btn-uo-in: rgba(246, 246, 246, 0.5);
+  --color-btn-sit-up: #202024;
 }
 
 body {
