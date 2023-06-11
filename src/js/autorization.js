@@ -12,6 +12,45 @@ const inputName = document.querySelector('.form-input-name');
 const mobileMenu = document.querySelector('.mobile-menu');
 const singBtnOut = document.querySelector('.sign-out-btn-js');
 const signOutButton = document.querySelector('#signOutButton');
+const passwordInput = document.querySelector('.input-password-js');
+const checkAuthOpen = document.querySelector('.input-psw-open');
+const iconLookPasswork = document.querySelector('.icon-lock-auth');
+const iconEye = document.querySelector('.icon-eye');
+const iconEyeSlash = document.querySelector('.icon-eye-slash');
+
+passwordInput.addEventListener('input', e => {
+  passwordInput1(e);
+});
+
+function passwordInput1(e) {
+  const valuePassword = e.target.value;
+  console.log(valuePassword);
+
+  if (valuePassword !== '') {
+    iconLookPasswork.classList.add('icon-look-off');
+    iconEye.classList.remove('icon-eye-off');
+    checkAuthOpen.classList.remove('is-hidden');
+  } else {
+    iconLookPasswork.classList.remove('icon-look-off');
+    checkAuthOpen.classList.add('is-hidden');
+    iconEye.classList.add('icon-eye-off');
+  }
+}
+
+// чекбоскс на перевірку пароля
+checkAuthOpen.onclick = togglaPassword;
+
+function togglaPassword() {
+  if (checkAuthOpen.checked) {
+    passwordInput.type = 'text';
+    iconEye.classList.add('icon-eye-off');
+    iconEyeSlash.classList.remove('icon-eye-off-slash');
+  } else {
+    passwordInput.type = 'password';
+    iconEye.classList.remove('icon-eye-off');
+    iconEyeSlash.classList.add('icon-eye-off-slash');
+  }
+}
 
 const dropSingUp = () => {
   openSignUp.classList.toggle('is-hidden-x');
