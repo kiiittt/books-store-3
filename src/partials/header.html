@@ -101,10 +101,17 @@
               </svg>
             </div>
             <div class="form-input">
-              <input type="password" class="input-auth input-email-js" placeholder="Password" name="password"
+              <input type="password" class="input-auth input-password-js" placeholder="Password" name="password"
                 id="userPassword" required>
               <svg class="icon-lock-auth icon-input">
                 <use href="./img/autorization-icon.svg#icon-lock"></use>
+              </svg>
+              <input class="input-psw-open is-hidden" type="checkbox" name="open-password">
+              <svg class="icon-eye icon-eye-off">
+                <use href='../img/toggle_eye.svg#icon-iconmonstr-eye-thin'></use>
+              </svg>
+              <svg class="icon-eye-slash icon-eye-off-slash">
+                <use href='../img/toggle_eye.svg#icon-iconmonstr-eye-off-thin'></use>
               </svg>
             </div>
             <button id="signUpButton" class="form--btn-submit" type="submit">Sign Up</button>

@@ -40,6 +40,7 @@
 	font-family: 'DM Sans';
 	font-style: normal;
 	background-color: var(--main-bg-color);
+	color: var(--icon-close);
 }
 
 .form-input {
@@ -52,7 +53,7 @@
 	right: 24px;
 	width: 18px;
 	height: 18px;
-	fill: var(--header-border-color);
+	fill: var(--icon-close);
 }
 
 .input-auth::placeholder {
@@ -110,6 +111,7 @@
 }
 
 .active {
+	font-family: 'DM Sans';
 	font-weight: 700;
 	color: #4F2EE8;
 	text-decoration-line: underline;
@@ -219,6 +221,43 @@
 	display: flex;
 }
 
+.input-psw-open {
+	position: absolute;
+	width: 18px;
+	height: 18px;
+	top: 16px;
+	right: 24px;
+	opacity: 0;
+	cursor: pointer;
+	z-index: 3;
+}
+
+.input-psw-open.is-hidden {
+	display: none;
+}
+
+.icon-eye,
+.icon-eye-slash {
+	position: absolute;
+	top: 16px;
+	right: 24px;
+	width: 18px;
+	height: 18px;
+	fill: var(--icon-close);
+}
+
+.icon-eye.icon-eye-off {
+	opacity: 0;
+}
+
+.icon-eye-slash.icon-eye-off-slash {
+	opacity: 0;
+}
+
+.icon-look-off {
+	opacity: 0;
+}
+
 @media screen and (min-width: 768px) {
 	.btn-profile {
 		margin-top: 48px;
@@ -312,7 +351,7 @@
 		position: absolute;
 		top: 18px;
 		right: 32px;
-		fill: var(--header-border-color);
+		fill: var(--icon-close);
 	}
 
 	.input-auth {
@@ -327,6 +366,8 @@
 		border-radius: 40px;
 		font-family: 'DM Sans';
 		font-style: normal;
+		color: var(--icon-close);
+		font-size: 23px;
 	}
 
 	.form--btn-submit {
@@ -347,4 +388,37 @@
 		color: var(--color-for-btn-auth-modal-text);
 	}
 
+	.input-psw-open {
+		position: absolute;
+		width: 28px;
+		height: 28px;
+		top: 18px;
+		right: 32px;
+	}
+
+	.input-psw-open.is-hidden {
+		display: none;
+	}
+
+	.icon-eye,
+	.icon-eye-slash {
+		position: absolute;
+		top: 18px;
+		right: 32px;
+		width: 28px;
+		height: 28px;
+		fill: var(--icon-close);
+	}
+
+	.icon-eye.icon-eye-off {
+		opacity: 0;
+	}
+
+	.icon-eye-slash.icon-eye-off-slash {
+		opacity: 0;
+	}
+
+	.icon-look-off {
+		opacity: 0;
+	}
 }

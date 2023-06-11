@@ -1,6 +1,6 @@
 .scroll-up_hidden {
 	position: fixed;
-	bottom: 25px;
+	bottom: 80px;
 	right: 20px;
 	width: 64px;
 	height: 64px;
@@ -16,6 +16,12 @@
 	visibility: hidden;
 	transition: opacity 0.3s ease-in-out;
 	z-index: 101;
+}
+
+@media screen and (min-width: 768px) {
+	.scroll-up_hidden {
+		bottom: 40px;
+	}
 }
 
 .scroll-up_hidden:hover,

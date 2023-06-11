@@ -48,7 +48,7 @@
 .svg-close {
   height: 100%;
   width: 100%;
-  border: none;
+  border-color: none;
   outline: none;
   cursor: pointer;
   fill: var(--header-text-color);
