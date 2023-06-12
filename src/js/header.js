@@ -69,13 +69,24 @@ themeToggleBtn.addEventListener('change', () => {
 
 //Сторінка на якій ми перебуваємо
 const activePage = window.location.pathname;
-const navLinks = document
-  .querySelectorAll('.main-menu-tablet-list a, .main-menu-mobile-list a')
-  .forEach(link => {
-    if (link.href.includes(`${activePage}`)) {
-      link.classList.add('current');
-    }
-  });
+const mainMenuTabletLinks = document.querySelectorAll(
+  '.main-menu-tablet-list a'
+);
+const mainMenuMobileLinks = document.querySelectorAll(
+  '.main-menu-mobile-list a'
+);
+
+mainMenuTabletLinks.forEach(link => {
+  if (link.href.includes(activePage)) {
+    link.classList.add('current');
+  }
+});
+
+mainMenuMobileLinks.forEach(link => {
+  if (link.href.includes(activePage)) {
+    link.classList.add('current');
+  }
+});
 
 document
   .getElementById('open-button-menu')

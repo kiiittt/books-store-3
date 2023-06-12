@@ -18,6 +18,10 @@ const iconLookPasswork = document.querySelector('.icon-lock-auth');
 const iconEye = document.querySelector('.icon-eye');
 const iconEyeSlash = document.querySelector('.icon-eye-slash');
 const svgEye = document.querySelector('.svg-eye');
+const formInputName = document.querySelector('.form-input-name');
+const userEmail = document.getElementById('userEmail');
+const userPassword = document.getElementById('userPassword');
+const authForm = document.querySelector('form#authForm');
 
 passwordInput.addEventListener('input', e => {
   passwordInputToggle(e);
@@ -25,7 +29,6 @@ passwordInput.addEventListener('input', e => {
 
 function passwordInputToggle(e) {
   const valuePassword = e.target.value;
-  console.log(valuePassword);
 
   if (valuePassword !== '') {
     iconLookPasswork.classList.add('icon-look-off');
@@ -112,8 +115,66 @@ function onBtnSignUp() {
  `;
 }
 
+const formSubmit = e => {
+  e.preventDefault();
+  validateInputs();
+};
+
+const setError = (element, message) => {
+  const inputControl = element.parentElement;
+  const errorDisplay = inputControl.querySelector('.error');
+
+  errorDisplay.innerHTML = message;
+  inputControl.classList.remove('success');
+  inputControl.classList.add('error');
+};
+
+const setSuccess = element => {
+  const inputControl = element.parentElement;
+  const errorDisplay = inputControl.querySelector('.error');
+
+  errorDisplay.innerHTML = '';
+  inputControl.classList.remove('error');
+  inputControl.classList.add('success');
+};
+
+const isValidEmail = email => {
+  const re =
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(String(email).toLowerCase());
+};
+
+const validateInputs = () => {
+  const userNameValue = formInputName.value.trim();
+  const userEmailValue = userEmail.value.trim();
+  const userPasswordValue = userPassword.value.trim();
+
+  if (userNameValue === '') {
+    setError(formInputName, 'Username is required.');
+  } else {
+    setSuccess(formInputName);
+  }
+
+  if (userEmailValue === '') {
+    setError(userEmail, 'Email is required.');
+  } else if (!isValidEmail(userEmailValue)) {
+    setError(userEmail, 'Provide a valid email address.');
+  } else {
+    setSuccess(userEmail);
+  }
+
+  if (userPasswordValue === '') {
+    setError(userPassword, 'Password is required.');
+  } else if (userPasswordValue.length < 8) {
+    setError(userPassword, 'Password must be at least 8 characters.');
+  } else {
+    setSuccess(userPassword);
+  }
+};
+
+authForm.addEventListener('submit', formSubmit);
 hederBurger.addEventListener('click', dropSingUp);
-btnSubmit.addEventListener('click', backdropClose);
+btnSubmit.addEventListener('submit', backdropClose);
 btnSignIn.addEventListener('click', onBtnSignIn);
 btnSignUp.addEventListener('click', onBtnSignUp);
 openSignUp.addEventListener('click', openModal);

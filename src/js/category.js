@@ -153,51 +153,42 @@ function changeCategoryAllColor(selectedCategory) {
   const categoryAll = document.querySelector('.category_all');
 
   allCategories.forEach(category => {
-    if (category.textContent !== selectedCategory) {
-      // Задає стилі "All Categories" по кліку
-      category.style.fontWeight = '400';
-      category.style.lineHeight = '1.12';
-      category.style.textTransform = 'none';
-      category.style.color = 'var(--color-of-category-text)';
-      // Задає стилі категоріям книг по кліку на категорію
-      categoryAll.style.fontWeight = '700';
-      categoryAll.style.lineHeight = '1.33';
-      categoryAll.style.textTransform = 'uppercase';
-      categoryAll.style.color = 'var(--color-of-categoryAll-text)';
-    } else {
-      category.style.fontWeight = '400';
-      category.style.lineHeight = '1.12';
-      category.style.textTransform = 'none';
-      category.style.color = 'var(--color-of-category-text)';
-    }
+    const isSelectedCategory = category.textContent === selectedCategory;
+
+    category.style.fontWeight = isSelectedCategory ? '700' : '400';
+    category.style.lineHeight = isSelectedCategory ? '1.33' : '1.12';
+    category.style.textTransform = isSelectedCategory ? 'uppercase' : 'none';
+    category.style.color = isSelectedCategory
+      ? 'var(--color-of-categoryAll-text)'
+      : 'var(--color-of-category-text)';
   });
+
+  categoryAll.style.fontWeight = '700';
+  categoryAll.style.lineHeight = '1.33';
+  categoryAll.style.textTransform = 'uppercase';
+  categoryAll.style.color = 'var(--color-of-categoryAll-text)';
 }
-// Зміна кольору назви категорії та заголовку в блоці "Категорії"
+
 function changeCategoryColor(selectedCategory) {
   const allCategories = document.querySelectorAll('.category_button');
   const categoryAll = document.querySelector('.category_all');
 
-  // Меняем цвет для выбранной категории та заголовку категорії
   allCategories.forEach(category => {
-    if (category.textContent === selectedCategory) {
-      // Задає стилі "Категорії книг" по кліку на категорію
-      category.style.fontWeight = '700';
-      category.style.lineHeight = '1.33';
-      category.style.textTransform = 'uppercase';
-      category.style.textAlign = 'left';
-      category.style.color = 'var(--color-of-categoryAll-text)';
-      // Задає стилі "category_all" по кліку на категорію
-      categoryAll.style.fontWeight = '400';
-      categoryAll.style.lineHeight = '1.12';
-      categoryAll.style.textTransform = 'none';
-      categoryAll.style.color = 'var(--color-of-category-text)';
-    } else {
-      category.style.fontWeight = '400';
-      category.style.lineHeight = '1.12';
-      category.style.textTransform = 'none';
-      category.style.color = 'var(--color-of-category-text)';
-    }
+    const isSelectedCategory = category.textContent === selectedCategory;
+
+    category.style.fontWeight = isSelectedCategory ? '700' : '400';
+    category.style.lineHeight = isSelectedCategory ? '1.33' : '1.12';
+    category.style.textTransform = isSelectedCategory ? 'uppercase' : 'none';
+    category.style.textAlign = isSelectedCategory ? 'left' : '';
+    category.style.color = isSelectedCategory
+      ? 'var(--color-of-categoryAll-text)'
+      : 'var(--color-of-category-text)';
   });
+
+  categoryAll.style.fontWeight = '400';
+  categoryAll.style.lineHeight = '1.12';
+  categoryAll.style.textTransform = 'none';
+  categoryAll.style.color = 'var(--color-of-category-text)';
 }
 
 // Кліки в категорії Бесцелери по назві категорії книг !!!
