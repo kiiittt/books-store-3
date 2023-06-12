@@ -77,7 +77,8 @@ const userSignUp = (name, email, password) => {
 const userSignIn = (email, password) => {
   signInWithEmailAndPassword(auth, email, password)
     .then(userSignUpCreate => {
-      modalWindow.classList.add('is-hidden');
+      backdropAuth.classList.add('is-hidden');
+      modalWindow.classList.remove('is-hidden');
       console.log(userSignUpCreate);
     })
     .catch(error => {
