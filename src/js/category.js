@@ -133,13 +133,12 @@ function separatesWordsAddToTitle(event) {
 
   const arrrayCurrentCategory = currentCategory.split(' ');
 
+  // замінив arrrayCurrentCategory.length - 1 нa .at(-1) новий синтаксис, працює так само але краще ще не чіпати
   const lastElementBookTitle = arrrayCurrentCategory.at(-1);
   const arrrayWordsOfCategoryTitle = arrrayCurrentCategory.slice(
     0,
-    arrrayCurrentCategory.at(-1)
+    arrrayCurrentCategory.length - 1
   );
-
-  // замінив arrrayCurrentCategory.length - 1 нa .at(-1) новий синтаксис, працює так само але краще ще не чіпати
 
   const wordsOfCategoryTitle = arrrayWordsOfCategoryTitle.join(' ');
   categoryBooksTitle.textContent = wordsOfCategoryTitle;

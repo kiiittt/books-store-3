@@ -190,7 +190,7 @@ function separatesWordsAddToTitle(event) {
   const lastElementBookTitle = arrrayCurrentCategory.at(-1);
   const arrrayWordsOfCategoryTitle = arrrayCurrentCategory.slice(
     0,
-    arrrayCurrentCategory.at(-1)
+    arrrayCurrentCategory.length - 1
   );
 
   const wordsOfCategoryTitle = arrrayWordsOfCategoryTitle.join(' ');
