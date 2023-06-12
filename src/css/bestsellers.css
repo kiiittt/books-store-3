@@ -1,3 +1,17 @@
+.category_button {
+  font-weight: 400;
+  line-height: 1.12;
+  text-transform: none;
+  color: var(--color-of-category-text);
+}
+
+.category_all {
+  font-weight: 700;
+  line-height: 1.33;
+  text-transform: uppercase;
+  color: var(--color-of-categoryAll-text);
+}
+
 .bestsellers-area {
   display: flex;
   flex-direction: column;
@@ -42,6 +56,7 @@
   color: var(--main-bg-color);
   margin-bottom: 18px;
 }
+
 .bestsellers-book-item {
   display: flex;
   flex-direction: column;
@@ -49,8 +64,8 @@
   margin-bottom: 8px;
 }
 
-.bestsellers-book-item:hover{
-  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.38);
+.bestsellers-book-item:hover {
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.38);
 }
 
 .bestsellers-book-cover {
@@ -142,6 +157,7 @@
     height: 366px;
     margin-bottom: 20px;
   }
+
   .bestsellers-book-item:not(:last-child) {
     margin-right: 25px;
   }
@@ -178,11 +194,13 @@
     color: #b4afaf;
     margin-bottom: 18px;
   }
+
   .bestsellers-book-item {
     width: 180px;
     height: 306px;
     margin-bottom: 24px;
   }
+
   .bestsellers-book-cover {
     width: 180px;
     height: 256px;
@@ -193,37 +211,39 @@
 
 
 @media screen and (min-width: 1440px) {
-.test-wraper {
-  overflow: hidden;
-  position: relative;
-  
-}
-.test-wraper::before {
-  pointer-events: none;
-}
-.bestsellers-book-item:hover .test-wraper::before{
-  transform: translateY(0);
-}
+  .test-wraper {
+    overflow: hidden;
+    position: relative;
 
-.test-wraper::before {
-  content: 'QUICK VIEW';
-  position: absolute;
-  left: 0px;
-  top: 186px;
-  z-index: 5;
-  width: 179px;
-  height: 70px;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 1.285;
-  letter-spacing: -0.04em;
-  text-transform: uppercase;
-  color: #111;
-  background: #eac645;
-  border-radius: 0px 0px 8px 8px;
-  padding: 26px 50px;
+  }
 
-  transform: translateY(100%);
-  transition: transform 100ms cubic-bezier(0.4, 0, 0.2, 1);
-}  
+  .test-wraper::before {
+    pointer-events: none;
+  }
+
+  .bestsellers-book-item:hover .test-wraper::before {
+    transform: translateY(0);
+  }
+
+  .test-wraper::before {
+    content: 'QUICK VIEW';
+    position: absolute;
+    left: 0px;
+    top: 186px;
+    z-index: 5;
+    width: 179px;
+    height: 70px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.285;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    color: #111;
+    background: #eac645;
+    border-radius: 0px 0px 8px 8px;
+    padding: 26px 50px;
+
+    transform: translateY(100%);
+    transition: transform 100ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
 }

@@ -87,6 +87,17 @@
 	color: var(--color-for-btn-auth-modal-text);
 }
 
+.form--btn-submit:hover,
+.form--btn-submit:focus {
+	background-color: #e9cd68;
+	transition: 250ms ease 50ms;
+}
+
+.form--btn-submit:active {
+	background-color: #eac645;
+	transition: var(--trans-speed-3);
+}
+
 .signup-and-signin {
 	display: flex;
 	justify-content: center;
@@ -106,11 +117,17 @@
 	color: var(--color-btn-uo-in);
 }
 
-.form-btn-auth-style+.form-btn-auth-style {
-	padding-left: 20px;
+.form-btn-auth-style:hover,
+.form-btn-auth-style:focus {
+	color: #6c6c77;
+	transition: var(--trans-speed-3);
 }
 
-.active {
+.form-btn-auth-style+.form-btn-auth-style {
+	margin-left: 20px;
+}
+
+.form-btn-auth-style.active {
 	font-family: 'DM Sans';
 	font-weight: 700;
 	color: #4F2EE8;
