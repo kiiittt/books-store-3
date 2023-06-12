@@ -34,19 +34,13 @@ let booksNumber = 0;
 let titleLength = 0;
 
 function getBooksNumber() {
-  if (window.screen.availWidth < 768) {
-    booksNumber = 1;
-    titleLength = 30;
-  } else if (
-    window.screen.availWidth >= 768 &&
-    window.screen.availWidth < 1440
-  ) {
-    booksNumber = 3;
-    titleLength = 20;
-  } else {
-    booksNumber = 5;
-    titleLength = 15;
-  }
+  booksNumber =
+    window.screen.availWidth < 768
+      ? 1
+      : window.screen.availWidth >= 768 && window.screen.availWidth < 1440
+      ? 3
+      : 5;
+  titleLength = booksNumber === 1 ? 30 : booksNumber === 3 ? 20 : 15;
 }
 
 function bestsellersMarkup(bestsellers) {
@@ -193,12 +187,12 @@ function separatesWordsAddToTitle(event) {
 
   const arrrayCurrentCategory = currentCategory.split(' ');
 
-  const lastElementBookTitle =
-    arrrayCurrentCategory[arrrayCurrentCategory.length - 1];
+  const lastElementBookTitle = arrrayCurrentCategory.at(-1);
   const arrrayWordsOfCategoryTitle = arrrayCurrentCategory.slice(
     0,
-    arrrayCurrentCategory.length - 1
+    arrrayCurrentCategory.at(-1)
   );
+
   const wordsOfCategoryTitle = arrrayWordsOfCategoryTitle.join(' ');
   categoryBooksTitle.textContent = wordsOfCategoryTitle;
   const textEl = document.createElement('span');
@@ -287,25 +281,20 @@ function changeCategoryColor(selectedCategory) {
   const categoryAll = document.querySelector('.category_all');
 
   allCategories.forEach(category => {
-    if (category.textContent === selectedCategory) {
-      // Задає стилі "Категорії книг" по кліку на категорію
-      category.style.fontWeight = '700';
-      category.style.lineHeight = '1.33';
-      category.style.textTransform = 'uppercase';
-      category.style.textAlign = 'left';
-      category.style.color = 'var(--color-of-categoryAll-text)';
-      // Задає стилі "category_all" по кліку на категорію
-      categoryAll.style.fontWeight = '400';
-      categoryAll.style.lineHeight = '1.12';
-      categoryAll.style.textTransform = 'none';
-      categoryAll.style.color = 'var(--color-of-category-text)';
-    } else {
-      category.style.fontWeight = '400';
-      category.style.lineHeight = '1.12';
-      category.style.textTransform = 'none';
-      category.style.color = 'var(--color-of-category-text)';
-    }
+    const isSelectedCategory = category.textContent === selectedCategory;
+    category.style.fontWeight = isSelectedCategory ? '700' : '400';
+    category.style.lineHeight = isSelectedCategory ? '1.33' : '1.12';
+    category.style.textTransform = isSelectedCategory ? 'uppercase' : 'none';
+    category.style.textAlign = isSelectedCategory ? 'left' : '';
+    category.style.color = isSelectedCategory
+      ? 'var(--color-of-categoryAll-text)'
+      : 'var(--color-of-category-text)';
   });
+
+  categoryAll.style.fontWeight = '400';
+  categoryAll.style.lineHeight = '1.12';
+  categoryAll.style.textTransform = 'none';
+  categoryAll.style.color = 'var(--color-of-category-text)';
 }
 
 addShopingBtn.addEventListener('click', addToLocalStorage);

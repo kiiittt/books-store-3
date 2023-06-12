@@ -17,12 +17,13 @@ const checkAuthOpen = document.querySelector('.input-psw-open');
 const iconLookPasswork = document.querySelector('.icon-lock-auth');
 const iconEye = document.querySelector('.icon-eye');
 const iconEyeSlash = document.querySelector('.icon-eye-slash');
+const svgEye = document.querySelector('.svg-eye');
 
 passwordInput.addEventListener('input', e => {
-  passwordInput1(e);
+  passwordInputToggle(e);
 });
 
-function passwordInput1(e) {
+function passwordInputToggle(e) {
   const valuePassword = e.target.value;
   console.log(valuePassword);
 

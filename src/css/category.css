@@ -5,6 +5,7 @@
   --color-of-category-text: rgba(17, 17, 17, 0.6);
   --color-of-h2-category: #111111;
 }
+
 @media (prefers-color-scheme: dark) {
   :root:not([theme='light']) {
     --main-bg-color: #202024;
@@ -34,6 +35,7 @@
     margin-right: 0;
   }
 }
+
 .category_books_container {
   display: none;
   margin-right: auto;
@@ -46,6 +48,7 @@
     margin-top: 110px;
   }
 }
+
 .category_list {
   list-style: none;
   display: flex;
@@ -59,19 +62,20 @@
 
   overflow: scroll;
   overflow-x: hidden;
+
   @media screen and (min-width: 768px) {
     width: 337px;
     height: 472px;
     gap: 32px;
     margin: 0;
   }
+
   @media screen and (min-width: 1440px) {
     width: 356px;
   }
 }
 
-@media screen and (max-width: 768px) {
-}
+@media screen and (max-width: 768px) {}
 
 @media screen and (min-width: 1440px) {
   .category_list::-webkit-scrollbar {
@@ -114,6 +118,7 @@
   letter-spacing: -0.02em;
   background-color: var(--main-bg-color);
   color: var(--color-of-category-text);
+
   @media screen and (min-width: 768px) {
     font-size: 18px;
     line-height: 1.33;
@@ -139,6 +144,7 @@
 
   background-color: var(--main-bg-color);
   color: var(--color-of-categoryAll-text);
+
   @media screen and (min-width: 768px) {
     font-size: 18px;
     line-height: 1.33;
@@ -154,6 +160,7 @@
   line-height: 1.18;
   letter-spacing: -0.04em;
   color: var(--color-of-h2-category);
+
   @media screen and (min-width: 768px) {
     font-size: 48px;
     line-height: 1.08;
@@ -171,6 +178,7 @@
     gap: 25px;
     flex-wrap: wrap;
   }
+
   @media screen and (min-width: 1440px) {
     flex-wrap: wrap;
     gap: 23px;
@@ -184,18 +192,20 @@
     width: 218px;
     margin-bottom: 0;
   }
+
   @media screen and (min-width: 1440px) {
     width: 180px;
   }
 }
 
-.category_books_items > .book-text {
+.category_books_items>.book-text {
   color: var(--color-of-h2-category);
 }
+
 .category_books_items:hover .test-wraper::before {
   transform: translateY(0);
 }
 
-.category_books_items:hover{
-    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.38);
+.category_books_items:hover {
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.38);
 }

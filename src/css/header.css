@@ -593,10 +593,10 @@ input:checked+.switch-slider:before {
   }
 
   .main-menu-tablet-list__icon-bag {
-    width: 14px;
-    height: 17px;
-    margin-left: 7px;
-    fill: #111111;
+    width: 13.33px;
+    height: 16.67px;
+    margin-left: 7.33px;
+    fill: var(--icon-close);
     transition: var(--trans-speed-3);
   }
 
