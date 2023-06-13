@@ -1,3 +1,8 @@
+import {
+  fetchBooksByCategory,
+  fetchCategorys,
+  fetchBookDetails,
+} from './APi/APi.js';
 import { Spiner } from './spinner';
 const spinner = new Spiner();
 
@@ -12,12 +17,11 @@ const categoryAll = document.querySelector('.category_all');
 
 // !!! Блок Категорії !!!
 // Надсилає запит на отримання списку категорій
-async function fetchCategorys() {
-  const response = await fetch(
-    'https://books-backend.p.goit.global/books/category-list'
-  );
-  return await response.json();
-}
+
+fetchCategorys()
+  .then(category => renderCategoryList(category))
+  .catch(error => console.log(error));
+
 // відмальовує розмітку блоку категорії
 function renderCategoryList(categorys) {
   const markup = categorys
@@ -31,10 +35,6 @@ function renderCategoryList(categorys) {
     .join('');
   categoryList.insertAdjacentHTML('beforeend', markup);
 }
-
-fetchCategorys()
-  .then(category => renderCategoryList(category))
-  .catch(error => console.log(error));
 
 // Клік по категорії
 
@@ -51,10 +51,7 @@ function onButtonClick(event) {
   clearBooksList();
   spinner.show();
 
-  return fetch(
-    `https://books-backend.p.goit.global/books/category?category=${event.target.textContent}`
-  )
-    .then(response => response.json())
+  return fetchBooksByCategory(event.target.textContent)
     .then(book => {
       renderBooksList(book, event);
       spinner.hide();
@@ -208,10 +205,7 @@ function onTitleBestsellersClick(event) {
   changeCategoryColor(selectedCategory);
   clearBooksList();
 
-  return fetch(
-    `https://books-backend.p.goit.global/books/category?category=${event.target.textContent}`
-  )
-    .then(response => response.json())
+  return fetchBooksByCategory(event.target.textContent)
     .then(book => renderBooksList(book, event))
     .catch(error => console.log(error));
 }
@@ -249,8 +243,7 @@ function openBookDetails(event) {
 
   modalEl.innerHTML = '<p>Loading...</p>';
 
-  return fetch(`https://books-backend.p.goit.global/books/${bookId}`)
-    .then(response => response.json())
+  fetchBookDetails(bookId)
     .then(book => {
       renderBookModal(book);
       spinner.hide();

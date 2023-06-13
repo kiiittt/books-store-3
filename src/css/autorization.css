@@ -185,8 +185,6 @@
 	position: absolute;
 	top: 104px;
 	left: 20px;
-	width: 184px;
-	height: 45px;
 	background-color: transparent;
 	border-color: transparent;
 	font-family: 'DM Sans';
@@ -275,7 +273,34 @@
 	opacity: 0;
 }
 
+.user-photo {
+	width: 37px;
+	height: 37px;
+}
+
+.drop-down-arrow {
+	opacity: 0;
+}
+
+.container-svg-auth {
+	display: flex;
+	align-items: center;
+}
+
+.user-photo {
+	margin-right: 9px;
+}
+
 @media screen and (min-width: 768px) {
+	.drop-down-arrow {
+		opacity: 1;
+		margin-left: 9px;
+	}
+
+	.container-svg-auth {
+		justify-content: space-evenly;
+	}
+
 	.btn-profile {
 		margin-top: 48px;
 		position: static;
@@ -303,9 +328,6 @@
 		gap: 90px;
 	}
 
-	.btn-profile.is-hidden-menu {
-		display: block;
-	}
 
 	.btn-signup {
 		position: static;
@@ -385,6 +407,7 @@
 		font-style: normal;
 		color: var(--icon-close);
 		font-size: 23px;
+		padding-top: 3.6%;
 	}
 
 	.form--btn-submit {

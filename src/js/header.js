@@ -77,13 +77,13 @@ const mainMenuMobileLinks = document.querySelectorAll(
 );
 
 mainMenuTabletLinks.forEach(link => {
-  if (link.href.includes(activePage)) {
+  if (link.href.endsWith(activePage)) {
     link.classList.add('current');
   }
 });
 
 mainMenuMobileLinks.forEach(link => {
-  if (link.href.includes(activePage)) {
+  if (link.href.endsWith(activePage)) {
     link.classList.add('current');
   }
 });
