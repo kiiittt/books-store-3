@@ -1,3 +1,8 @@
+import {
+  fetchBestsellers,
+  fetchCategoryBooks,
+  fetchBookDetails,
+} from './APi/APi.js';
 import { Spiner } from './spinner';
 
 const spinner = new Spiner();
@@ -8,16 +13,13 @@ const bestsellersList = document.querySelector('.bestsellers-list');
 let bestsellersArray = [];
 const getBestseller = async () => {
   spinner.show();
-  const response = await fetch(
-    `https://books-backend.p.goit.global/books/top-books`
-  );
-  if (response.ok) {
-    const bestsellers = await response.json();
+  try {
+    const bestsellers = await fetchBestsellers();
     bestsellersArray = bestsellers;
     getBooksNumber();
     bestsellersMarkup(bestsellersArray);
-  } else {
-    console.error('Error fetching books:', response.status);
+  } catch {
+    console.error(error);
   }
   spinner.hide();
 };
@@ -34,14 +36,25 @@ let booksNumber = 0;
 let titleLength = 0;
 
 function getBooksNumber() {
-  booksNumber =
-    window.screen.availWidth < 768
-      ? 1
-      : window.screen.availWidth >= 768 && window.screen.availWidth < 1440
-      ? 3
-      : 5;
-  titleLength = booksNumber === 1 ? 30 : booksNumber === 3 ? 20 : 15;
+  const screenWidth = window.innerWidth;
+
+  if (screenWidth < 768) {
+    booksNumber = 1;
+    titleLength = 30;
+  } else if (screenWidth >= 768 && screenWidth < 1440) {
+    booksNumber = 3;
+    titleLength = 20;
+  } else {
+    booksNumber = 5;
+    titleLength = 15;
+  }
 }
+
+window.addEventListener('resize', () => {
+  clearBestsellers();
+  getBooksNumber();
+  bestsellersMarkup(bestsellersArray);
+});
 
 function bestsellersMarkup(bestsellers) {
   if (!bestsellers || bestsellers.length === 0) {
@@ -137,10 +150,7 @@ function openMoreBooks(event) {
 
   spinner.show();
 
-  return fetch(
-    `https://books-backend.p.goit.global/books/category?category=${bookCategory}`
-  )
-    .then(response => response.json())
+  fetchCategoryBooks(bookCategory)
     .then(book => {
       renderBooksList(book, event);
       spinner.hide();
@@ -234,8 +244,7 @@ function openBookDetails(event) {
 
   modalEl.innerHTML = '<p>Loading...</p>';
 
-  fetch(`https://books-backend.p.goit.global/books/${bookId}`)
-    .then(response => response.json())
+  fetchBookDetails(bookId)
     .then(book => {
       renderBookModal(book);
       spinner.hide();
@@ -245,6 +254,7 @@ function openBookDetails(event) {
       spinner.hide();
     });
 }
+
 let selectedBook = null;
 
 function renderBookModal(book) {
