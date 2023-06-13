@@ -3,6 +3,10 @@ import {
   fetchCategorys,
   fetchBookDetails,
 } from './APi/APi.js';
+import { modalBookTemplate } from './component/modal/modal_book';
+import { generateBookMarkup } from './component/generate_book/generateBookTemplate';
+import { changeCategoryColor } from './component/changeColor/styleCategorogyColor';
+import { changeCategoryAllColor } from './component/changeColor/styleCategorogyColorAll';
 import { Spiner } from './spinner';
 const spinner = new Spiner();
 
@@ -77,31 +81,10 @@ function renderBooksList(books, event) {
   // Перевірка на наявність книг в масиві
   checksBooks(books);
   // Відмальовка картки книги
-  const markup = books
-    .map(({ book_image, title, author, _id }) => {
-      return `<li class = "category_books_items">
-          <div class="test-wraper">
-          <img src='${book_image}' alt='book-cover' class='bestsellers-book-cover' data-id="${_id}">
-          </div>
-             <p class='bestsellers-book-title book-text'>${formatBookName(
-               title,
-               15
-             )}</p>
-             <p class='bestsellers-book-author'>${author}</p></li>
-      `;
-    })
-    .join('');
+  const markup = books.map(book => generateBookMarkup(book)).join('');
   categoryBooks.insertAdjacentHTML('beforeend', markup);
 }
-function formatBookName(message, maxLength) {
-  let result;
-  if (message.length <= maxLength) {
-    result = message.slice(0, message.length);
-  } else {
-    result = message.slice(0, maxLength) + '...';
-  }
-  return result;
-}
+
 // Перевірка на наявність книг в масиві
 function checksBooks(books) {
   if (books.length === 0) {
@@ -130,7 +113,6 @@ function separatesWordsAddToTitle(event) {
 
   const arrrayCurrentCategory = currentCategory.split(' ');
 
-  // замінив arrrayCurrentCategory.length - 1 нa .at(-1) новий синтаксис, працює так само але краще ще не чіпати
   const lastElementBookTitle = arrrayCurrentCategory.at(-1);
   const arrrayWordsOfCategoryTitle = arrrayCurrentCategory.slice(
     0,
@@ -143,49 +125,6 @@ function separatesWordsAddToTitle(event) {
   textEl.classList = 'last_word_category_title';
   textEl.textContent = lastElementBookTitle;
   categoryBooksTitle.append(textEl);
-}
-// Змінює колір кнопки All Categories
-function changeCategoryAllColor(selectedCategory) {
-  const allCategories = document.querySelectorAll('.category_button');
-  const categoryAll = document.querySelector('.category_all');
-
-  allCategories.forEach(category => {
-    const isSelectedCategory = category.textContent === selectedCategory;
-
-    category.style.fontWeight = isSelectedCategory ? '700' : '400';
-    category.style.lineHeight = isSelectedCategory ? '1.33' : '1.12';
-    category.style.textTransform = isSelectedCategory ? 'uppercase' : 'none';
-    category.style.color = isSelectedCategory
-      ? 'var(--color-of-categoryAll-text)'
-      : 'var(--color-of-category-text)';
-  });
-
-  categoryAll.style.fontWeight = '700';
-  categoryAll.style.lineHeight = '1.33';
-  categoryAll.style.textTransform = 'uppercase';
-  categoryAll.style.color = 'var(--color-of-categoryAll-text)';
-}
-
-function changeCategoryColor(selectedCategory) {
-  const allCategories = document.querySelectorAll('.category_button');
-  const categoryAll = document.querySelector('.category_all');
-
-  allCategories.forEach(category => {
-    const isSelectedCategory = category.textContent === selectedCategory;
-
-    category.style.fontWeight = isSelectedCategory ? '700' : '400';
-    category.style.lineHeight = isSelectedCategory ? '1.33' : '1.12';
-    category.style.textTransform = isSelectedCategory ? 'uppercase' : 'none';
-    category.style.textAlign = isSelectedCategory ? 'left' : '';
-    category.style.color = isSelectedCategory
-      ? 'var(--color-of-categoryAll-text)'
-      : 'var(--color-of-category-text)';
-  });
-
-  categoryAll.style.fontWeight = '400';
-  categoryAll.style.lineHeight = '1.12';
-  categoryAll.style.textTransform = 'none';
-  categoryAll.style.color = 'var(--color-of-category-text)';
 }
 
 // Кліки в категорії Бесцелери по назві категорії книг !!!
@@ -255,21 +194,5 @@ function openBookDetails(event) {
 }
 
 function renderBookModal(book) {
-  modalEl.innerHTML = `<img class="img-modal" src="${book.book_image}" alt="Image cover" />
-      <div class="div-text-modal">
-        <h1 class="item-modal">${book.title}</h1>
-        <h3 class="autor-name-modal">${book.author}</h3>
-        <p class="description-modal">${book.description}</p>
-        <ul class="ul-modal">
-          <li class="li-modal">
-          <a href="${book.buy_links[0].url}" class="amazon-modal" target="_blank"></a>
-          </li>
-          <li class="li-modal">
-          <a href="${book.buy_links[1].url}" class="book-modal" target="_blank"></a>
-          </li>
-          <li class="li-modal">
-          <a href="${book.buy_links[4].url}" class="books-modal" target="_blank">
-          </a></li>
-        </ul>
-      </div>`;
+  modalEl.innerHTML = modalBookTemplate(book);
 }
