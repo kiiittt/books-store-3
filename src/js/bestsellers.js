@@ -3,6 +3,10 @@ import {
   fetchCategoryBooks,
   fetchBookDetails,
 } from './APi/APi.js';
+import { modalBookTemplate } from './component/modal/modal_book';
+import { formatBookName } from './component/maxLength/maxLength';
+import { generateBookMarkup } from './component/generate_book/generateBookTemplate';
+import { changeCategoryColor } from './component/changeColor/styleCategorogyColor';
 import { Spiner } from './spinner';
 
 const spinner = new Spiner();
@@ -49,12 +53,6 @@ function getBooksNumber() {
     titleLength = 15;
   }
 }
-
-window.addEventListener('resize', () => {
-  clearBestsellers();
-  getBooksNumber();
-  bestsellersMarkup(bestsellersArray);
-});
 
 function bestsellersMarkup(bestsellers) {
   if (!bestsellers || bestsellers.length === 0) {
@@ -107,25 +105,15 @@ function bestsellersMarkup(bestsellers) {
   addListener();
 }
 
-window.addEventListener('resize', e => {
+window.addEventListener('resize', () => {
   clearBestsellers();
   getBooksNumber();
-  // bestsellersMarkup(bestsellersArray);
+  bestsellersMarkup(bestsellersArray);
   getBestseller();
 });
 
 function clearBestsellers() {
   bestsellersList.innerHTML = '';
-}
-
-function formatBookName(message, maxLength) {
-  let result;
-  if (message.length <= maxLength) {
-    result = message.slice(0, message.length);
-  } else {
-    result = message.slice(0, maxLength) + '...';
-  }
-  return result;
 }
 
 const seeMoreBtn = document.querySelector('.bestsellers-list');
@@ -173,20 +161,7 @@ function renderBooksList(books, event) {
   // Перевірка на наявність книг в масиві
   checksBooks(books);
   // Відмальовка картки книги
-  const markup = books
-    .map(({ book_image, title, author, _id }) => {
-      return `<li class = "category_books_items">
-          <div class="test-wraper">
-          <img src='${book_image}' alt='book-cover' class='bestsellers-book-cover' data-id="${_id}">
-          </div>
-             <p class='bestsellers-book-title book-text'>${formatBookName(
-               title,
-               15
-             )}</p>
-             <p class='bestsellers-book-author'>${author}</p></li>
-      `;
-    })
-    .join('');
+  const markup = books.map(book => generateBookMarkup(book)).join('');
   categoryBooks.insertAdjacentHTML('beforeend', markup);
 }
 
@@ -258,23 +233,7 @@ function openBookDetails(event) {
 let selectedBook = null;
 
 function renderBookModal(book) {
-  modalEl.innerHTML = `<img class="img-modal" src="${book.book_image}" alt="Image cover" />
-      <div class="div-text-modal">
-        <h1 class="item-modal">${book.title}</h1>
-        <h3 class="autor-name-modal">${book.author}</h3>
-        <p class="description-modal">${book.description}</p>
-        <ul class="ul-modal">
-          <li class="li-modal">
-            <a href="${book.buy_links[0].url}" class="amazon-modal" target="_blank" data-book-id="${book._id}"></a>
-          </li>
-          <li class="li-modal">
-            <a href="${book.buy_links[1].url}" class="book-modal" target="_blank" data-book-id="${book._id}"></a>
-          </li>
-          <li class="li-modal">
-            <a href="${book.buy_links[4].url}" class="books-modal" target="_blank" data-book-id="${book._id}">
-          </a></li>
-        </ul>
-      </div>`;
+  modalEl.innerHTML = modalBookTemplate(book);
   selectedBook = book;
   if (books.find(book => book._id === selectedBook._id)) {
     addShopingBtn.textContent = 'REMOVE FROM THE SHOPPING LIST';
@@ -283,28 +242,6 @@ function renderBookModal(book) {
     addShopingBtn.textContent = 'ADD TO SHOPPING LIST';
     underModalBtnText.classList.add('visually-hidden');
   }
-}
-
-// Зміна кольору назви категорії та заголовку в блоці "Категорії"
-function changeCategoryColor(selectedCategory) {
-  const allCategories = document.querySelectorAll('.category_button');
-  const categoryAll = document.querySelector('.category_all');
-
-  allCategories.forEach(category => {
-    const isSelectedCategory = category.textContent === selectedCategory;
-    category.style.fontWeight = isSelectedCategory ? '700' : '400';
-    category.style.lineHeight = isSelectedCategory ? '1.33' : '1.12';
-    category.style.textTransform = isSelectedCategory ? 'uppercase' : 'none';
-    category.style.textAlign = isSelectedCategory ? 'left' : '';
-    category.style.color = isSelectedCategory
-      ? 'var(--color-of-categoryAll-text)'
-      : 'var(--color-of-category-text)';
-  });
-
-  categoryAll.style.fontWeight = '400';
-  categoryAll.style.lineHeight = '1.12';
-  categoryAll.style.textTransform = 'none';
-  categoryAll.style.color = 'var(--color-of-category-text)';
 }
 
 addShopingBtn.addEventListener('click', addToLocalStorage);
