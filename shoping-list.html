@@ -12,8 +12,8 @@
     
     
     
-    <script type="module" crossorigin src="/books-store-3/assets/auth-script-8e0a1f27.js"></script>
-    <link rel="stylesheet" href="/books-store-3/assets/auth-script-45624ee7.css">
+    <script type="module" crossorigin src="/books-store-3/assets/auth-script-24c85b55.js"></script>
+    <link rel="stylesheet" href="/books-store-3/assets/auth-script-eae8a797.css">
   </head>
 
   <body>
@@ -89,10 +89,17 @@
       <div class="user-info is-hidden-x is-hidden">
         <div class="user-content is-hidden-menu">
           <button class="btn-profile is-hidden-menu" role="button" aria-label="User Profile" type="button">
-            <span>
-              <!-- photos -->
-            </span>
-            User
+            <div class="container-svg-auth">
+              <svg class="user-photo" style="width: 37px; height:37px">
+                <use href="/books-store-3/assets/auth-profile-dea6c254.svg#icon-auth-user"></use>
+              </svg>
+              <span>
+                <!-- 'user' -->
+              </span>
+              <svg class="drop-down-arrow" style="width: 23px; height:26px">
+                <use href="/books-store-3/assets/auth-profile-dea6c254.svg#icon-down-drop"></use>
+              </svg>
+            </div>
           </button>
           <button id="signOutButton" class="sign-out-btn sign-out-btn-js is-hidden" aria-label="Log Out">Log out
             <span>
@@ -110,20 +117,22 @@
           <form id="authForm" class="auth-form-container" autocomplete="off">
             <div class="form-add">
               <div class="form-input">
-                <input type="text" class="form-input-name input-auth" placeholder="Name" name="name" required>
+                <input type="text" class="form-input-name input-auth" role="textbox" placeholder="Name" name="name"
+                  required>
                 <div class="error"></div>
               </div>
             </div>
             <div class="form-input">
-              <input type="email" class="input-auth" placeholder="Email" name="email" id="userEmail" required>
+              <input type="email" class="input-auth" role="textbox" placeholder="Email" name="email" id="userEmail"
+                required>
               <svg class="icon-mail-auth icon-input">
                 <use href="/books-store-3/assets/autorization-icon-d86cfaf5.svg#icon-mail"></use>
               </svg>
               <div class="error"></div>
             </div>
             <div class="form-input">
-              <input type="password" class="input-auth input-password-js" placeholder="Password" name="password"
-                id="userPassword" required minlength="8" />
+              <input type="password" class="input-auth input-password-js" role="textbox" placeholder="Password"
+                name="password" id="userPassword" required minlength="8" />
               <svg class="icon-lock-auth icon-input">
                 <use href="/books-store-3/assets/autorization-icon-d86cfaf5.svg#icon-lock"></use>
               </svg>
