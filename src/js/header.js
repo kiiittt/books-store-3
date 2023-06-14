@@ -68,27 +68,13 @@ themeToggleBtn.addEventListener('change', () => {
 });
 
 //Сторінка на якій ми перебуваємо
-const activePage = window.location.pathname;
-const mainMenuTabletLinks = document.querySelectorAll(
-  '.main-menu-tablet-list a'
-);
-const mainMenuMobileLinks = document.querySelectorAll(
-  '.main-menu-mobile-list a'
-);
+const activePage = document.querySelector('.main-menu-tablet-list').querySelectorAll('a');
 
-mainMenuTabletLinks.forEach(link => {
-  if (link.href.includes(activePage)) {
-    link.classList.add('current');
-  } else {
-    link.classList.remove('current');
+if (document.querySelector('.active-page') === null) {
+  for (let index = 0; index < activePage.length; index++) {
+    activePage[index].classList.toggle("current"); 
   }
-});
-
-mainMenuMobileLinks.forEach(link => {
-  if (link.href.includes(activePage)) {
-    link.classList.add('current');
-  }
-});
+}
 
 document
   .getElementById('open-button-menu')
