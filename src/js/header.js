@@ -69,10 +69,13 @@ themeToggleBtn.addEventListener('change', () => {
 
 //Сторінка на якій ми перебуваємо
 const activePage = document.querySelector('.main-menu-tablet-list').querySelectorAll('a');
+const activePageMobile = document.querySelector('.main-menu-mobile-list').querySelectorAll('a');
+
 
 if (document.querySelector('.active-page') === null) {
   for (let index = 0; index < activePage.length; index++) {
     activePage[index].classList.toggle("current"); 
+    activePageMobile[index].classList.toggle("current"); 
   }
 }
 
