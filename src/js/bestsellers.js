@@ -7,7 +7,7 @@ import { modalBookTemplate } from './component/modal/modal_book';
 import { formatBookName } from './component/maxLength/maxLength';
 import { generateBookMarkup } from './component/generate_book/generateBookTemplate';
 import { changeCategoryColor } from './component/changeColor/styleCategorogyColor';
-import { Spiner } from './spinner';
+import { Spiner } from './component/loader, sing-up/spinner';
 
 const spinner = new Spiner();
 

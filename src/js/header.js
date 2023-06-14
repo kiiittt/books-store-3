@@ -77,13 +77,15 @@ const mainMenuMobileLinks = document.querySelectorAll(
 );
 
 mainMenuTabletLinks.forEach(link => {
-  if (link.href.endsWith(activePage)) {
+  if (link.href.includes(activePage)) {
     link.classList.add('current');
+  } else {
+    link.classList.remove('current');
   }
 });
 
 mainMenuMobileLinks.forEach(link => {
-  if (link.href.endsWith(activePage)) {
+  if (link.href.includes(activePage)) {
     link.classList.add('current');
   }
 });

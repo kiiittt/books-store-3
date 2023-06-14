@@ -9,8 +9,8 @@
 <symbol id="icon-amazon" viewBox="0 0 99 32">
 <path d="M0 0.8h99.2v30.4h-99.2v-30.4z"></path>
 </symbol>
-<symbol xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" id="icon-cross">
-  <path stroke="#111" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 2 2 14M2 2l12 12"/>
+<symbol xmlns="http://www.w3.org/2000/svg" width="16" height="16" id="icon-cross">
+  <path stroke="var(--header-text-color)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 2 2 14M2 2l12 12"/>
 </symbol>
 <symbol id="icon-burger" viewBox="0 0 32 32">
 			<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.2857" d="M22.667 13.333h-18.667"></path>

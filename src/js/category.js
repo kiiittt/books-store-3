@@ -7,11 +7,10 @@ import { modalBookTemplate } from './component/modal/modal_book';
 import { generateBookMarkup } from './component/generate_book/generateBookTemplate';
 import { changeCategoryColor } from './component/changeColor/styleCategorogyColor';
 import { changeCategoryAllColor } from './component/changeColor/styleCategorogyColorAll';
-import { Spiner } from './spinner';
-const spinner = new Spiner();
+import { Spiner } from './component/loader, sing-up/spinner';
 
+const spinner = new Spiner();
 const categoryList = document.querySelector('.category_list');
-// const itemEl = document.querySelector('.item-category'); // оскільки не використовується закоментував
 const categoryBooks = document.querySelector('.category_books');
 const bestsellersContainer = document.querySelector('.bestsellers-area');
 const categoryBooksContainer = document.querySelector(
@@ -19,29 +18,25 @@ const categoryBooksContainer = document.querySelector(
 );
 const categoryAll = document.querySelector('.category_all');
 
-// !!! Блок Категорії !!!
-// Надсилає запит на отримання списку категорій
-
+// Category section | Запит на отримання списку категорій
 fetchCategorys()
   .then(category => renderCategoryList(category))
   .catch(error => console.log(error));
 
-// відмальовує розмітку блоку категорії
-function renderCategoryList(categorys) {
-  const markup = categorys
-    .map(({ list_name }) => {
-      return `
-          <li class="item-category">
-            <button type = "button" class="category_button">${list_name}</button>
-          </li>
-      `;
-    })
+// Рендеринг списку категорій
+function renderCategoryList(categories) {
+  const markup = categories
+    .map(category => `
+      <li class="item-category">
+        <button type="button" class="category_button">${category.list_name}</button>
+      </li>
+    `)
     .join('');
+
   categoryList.insertAdjacentHTML('beforeend', markup);
 }
 
-// Клік по категорії
-
+// Обробка кліку на кнопку категорії
 categoryList.addEventListener('click', onButtonClick);
 
 function onButtonClick(event) {
@@ -49,10 +44,9 @@ function onButtonClick(event) {
     return;
   }
 
-  const selectedCategory = event.target.textContent;
-
-  changeCategoryColor(selectedCategory);
+  changeCategoryColor(event.target.textContent);
   clearBooksList();
+
   spinner.show();
 
   return fetchBooksByCategory(event.target.textContent)
@@ -67,36 +61,33 @@ function onButtonClick(event) {
 }
 spinner.hide();
 
-// Очищення книг попередньої категорії
+// Очищення списку книг
 function clearBooksList() {
   categoryBooks.innerHTML = '';
 }
-// відмальовує розмітку книг по кліку на категорію
+
+// Рендеринг списку книг
 function renderBooksList(books, event) {
   bestsellersContainer.style.display = 'none';
   categoryBooksContainer.style.display = 'flex';
-  // присвоює ім'я категорії заголовку та колір
   separatesWordsAddToTitle(event);
-
-  // Перевірка на наявність книг в масиві
   checksBooks(books);
-  // Відмальовка картки книги
+
   const markup = books.map(book => generateBookMarkup(book)).join('');
   categoryBooks.insertAdjacentHTML('beforeend', markup);
 }
 
-// Перевірка на наявність книг в масиві
+// Перевірка наявності книг у списку
 function checksBooks(books) {
   if (books.length === 0) {
-    const message = document.createElement('p');
-    message.textContent = 'Oops, there is no books in this category.';
-    message.classList.add('no-books-message');
-    categoryBooks.appendChild(message);
+    categoryBooks.innerHTML = '<p class="no-books-message">Oops, there are no books in this category.</p>';
     return;
   }
 }
-// Перемикає категорії
+
+// Обробка кліку на кнопку "All Categories"
 categoryAll.addEventListener('click', onBtnClickChangeCategory);
+
 function onBtnClickChangeCategory(event) {
   bestsellersContainer.style.display = 'flex';
   categoryBooksContainer.style.display = 'none';
@@ -105,33 +96,29 @@ function onBtnClickChangeCategory(event) {
 
   changeCategoryAllColor(selectedCategory);
 }
-// Додає назву категорії у блок категорій а також задає колір тексту
+
+// Додавання назви категорії до заголовку та кольору
 function separatesWordsAddToTitle(event) {
   const categoryBooksTitle = document.querySelector('.category_books_title');
-
   const currentCategory = event.target.textContent;
-
   const arrrayCurrentCategory = currentCategory.split(' ');
+  const lastElementBookTitle = arrrayCurrentCategory.pop();
+  const wordsOfCategoryTitle = arrrayCurrentCategory.join(' ');
 
-  const lastElementBookTitle = arrrayCurrentCategory.at(-1);
-  const arrrayWordsOfCategoryTitle = arrrayCurrentCategory.slice(
-    0,
-    arrrayCurrentCategory.length - 1
-  );
-
-  const wordsOfCategoryTitle = arrrayWordsOfCategoryTitle.join(' ');
   categoryBooksTitle.textContent = wordsOfCategoryTitle;
   const textEl = document.createElement('span');
-  textEl.classList = 'last_word_category_title';
+  textEl.classList.add('last_word_category_title');
   textEl.textContent = lastElementBookTitle;
-  categoryBooksTitle.append(textEl);
+  categoryBooksTitle.appendChild(textEl);
 }
 
-// Кліки в категорії Бесцелери по назві категорії книг !!!
+
+// Обробка кліку на заголовок "Bestsellers"
 const bestsellersListEl = document.querySelector('.bestsellers-list');
 const bestsellersGeneralCategory = document.querySelector(
   '.bestsellers-general-category'
 );
+
 bestsellersListEl.addEventListener('click', onTitleBestsellersClick);
 
 function onTitleBestsellersClick(event) {
@@ -139,9 +126,7 @@ function onTitleBestsellersClick(event) {
     return;
   }
 
-  const selectedCategory = event.target.textContent;
-
-  changeCategoryColor(selectedCategory);
+  changeCategoryColor(event.target.textContent);
   clearBooksList();
 
   return fetchBooksByCategory(event.target.textContent)
@@ -149,21 +134,15 @@ function onTitleBestsellersClick(event) {
     .catch(error => console.log(error));
 }
 
-const closeModalBtnCategory = document.querySelector('.svg-close');
 const modalCategory = document.querySelector('[data-modal]');
 
 categoryBooksContainer.addEventListener('click', toggleModalOpen);
-// closeModalBtnCategory.addEventListener('click', toggleModal);
-
-// window.addEventListener('keydown', handleKeyDown);
 
 function toggleModalOpen(event) {
   if (event.target.className !== 'bestsellers-book-cover') {
     return;
   }
   modalCategory.classList.toggle('is-hidden');
-
-  // document.body.style.overflow = refs.modal.classList.contains("is-hidden") ? "" : "hidden";
 }
 
 const bookDetails = document.querySelectorAll('.bestsellers-list-item');

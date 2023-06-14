@@ -39,7 +39,8 @@
   padding: 0;
   height: 24px;
   width: 24px;
-  border: none;
+  border-color: transparent;
+  background-color: transparent;
   outline: none;
   cursor: pointer;
   color: var(--main-bg-color);
@@ -48,18 +49,11 @@
 .svg-close {
   height: 100%;
   width: 100%;
-  border-color: none;
   outline: none;
   cursor: pointer;
-  fill: var(--header-text-color);
   background-color: var(--main-bg-color);
 }
 
-.use-close {
-  height: 100%;
-  width: 100%;
-  fill: #111111;
-}
 
 .ul-modal {
   display: flex;
@@ -431,8 +425,8 @@
   font-family: 'DM Sans';
   font-weight: 400;
   font-size: 12px;
-  line-height: 117%;
+  line-height: 14px;
   text-align: center;
   letter-spacing: -0.04em;
-  color: rgba(17, 17, 17, 0.5);
+  color: var(--text-color-add-remove);
 }
