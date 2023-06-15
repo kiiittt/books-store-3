@@ -31,7 +31,6 @@ const modalWindow = document.querySelector('.modal-js');
 const backdropAuth = document.querySelector('.backdrop-auth');
 const formBtnSubmit = document.querySelector('.form--btn-submit');
 const btnProfile = document.querySelector('.btn-profile');
-const hederBurger = document.querySelector('#open-button-menu');
 
 // Перевірка стану аутентифікації
 const checkAuthState = () => {

@@ -146,6 +146,9 @@ function openMoreBooks(event) {
     .catch(error => {
       console.log(error);
       spinner.hide();
+    })
+    .finally(() => {
+      window.scrollTo({ top: 0 });
     });
 }
 // Очищення книг попередньої категорії

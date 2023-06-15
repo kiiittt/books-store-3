@@ -99,6 +99,7 @@ input:checked+.switch-slider:before {
   transform: translateX(20px);
 }
 
+
 /* Swith checkbox end */
 .open-mobile-menu-btn {
   width: 28px;

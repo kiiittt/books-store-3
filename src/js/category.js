@@ -115,9 +115,6 @@ function separatesWordsAddToTitle(event) {
 
 // Обробка кліку на заголовок "Bestsellers"
 const bestsellersListEl = document.querySelector('.bestsellers-list');
-const bestsellersGeneralCategory = document.querySelector(
-  '.bestsellers-general-category'
-);
 
 bestsellersListEl.addEventListener('click', onTitleBestsellersClick);
 
@@ -131,7 +128,10 @@ function onTitleBestsellersClick(event) {
 
   return fetchBooksByCategory(event.target.textContent)
     .then(book => renderBooksList(book, event))
-    .catch(error => console.log(error));
+    .catch(error => console.log(error))
+    .finally(() => {
+      window.scrollTo({ top: 0 });
+    });
 }
 
 const modalCategory = document.querySelector('[data-modal]');
