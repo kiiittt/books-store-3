@@ -64,10 +64,16 @@
 .li-modal {
   display: flex;
   align-items: center;
+  mix-blend-mode: luminosity;
+}
+
+
+.li-modal.amazon-modal-books {
+  filter: var(--color-amazon);
 }
 
 .li-modal:not(:last-child) {
-  margin-right: 20px;
+  padding-right: 20px;
 }
 
 .amazon-modal {
@@ -128,7 +134,7 @@
     max-height: 90vh;
     overflow-y: scroll;
     overflow-x: hidden;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%)scale(1);
     padding: 20px 40px;
     display: flex;
     flex-direction: column;
@@ -212,12 +218,20 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    opacity: 1;
+    transition: transform .25s cubic-bezier(.4, 0, .2, 1),
+      scale .25s cubic-bezier(.4, 0, .2, 1);
+    ;
+    transform: translate(-50%, -50%)scale(1);
     padding: 40px 20px;
     width: 579px;
     min-height: 465px;
     background: var(--main-bg-color);
     overflow-y: auto;
+  }
+
+  .modal.is-hidden {
+    transform: translate(-50%, -50%)scale(.6);
   }
 
   .div-close-modal {

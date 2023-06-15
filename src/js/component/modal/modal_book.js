@@ -5,7 +5,7 @@ export const modalBookTemplate =
         <h3 class="autor-name-modal">${book.author}</h3>
         <p class="description-modal">${book.description}</p>
         <ul class="ul-modal">
-          <li class="li-modal">
+          <li class="li-modal amazon-modal-books">
           <a href="${book.buy_links[0].url}" class="amazon-modal" target="_blank"></a>
           </li>
           <li class="li-modal">
