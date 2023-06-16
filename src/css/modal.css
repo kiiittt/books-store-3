@@ -219,8 +219,8 @@
     top: 50%;
     left: 50%;
     opacity: 1;
-    transition: transform .25s cubic-bezier(.4, 0, .2, 1),
-      scale .25s cubic-bezier(.4, 0, .2, 1);
+    transition: transform 250ms cubic-bezier(.4, 0, .2, 1),
+      scale 250ms cubic-bezier(.4, 0, .2, 1);
     ;
     transform: translate(-50%, -50%)scale(1);
     padding: 40px 20px;
@@ -230,8 +230,8 @@
     overflow-y: auto;
   }
 
-  .modal.is-hidden {
-    transform: translate(-50%, -50%)scale(.6);
+  .modal.is-hidden-style {
+    transform: translate(-50%, -50%)scale(.1);
   }
 
   .div-close-modal {

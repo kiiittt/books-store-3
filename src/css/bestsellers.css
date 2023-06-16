@@ -17,6 +17,13 @@
   flex-direction: column;
   width: 335px;
   margin: 0 auto;
+  padding-top: 40px;
+}
+
+@media screen and (min-width: 768px) {
+  .bestsellers-area {
+    padding-top: 0;
+  }
 }
 
 .bestsellers-main-title {

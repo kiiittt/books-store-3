@@ -13,119 +13,106 @@ body {
 }
 
 .support {
-    width: 335px;
+    max-width: 335px;
     height: 352px;
-    background: radial-gradient(183.6% 183.01% at 59.76% -23.42%, var(--color-suooort-ua) 18.03%, var(--color-suooort-ua-white) 100%);
-    box-shadow: 0px 10px 10px rgba(245, 245, 247, 0.1);
+    padding: 24px 40px 20px;
+    display: flex;
+    flex-direction: column;
     border-radius: 16px;
-    padding-top: 24px;
+    box-shadow: 0px 10px 10px #f5f5f71a;
+    background: radial-gradient(183.6% 183.01% at 59.76% -23.42%, var(--color-suooort-ua) 18.03%, var(--color-suooort-ua-white) 100%);
     user-select: none;
+
+}
+
+@media screen and (min-width: 768px) {
+    .support {
+        max-width: none;
+        width: 335px;
+        height: 472px;
+        padding: 24px 40px 14px;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .support {
+        width: 356px;
+        height: 490px;
+        padding: 24px 40px;
+    }
 }
 
 .support-title-wrapper {
-    display: inline-flex;
-    padding-left: 40px;
     margin-bottom: 40px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
 }
 
 .support-title {
     font-family: 'DM Sans', sans-serif;
     font-weight: 700;
     font-size: 28px;
-    line-height: 1.14;
+    line-height: calc(32 / 28);
     letter-spacing: -0.04em;
     color: #FFFFFF;
-    height: 32px;
-    width: 205px;
 }
 
-.support-title-icon {
-    margin-left: 12px;
+.swiper {
+    height: 188px;
+    margin-bottom: 16px;
+    overflow: hidden;
+}
+
+@media screen and (min-width: 768px) {
+    .swiper {
+        height: 292px;
+        margin-bottom: 32px;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .swiper {
+        margin-bottom: 40px;
+    }
 }
 
 .support-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
     display: flex;
     flex-direction: column;
-    width: 159px;
-    height: 188px;
-    margin-bottom: 16px;
-    margin-left: 40px;
-}
-
-.fund-number {
-    margin-right: 16px;
-    height: 18px;
-    font-family: 'DM Sans';
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 1.29;
-    letter-spacing: -0.04em;
-    color: #FFFFFF;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .support-list-item {
     display: flex;
+    gap: 16px;
     align-items: center;
-    height: 32px;
-}
-
-.support-list-item:not(:last-child) {
-    margin-bottom: 20px;
+    font-size: 14px;
+    line-height: 1.28571;
+    color: #fff;
 }
 
 .fund-link img {
     max-height: 32px;
     width: auto;
+    filter: grayscale(100%) invert(50%) brightness(200%);
 }
+
 
 .support-button {
-    height: 32px;
     width: 32px;
-    border-radius: 50%;
-    border: none;
-    cursor: pointer;
-    padding: 6px;
-    display: flex;
-    align-items: center;
+    height: 32px;
     margin: 0 auto;
-}
-
-.fund-logo {
-    transition-property: transform;
-    transition-duration: 500ms;
-}
-
-.fund-logo:hover {
-    transform: scale(1.2);
-}
-
-@media screen and (max-width: 768px) {
-    .support {
-        align-self: center;
-        margin-bottom: 40px;
-    }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 50%;
+    background-color: #fff;
 }
 
 @media screen and (min-width: 768px) {
-    .support {
-        height: 472px;
-    }
-
-    .support-list {
-        height: 292px;
-        margin-bottom: 32px;
-    }
-
-}
-
-@media screen and (min-width: 1440px) {
-    .support {
-        width: 356px;
+    .support__btn {
+        width: 38px;
+        height: 38px;
     }
 }
