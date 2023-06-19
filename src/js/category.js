@@ -21,6 +21,7 @@ booksApi
   .then(category => renderCategoryList(category))
   .catch(error => console.log(error));
 
+  
 // Рендеринг списку категорій
 function renderCategoryList(categories) {
   const markup = categories

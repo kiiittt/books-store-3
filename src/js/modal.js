@@ -22,6 +22,7 @@ function toggleModal() {
   refs.modal.classList.toggle('is-hidden');
 }
 
+
 function handleKeyDown(event) {
   if (event.key === 'Escape') {
     refs.modal.classList.add('is-hidden');

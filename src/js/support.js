@@ -33,7 +33,6 @@ const swiper = new Swiper('.swiper', {
 });
 
 swiper.update();
-
 let isLastSlide = false;
 
 const supportBtnClickHandler = () => {

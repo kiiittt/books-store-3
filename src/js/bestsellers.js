@@ -49,6 +49,7 @@ function getBooksNumber() {
   }
 }
 
+
 function bestsellersMarkup(bestsellers) {
   if (!bestsellers || bestsellers.length === 0) {
     return;

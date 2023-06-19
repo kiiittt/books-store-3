@@ -21,7 +21,6 @@
 })();
 
 /* Change icon burger*/
-
 document.getElementById('open-button-menu').addEventListener(
   'click',
   function (e) {
