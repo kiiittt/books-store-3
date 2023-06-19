@@ -16,7 +16,7 @@ const categoryBooksContainer = document.querySelector(
 const categoryAll = document.querySelector('.category_all');
 
 // Category section | Запит на отримання списку категорій
-await booksApi
+booksApi
   .fetchCategorys()
   .then(category => renderCategoryList(category))
   .catch(error => console.log(error));
@@ -39,7 +39,7 @@ function renderCategoryList(categories) {
 // Обробка кліку на кнопку категорії
 categoryList.addEventListener('click', onButtonClick);
 
-async function onButtonClick(event) {
+function onButtonClick(event) {
   if (event.target.className !== 'category_button') {
     return;
   }
@@ -49,13 +49,15 @@ async function onButtonClick(event) {
 
   spinner.show();
 
-  return await booksApi
+  booksApi
     .fetchBooksByCategory(event.target.textContent)
     .then(book => {
       renderBooksList(book, event);
+      spinner.hide();
     })
     .catch(error => {
       console.log(error);
+      spinner.hide();
     });
 }
 
@@ -121,7 +123,7 @@ const bestsellersGeneralCategory = document.querySelector(
 
 bestsellersListEl.addEventListener('click', onTitleBestsellersClick);
 
-async function onTitleBestsellersClick(event) {
+function onTitleBestsellersClick(event) {
   if (event.target.className !== 'bestsellers-general-category') {
     return;
   }
@@ -129,7 +131,7 @@ async function onTitleBestsellersClick(event) {
   changeCategoryColor(event.target.textContent);
   clearBooksList();
 
-  return await booksApi
+  booksApi
     .fetchBooksByCategory(event.target.textContent)
     .then(book => renderBooksList(book, event))
     .catch(error => console.log(error));
@@ -152,7 +154,7 @@ categoryBooks.addEventListener('click', openBookDetails);
 
 const modalEl = document.querySelector('.img-and-description');
 
-async function openBookDetails(event) {
+function openBookDetails(event) {
   if (event.target.className !== 'bestsellers-book-cover') {
     return;
   }
@@ -162,7 +164,7 @@ async function openBookDetails(event) {
 
   modalEl.innerHTML = '<p>Loading...</p>';
 
-  await booksApi
+  booksApi
     .fetchBookDetails(bookId)
     .then(book => {
       renderBookModal(book);
