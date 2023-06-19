@@ -144,11 +144,6 @@ input:checked+.switch-slider:before {
   transform: translateY(0);
 }
 
-.main-menu-tablte-shoping-list.is-hidden {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-}
 
 .mobile-menu-wrapper {
   position: relative;
