@@ -1,15 +1,12 @@
-import {
-  fetchBooksByCategory,
-  fetchCategorys,
-  fetchBookDetails,
-} from './APi/APi.js';
+import { booksApi } from './APi/APi.js';
 import { modalBookTemplate } from './component/modal/modal_book';
 import { generateBookMarkup } from './component/generate_book/generateBookTemplate';
 import { changeCategoryColor } from './component/changeColor/styleCategorogyColor';
 import { changeCategoryAllColor } from './component/changeColor/styleCategorogyColorAll';
-import { Spiner } from './component/loader, sing-up/spinner';
+import { Spiner } from './component/loader-sing-up/spinner';
 
 const spinner = new Spiner();
+
 const categoryList = document.querySelector('.category_list');
 const categoryBooks = document.querySelector('.category_books');
 const bestsellersContainer = document.querySelector('.bestsellers-area');
@@ -19,18 +16,21 @@ const categoryBooksContainer = document.querySelector(
 const categoryAll = document.querySelector('.category_all');
 
 // Category section | Запит на отримання списку категорій
-fetchCategorys()
+await booksApi
+  .fetchCategorys()
   .then(category => renderCategoryList(category))
   .catch(error => console.log(error));
 
 // Рендеринг списку категорій
 function renderCategoryList(categories) {
   const markup = categories
-    .map(category => `
+    .map(
+      category => `
       <li class="item-category">
         <button type="button" class="category_button">${category.list_name}</button>
       </li>
-    `)
+    `
+    )
     .join('');
 
   categoryList.insertAdjacentHTML('beforeend', markup);
@@ -39,7 +39,7 @@ function renderCategoryList(categories) {
 // Обробка кліку на кнопку категорії
 categoryList.addEventListener('click', onButtonClick);
 
-function onButtonClick(event) {
+async function onButtonClick(event) {
   if (event.target.className !== 'category_button') {
     return;
   }
@@ -49,16 +49,16 @@ function onButtonClick(event) {
 
   spinner.show();
 
-  return fetchBooksByCategory(event.target.textContent)
+  return await booksApi
+    .fetchBooksByCategory(event.target.textContent)
     .then(book => {
       renderBooksList(book, event);
-      spinner.hide();
     })
     .catch(error => {
       console.log(error);
-      spinner.hide();
     });
 }
+
 spinner.hide();
 
 // Очищення списку книг
@@ -80,7 +80,8 @@ function renderBooksList(books, event) {
 // Перевірка наявності книг у списку
 function checksBooks(books) {
   if (books.length === 0) {
-    categoryBooks.innerHTML = '<p class="no-books-message">Oops, there are no books in this category.</p>';
+    categoryBooks.innerHTML =
+      '<p class="no-books-message">Oops, there are no books in this category.</p>';
     return;
   }
 }
@@ -112,13 +113,15 @@ function separatesWordsAddToTitle(event) {
   categoryBooksTitle.appendChild(textEl);
 }
 
-
 // Обробка кліку на заголовок "Bestsellers"
 const bestsellersListEl = document.querySelector('.bestsellers-list');
+const bestsellersGeneralCategory = document.querySelector(
+  '.bestsellers-general-category'
+);
 
 bestsellersListEl.addEventListener('click', onTitleBestsellersClick);
 
-function onTitleBestsellersClick(event) {
+async function onTitleBestsellersClick(event) {
   if (event.target.className !== 'bestsellers-general-category') {
     return;
   }
@@ -126,12 +129,10 @@ function onTitleBestsellersClick(event) {
   changeCategoryColor(event.target.textContent);
   clearBooksList();
 
-  return fetchBooksByCategory(event.target.textContent)
+  return await booksApi
+    .fetchBooksByCategory(event.target.textContent)
     .then(book => renderBooksList(book, event))
-    .catch(error => console.log(error))
-    .finally(() => {
-      window.scrollTo({ top: 0 });
-    });
+    .catch(error => console.log(error));
 }
 
 const modalCategory = document.querySelector('[data-modal]');
@@ -151,17 +152,18 @@ categoryBooks.addEventListener('click', openBookDetails);
 
 const modalEl = document.querySelector('.img-and-description');
 
-function openBookDetails(event) {
+async function openBookDetails(event) {
   if (event.target.className !== 'bestsellers-book-cover') {
     return;
   }
-  spinner.show();
 
   const bookId = event.target.dataset.id;
+  spinner.show();
 
   modalEl.innerHTML = '<p>Loading...</p>';
 
-  fetchBookDetails(bookId)
+  await booksApi
+    .fetchBookDetails(bookId)
     .then(book => {
       renderBookModal(book);
       spinner.hide();
