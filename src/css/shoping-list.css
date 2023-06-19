@@ -11,6 +11,14 @@
   --yellow-color-for-pagination: #eac645;
 }
 
+
+.visually-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  position: absolute;
+}
+
 .container-shop {
   padding-left: 20px;
   padding-right: 20px;
@@ -77,6 +85,7 @@
   width: 265px;
   height: 198px;
 }
+
 .container-shop-gallery {
   margin-top: 40px;
 }
@@ -199,58 +208,58 @@
 @media screen and (max-width: 468px) {
 
   .li-shopping:not(:last-child) {
-  margin-right: 8px;
-}
+    margin-right: 8px;
+  }
 
   .amazon-shopping {
-  display: flex;
-  align-items: center;
-  width: 32px;
-  height: 11px;
-}
+    display: flex;
+    align-items: center;
+    width: 32px;
+    height: 11px;
+  }
 
-.amazon-shopping::before {
-  content: '';
-  display: block;
-  background-image: url(../img/modal-amazon.svg);
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 100%;
-  height: 100%;
-}
+  .amazon-shopping::before {
+    content: '';
+    display: block;
+    background-image: url(../img/modal-amazon.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+  }
 
-.book-shopping {
-  width: 16px;
-  height: 16px;
-}
+  .book-shopping {
+    width: 16px;
+    height: 16px;
+  }
 
-.book-shopping::before {
-  content: '';
-  display: block;
-  background-image: url(../img/modal-book.svg);
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 16px;
-  height: 16px;
-}
+  .book-shopping::before {
+    content: '';
+    display: block;
+    background-image: url(../img/modal-book.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 16px;
+    height: 16px;
+  }
 
-.books-shopping {
-  width: 16px;
-  height: 16px;
-}
+  .books-shopping {
+    width: 16px;
+    height: 16px;
+  }
 
-.books-shopping::before {
-  content: '';
-  display: block;
-  background-image: url(../img/modal-books.svg);
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 16px;
-  height: 16px;
-}
+  .books-shopping::before {
+    content: '';
+    display: block;
+    background-image: url(../img/modal-books.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 16px;
+    height: 16px;
+  }
 }
 
 @media screen and (max-width: 1439px) {
@@ -264,9 +273,11 @@
     display: flex;
     flex-direction: row;
   }
+
   .div-sprt-p3 {
     margin-top: 120px;
   }
+
   .container-shopping-list {
     display: flex;
     flex-direction: row;
@@ -304,7 +315,7 @@
   cursor: pointer;
 }
 
-.basket-button > svg {
+.basket-button>svg {
   width: 16px;
   height: 16px;
   fill: #d0d0d0;
@@ -341,7 +352,7 @@
   justify-content: space-between;
 }
 
-.gallery__wrap > .shop-wrap {
+.gallery__wrap>.shop-wrap {
   flex-grow: 1;
 }
 
@@ -407,7 +418,7 @@
   }
 }
 
-.gallery__wrap > .shop-meta {
+.gallery__wrap>.shop-meta {
   margin-top: 16px;
   /* margin-bottom: 14px; */
   display: flex;
@@ -415,7 +426,7 @@
   justify-content: space-between;
 }
 
-.partner + .partner {
+.partner+.partner {
   margin-left: 8px;
 }
 
@@ -447,7 +458,7 @@
     height: 34px;
   }
 
-  .basket-button > svg {
+  .basket-button>svg {
     width: 18px;
     height: 18px;
   }
@@ -456,7 +467,7 @@
     width: 116px;
   }
 
-  .partner + .partner {
+  .partner+.partner {
     margin-left: 16px;
   }
 }
@@ -481,5 +492,3 @@
     width: 996px;
   }
 }
-
-
