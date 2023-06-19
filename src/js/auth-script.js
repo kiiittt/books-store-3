@@ -18,6 +18,7 @@ const firebaseConfig = {
   appId: '1:490964966849:web:f93da1cfe963d7548da340',
 };
 
+
 // Ініціалізуємо Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
@@ -28,9 +29,15 @@ const signOutButton = document.querySelector('#signOutButton');
 const userBtnInfo = document.querySelector('.user-info');
 const signUpBtn = document.querySelector('.btn-signup');
 const modalWindow = document.querySelector('.modal-js');
+const modalBooks = document.querySelector('.modal');
 const backdropAuth = document.querySelector('.backdrop-auth');
 const formBtnSubmit = document.querySelector('.form--btn-submit');
 const btnProfile = document.querySelector('.btn-profile');
+const menuShopingList = document.querySelector(
+  '.main-menu-tablte-shoping-list'
+);
+const menuShopingListMobile = document.querySelector('.main-menu-shoping-list');
+const btnAddAndRemoveBooks = document.querySelector('.btn-modal-add-js');
 
 // Перевірка стану аутентифікації
 const checkAuthState = () => {
@@ -40,9 +47,30 @@ const checkAuthState = () => {
         user.displayName;
       signUpBtn.classList.add('is-hidden');
       userBtnInfo.classList.remove('is-hidden');
+      menuShopingList.classList.remove('is-hidden');
+      menuShopingListMobile.classList.remove('is-hidden');
+
+      if (window.location.pathname === '/index.html') {
+        const btnAddAndRemoveBooks =
+          document.querySelector('.btn-modal-add-js');
+        if (btnAddAndRemoveBooks) {
+          btnAddAndRemoveBooks.classList.remove('is-hidden');
+        }
+      }
     } else {
       signUpBtn.classList.remove('is-hidden');
       userBtnInfo.classList.add('is-hidden');
+      menuShopingList.classList.add('is-hidden');
+      menuShopingListMobile.classList.add('is-hidden');
+
+      if (window.location.pathname === '/index.html') {
+        const btnAddAndRemoveBooks =
+          document.querySelector('.btn-modal-add-js');
+        if (btnAddAndRemoveBooks) {
+          btnAddAndRemoveBooks.classList.add('is-hidden');
+        }
+      }
+      modalBooks.style.minHeight = '30%';
     }
   });
 };
