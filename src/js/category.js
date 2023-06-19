@@ -1,4 +1,8 @@
-import { booksApi} from './APi/APi.js';
+import {
+  fetchBooksByCategory,
+  fetchCategorys,
+  fetchBookDetails,
+} from './APi/APi.js';
 import { modalBookTemplate } from './component/modal/modal_book';
 import { generateBookMarkup } from './component/generate_book/generateBookTemplate';
 import { changeCategoryColor } from './component/changeColor/styleCategorogyColor';
@@ -15,9 +19,7 @@ const categoryBooksContainer = document.querySelector(
 const categoryAll = document.querySelector('.category_all');
 
 // Category section | Запит на отримання списку категорій
-
-booksApi
-  .fetchCategorys()
+fetchCategorys()
   .then(category => renderCategoryList(category))
   .catch(error => console.log(error));
 
@@ -47,9 +49,6 @@ function onButtonClick(event) {
 
   spinner.show();
 
-
-  booksApi
-    .fetchBooksByCategory(event.target.textContent)
   return fetchBooksByCategory(event.target.textContent)
     .then(book => {
       renderBooksList(book, event);
@@ -127,9 +126,6 @@ function onTitleBestsellersClick(event) {
   changeCategoryColor(event.target.textContent);
   clearBooksList();
 
-
-  booksApi
-    .fetchBooksByCategory(event.target.textContent)
   return fetchBooksByCategory(event.target.textContent)
     .then(book => renderBooksList(book, event))
     .catch(error => console.log(error))
@@ -165,8 +161,6 @@ function openBookDetails(event) {
 
   modalEl.innerHTML = '<p>Loading...</p>';
 
-  booksApi
-    .fetchBookDetails(bookId)
   fetchBookDetails(bookId)
     .then(book => {
       renderBookModal(book);
