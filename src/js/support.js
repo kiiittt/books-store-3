@@ -30,22 +30,23 @@ const swiper = new Swiper('.swiper', {
   navigation: {
     nextEl: '.support-button',
   },
+
+  touchEventsTarget: 'container',
 });
 
 swiper.update();
 
+// Ініціалізуємо змінну для зберігання стану кнопки
 let isLastSlide = false;
 
-const supportBtnClickHandler = () => {
+supportBtn.addEventListener('click', () => {
   const lastIndex = swiper.slides.length - 1;
-  const screenWidthMobile = window.innerWidth < 768;
 
-  if (screenWidthMobile) {
-    swiper.slideNext();
+  if (isLastSlide) {
+    swiper.slideTo(0);
+    isLastSlide = false;
   } else {
-    swiper.slideTo(isLastSlide ? 0 : lastIndex);
-    isLastSlide = !isLastSlide;
+    swiper.slideTo(lastIndex);
+    isLastSlide = true;
   }
-};
-
-supportBtn.addEventListener('click', supportBtnClickHandler);
+});

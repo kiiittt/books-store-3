@@ -1,19 +1,24 @@
-import { booksApi } from './APi/APi.js';
+import {
+  fetchBestsellers,
+  fetchCategoryBooks,
+  fetchBookDetails,
+} from './APi/APi.js';
 import { modalBookTemplate } from './component/modal/modal_book';
 import { formatBookName } from './component/maxLength/maxLength';
 import { generateBookMarkup } from './component/generate_book/generateBookTemplate';
 import { changeCategoryColor } from './component/changeColor/styleCategorogyColor';
-import { Spiner } from './component/loader-sing-up/spinner';
+import { Spiner } from './component/loader, sing-up/spinner';
+
 const spinner = new Spiner();
 
 // const bestsellersArea = document.querySelector('.bestsellers-area');
 const bestsellersList = document.querySelector('.bestsellers-list');
-let bestsellersArray = [];
 
+let bestsellersArray = [];
 const getBestseller = async () => {
   spinner.show();
   try {
-    const bestsellers = await booksApi.fetchBestsellers();
+    const bestsellers = await fetchBestsellers();
     bestsellersArray = bestsellers;
     getBooksNumber();
     bestsellersMarkup(bestsellersArray);
@@ -122,7 +127,7 @@ const categoryBooksContainer = document.querySelector(
 
 seeMoreBtn.addEventListener('click', openMoreBooks);
 
-async function openMoreBooks(event) {
+function openMoreBooks(event) {
   if (event.target.nodeName !== 'BUTTON') {
     return;
   }
@@ -133,30 +138,17 @@ async function openMoreBooks(event) {
 
   spinner.show();
 
-  const getTopValue = () => {
-    if (window.matchMedia('(max-width: 768px)').matches) {
-      return 700;
-    } else if (window.matchMedia('(max-width: 1440px)').matches) {
-      return 600;
-    } else {
-      return 0;
-    }
-  };
-
-  await booksApi
-    .fetchBooksByCategory(bookCategory)
+  fetchCategoryBooks(bookCategory)
     .then(book => {
       renderBooksList(book, event);
       spinner.hide();
     })
     .catch(error => {
-      console.error('Error fetching category books:', error);
+      console.log(error);
       spinner.hide();
     })
     .finally(() => {
-      const topValue = getTopValue();
-      window.scrollTo({ top: topValue, behavior: 'smooth' });
-      spinner.hide();
+      window.scrollTo({ top: 0 });
     });
 }
 // Очищення книг попередньої категорії
@@ -220,17 +212,17 @@ const addShopingBtn = document.querySelector('.btn-modal-add-js');
 const BOOKS_DATA_KEY = 'books';
 let books = JSON.parse(localStorage.getItem(BOOKS_DATA_KEY)) || [];
 
-async function openBookDetails(event) {
+function openBookDetails(event) {
   if (event.target.className !== 'bestsellers-book-cover') {
     return;
   }
-  const bookId = event.target.dataset.id;
 
-  modalEl.innerHTML = '<p>Loading...</p>';
+  const bookId = event.target.dataset.id;
   spinner.show();
 
-  await booksApi
-    .fetchBookDetails(bookId)
+  modalEl.innerHTML = '<p>Loading...</p>';
+
+  fetchBookDetails(bookId)
     .then(book => {
       renderBookModal(book);
       spinner.hide();
