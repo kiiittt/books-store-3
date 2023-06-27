@@ -12,6 +12,7 @@ const inputName = document.querySelector('.form-input-name');
 const mobileMenu = document.querySelector('.mobile-menu');
 const singBtnOut = document.querySelector('.sign-out-btn-js');
 const signOutButton = document.querySelector('#signOutButton');
+const settingsUser = document.getElementById('settingsUser');
 const passwordInput = document.querySelector('.input-password-js');
 const checkAuthOpen = document.querySelector('.input-psw-open');
 const iconLookPasswork = document.querySelector('.icon-lock-auth');
@@ -27,17 +28,25 @@ passwordInput.addEventListener('input', e => {
   passwordInputToggle(e);
 });
 
+function hideElement(element) {
+  element.classList.add('is-hidden');
+}
+
+function showElement(element) {
+  element.classList.remove('is-hidden');
+}
+
 function passwordInputToggle(e) {
   const valuePassword = e.target.value;
 
   if (valuePassword !== '') {
     iconLookPasswork.classList.add('icon-look-off');
     iconEye.classList.remove('icon-eye-off');
-    checkAuthOpen.classList.remove('is-hidden');
+    showElement(checkAuthOpen);
   } else {
     iconLookPasswork.classList.remove('icon-look-off');
-    checkAuthOpen.classList.add('is-hidden');
     iconEye.classList.add('icon-eye-off');
+    hideElement(checkAuthOpen);
   }
 }
 
@@ -68,29 +77,31 @@ const dropSingUp = () => {
     case screenSmall && headerBurgerTrueOrFalse:
       btnProfile.classList.remove('is-hidden-menu');
       singBtnOut.classList.remove('is-hidden-menu');
-      signOutButton.classList.remove('is-hidden');
+      showElement(signOutButton);
+      showElement(settingsUser);
       break;
     case screenBig:
       btnProfile.classList.remove('is-hidden-menu');
       singBtnOut.classList.add('is-hidden-menu');
       break;
     case screenSmall:
-      signOutButton.classList.add('is-hidden');
+      hideElement(signOutButton);
+      hideElement(settingsUser);
       btnProfile.classList.add('is-hidden-menu');
       break;
   }
 };
 
 function openModal() {
-  authModal.classList.remove('is-hidden');
+  showElement(authModal);
 }
 
 function closeIsModal() {
-  authModal.classList.add('is-hidden');
+  hideElement(authModal);
 }
 
 function backdropClose() {
-  authModal.classList.add('is-hidden');
+  hideElement(authModal);
 }
 
 function onBtnSignIn() {

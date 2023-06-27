@@ -288,10 +288,49 @@
 }
 
 .user-photo {
-	margin-right: 9px;
+	margin-right: 16px;
+}
+
+
+
+/* Settings User */
+
+.settings-user {
+	position: fixed;
+	bottom: 100px;
+	left: 20px;
+	width: 118px;
+	height: 48px;
+	color: #111;
+	background-color: #fff;
+	border: 1.5px solid #111;
+	border-radius: 18px;
+	justify-content: center;
+	align-items: center;
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 18px;
+	display: flex;
+	font-family: 'DM Sans';
+	letter-spacing: -0.04em;
+}
+
+.settings-auth {
+	width: 20px;
+	height: 20px;
+	fill: inherit;
 }
 
 @media screen and (min-width: 768px) {
+	.user-content {
+		margin-top: 50%;
+	}
+
+	.settings-user {
+		position: static;
+		width: 184px;
+	}
+
 	.drop-down-arrow {
 		opacity: 1;
 		margin-left: 9px;

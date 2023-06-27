@@ -1,9 +1,3 @@
-/**
-  |============================
-  | include css partials with
-  | default @import url()
-  |============================
-*/
 @import url('./reset.css');
 @import url('./vite-promo.css');
 @import url('./header.css');
@@ -33,6 +27,7 @@
   --trans-speed-4: 0.4s ease;
   --trans-speed-5: 0.5s ease;
   --trans-speed-8: 0.8s ease;
+  --text-color-book-h3: #111111;
   --main-bg-color: #ffffff;
   --header-bg-color: #ffffff;
   --color-of-categoryAll-text: #4f2ee8;
@@ -72,6 +67,7 @@
   --color-of-h2-category: #ffffff;
   --color-for-btn-auth-modal-text: #111111;
   --color-for-btn-auth-modal: #F3F3F3;
+  --text-color-book-h3: #B4AFAF;
   --icon-close: #F6F6F6;
   --color-btn-uo-in: rgba(246, 246, 246, 0.5);
   --color-btn-sit-up: #202024;

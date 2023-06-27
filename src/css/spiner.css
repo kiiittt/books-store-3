@@ -23,9 +23,9 @@
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	animation: spin 1s linear infinite;
+	animation: spin 1.3s linear infinite;
 	border-radius: 50%;
-	border: 5px solid #fff;
+	border: 5px solid #4f2ee8;
 	box-sizing: border-box;
 }
 

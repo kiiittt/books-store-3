@@ -3,7 +3,9 @@ import { modalBookTemplate } from './component/modal/modal_book';
 import { generateBookMarkup } from './component/generate_book/generateBookTemplate';
 import { changeCategoryColor } from './component/changeColor/styleCategorogyColor';
 import { changeCategoryAllColor } from './component/changeColor/styleCategorogyColorAll';
+import { errorBooks } from './Error/books-error';
 import { Spiner } from './component/loader-sing-up/spinner';
+import getTopValue from './utils/scrollForBook';
 
 const spinner = new Spiner();
 
@@ -19,9 +21,8 @@ const categoryAll = document.querySelector('.category_all');
 booksApi
   .fetchCategorys()
   .then(category => renderCategoryList(category))
-  .catch(error => console.log(error));
+  .catch(error => errorBooks(error));
 
-  
 // Рендеринг списку категорій
 function renderCategoryList(categories) {
   const markup = categories
@@ -57,8 +58,13 @@ function onButtonClick(event) {
       spinner.hide();
     })
     .catch(error => {
-      console.log(error);
+      errorBooks(error);
       spinner.hide();
+    })
+    .finally(() => {
+      spinner.hide();
+      const topValue = getTopValue();
+      window.scrollTo({ top: topValue, behavior: 'smooth' });
     });
 }
 
@@ -103,6 +109,7 @@ function onBtnClickChangeCategory(event) {
 
 // Додавання назви категорії до заголовку та кольору
 function separatesWordsAddToTitle(event) {
+  spinner.show();
   const categoryBooksTitle = document.querySelector('.category_books_title');
   const currentCategory = event.target.textContent;
   const arrrayCurrentCategory = currentCategory.split(' ');
@@ -114,6 +121,8 @@ function separatesWordsAddToTitle(event) {
   textEl.classList.add('last_word_category_title');
   textEl.textContent = lastElementBookTitle;
   categoryBooksTitle.appendChild(textEl);
+
+  spinner.hide();
 }
 
 // Обробка кліку на заголовок "Bestsellers"
@@ -135,7 +144,7 @@ function onTitleBestsellersClick(event) {
   booksApi
     .fetchBooksByCategory(event.target.textContent)
     .then(book => renderBooksList(book, event))
-    .catch(error => console.log(error));
+    .catch(error => errorBooks(error));
 }
 
 const modalCategory = document.querySelector('[data-modal]');
@@ -172,7 +181,7 @@ function openBookDetails(event) {
       spinner.hide();
     })
     .catch(error => {
-      console.log(error);
+      errorBooks(error);
       spinner.hide();
     });
 }
