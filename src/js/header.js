@@ -1,3 +1,6 @@
+import ThemeToggle from './utils/DetectDarkMode/detectDarkMode'
+
+const themeToggle = new ThemeToggle();
 /* Mobile menu open */
 (() => {
   const refs = {
@@ -32,40 +35,6 @@ document.getElementById('open-button-menu').addEventListener(
   false
 );
 
-/* Dark and Light themes */
-
-const themeToggleBtn = document.querySelector('.theme-toggle-button');
-
-const toggleTheme = () => {
-  const currentTheme = document.documentElement.getAttribute('theme');
-  const isChecked = themeToggleBtn.checked;
-
-  if (currentTheme === 'dark' && !isChecked) {
-    document.documentElement.setAttribute('theme', 'light');
-    localStorage.setItem('theme', 'light');
-  } else if (currentTheme === 'light' && isChecked) {
-    document.documentElement.setAttribute('theme', 'dark');
-    localStorage.setItem('theme', 'dark');
-  }
-};
-
-themeToggleBtn.addEventListener('change', toggleTheme);
-
-const savedTheme = localStorage.getItem('theme');
-if (savedTheme) {
-  document.documentElement.setAttribute('theme', savedTheme);
-}
-
-const savedCheckboxState = localStorage.getItem('checkboxState');
-if (savedCheckboxState === 'checked') {
-  themeToggleBtn.checked = true;
-}
-
-themeToggleBtn.addEventListener('change', () => {
-  const checkboxState = themeToggleBtn.checked ? 'checked' : 'unchecked';
-  localStorage.setItem('checkboxState', checkboxState);
-});
-
 //Сторінка на якій ми перебуваємо
 const activePage = document
   .querySelector('.main-menu-tablet-list')
@@ -80,6 +49,7 @@ if (document.querySelector('.active-page') === null) {
     activePageMobile[index].classList.toggle('current');
   }
 }
+
 
 document
   .getElementById('open-button-menu')

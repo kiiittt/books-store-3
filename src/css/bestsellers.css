@@ -53,14 +53,11 @@
 }
 
 .bestsellers-general-category {
-  font-family: 'DM Sans';
-  font-style: normal;
-  font-weight: 400;
   font-size: 14px;
   line-height: 18px;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.42px;
   text-transform: uppercase;
-  color: var(--main-bg-color);
+  color: var(--text-color-book-h3);
   margin-bottom: 18px;
 }
 
@@ -69,17 +66,19 @@
   flex-direction: column;
   height: 535px;
   margin-bottom: 8px;
+  border-radius: 8px;
 }
 
 .bestsellers-book-item:hover {
-  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.38);
+  box-shadow: 1px 8px 20px gray;
+  transition: box-shadow .3s ease-in;
 }
 
 .bestsellers-book-cover {
   border-radius: 8px;
-  /* width: 335px; */
+  border: 1.5px #d7d7cd solid;
   height: 485px;
-  /* margin-bottom: 14px; */
+  cursor: pointer;
 }
 
 .bestsellers-book-title {
@@ -235,10 +234,10 @@
   .test-wraper::before {
     content: 'QUICK VIEW';
     position: absolute;
-    left: 0px;
+    left: 0;
     top: 186px;
     z-index: 5;
-    width: 179px;
+    width: 100%;
     height: 70px;
     font-weight: 500;
     font-size: 14px;

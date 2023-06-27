@@ -1,9 +1,12 @@
 import { booksApi } from './APi/APi.js';
 import { modalBookTemplate } from './component/modal/modal_book';
-import { formatBookName } from './component/maxLength/maxLength';
+import { formatBookName } from './utils/maxLength/maxLength';
 import { generateBookMarkup } from './component/generate_book/generateBookTemplate';
 import { changeCategoryColor } from './component/changeColor/styleCategorogyColor';
 import { Spiner } from './component/loader-sing-up/spinner';
+import { errorBooks, errorCategoryBooks } from './Error/books-error';
+import getTopValue from './utils/scrollForBook';
+
 const spinner = new Spiner();
 
 // const bestsellersArea = document.querySelector('.bestsellers-area');
@@ -17,8 +20,8 @@ const getBestseller = async () => {
     bestsellersArray = bestsellers;
     getBooksNumber();
     bestsellersMarkup(bestsellersArray);
-  } catch {
-    console.error(error);
+  } catch (error) {
+    errorBooks(error);
   }
   spinner.hide();
 };
@@ -29,7 +32,9 @@ getBestseller()
     getBooksNumber();
     bestsellersMarkup(bestsellersArray);
   })
-  .catch(error => console.error(error));
+  .catch(error => {
+    errorBooks(error);
+  });
 
 let booksNumber = 0;
 let titleLength = 0;
@@ -48,7 +53,6 @@ function getBooksNumber() {
     titleLength = 15;
   }
 }
-
 
 function bestsellersMarkup(bestsellers) {
   if (!bestsellers || bestsellers.length === 0) {
@@ -79,7 +83,7 @@ function bestsellersMarkup(bestsellers) {
           <div class="test-wraper">
             <img src="${
               book.book_image
-            }" alt="book-cover" class="bestsellers-book-cover" data-id="${
+            }" alt="book-cover" class="bestsellers-book-cover" open-modal-book="false" data-id="${
         book._id
       }" loading="lazy" data-modal-open>
           </div>
@@ -87,7 +91,10 @@ function bestsellersMarkup(bestsellers) {
             book.title,
             titleLength
           )}</p>
-          <p class="bestsellers-book-author">${book.author}</p>
+          <p class="bestsellers-book-author">${formatBookName(
+            book.author,
+            30
+          )}</p>
         </div>`;
     }
 
@@ -134,25 +141,13 @@ async function openMoreBooks(event) {
 
   spinner.show();
 
-  const getTopValue = () => {
-    if (window.matchMedia('(max-width: 768px)').matches) {
-      return 700;
-    } else if (window.matchMedia('(max-width: 1440px)').matches) {
-      return 600;
-    } else {
-      return 0;
-    }
-  };
-
   await booksApi
     .fetchBooksByCategory(bookCategory)
     .then(book => {
       renderBooksList(book, event);
-      spinner.hide();
     })
     .catch(error => {
-      console.error('Error fetching category books:', error);
-      spinner.hide();
+      errorCategoryBooks(error);
     })
     .finally(() => {
       const topValue = getTopValue();
@@ -237,7 +232,7 @@ async function openBookDetails(event) {
       spinner.hide();
     })
     .catch(error => {
-      console.log(error);
+      errorBooks(error);
       spinner.hide();
     });
 }
@@ -273,12 +268,4 @@ function addToLocalStorage() {
     addShopingBtn.textContent = 'REMOVE FROM THE SHOPPING LIST';
     underModalBtnText.classList.remove('visually-hidden');
   }
-
-  // const bookId = document.querySelector('.book-modal').dataset.bookId;
-  // const bookData = {
-  //   id: bookId,
-  // };
-
-  // bookArray.push(bookData);
-  // localStorage.setItem(BOOKS_DATA_KEY, JSON.stringify(bookArray));
 }

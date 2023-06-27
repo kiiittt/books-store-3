@@ -1,3 +1,4 @@
+import { handleError } from './Error/auth-error.js';
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js';
 import {
   getAuth,
@@ -18,7 +19,6 @@ const firebaseConfig = {
   appId: '1:490964966849:web:f93da1cfe963d7548da340',
 };
 
-
 // Ініціалізуємо Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
@@ -26,48 +26,56 @@ const auth = getAuth(app);
 const authForm = document.querySelector('form#authForm');
 const signUpButton = document.querySelector('#signUpButton');
 const signOutButton = document.querySelector('#signOutButton');
+const settingsUser = document.getElementById('settingsUser');
+const formBtnSubmit = document.querySelector('.form--btn-submit');
+const btnProfile = document.querySelector('.btn-profile');
 const userBtnInfo = document.querySelector('.user-info');
 const signUpBtn = document.querySelector('.btn-signup');
 const modalWindow = document.querySelector('.modal-js');
 const modalBooks = document.querySelector('.modal');
 const backdropAuth = document.querySelector('.backdrop-auth');
-const formBtnSubmit = document.querySelector('.form--btn-submit');
-const btnProfile = document.querySelector('.btn-profile');
-const menuShopingList = document.querySelector(
-  '.main-menu-tablte-shoping-list'
-);
-const menuShopingListMobile = document.querySelector('.main-menu-shoping-list');
-const btnAddAndRemoveBooks = document.querySelector('.btn-modal-add-js');
+
+const refs = {
+  menuShopingList: document.querySelector('.main-menu-tablte-shoping-list'),
+  menuShopingListMobile: document.querySelector('.main-menu-shoping-list'),
+};
+
+function hideElement(element) {
+  element.classList.add('is-hidden');
+}
+
+function showElement(element) {
+  element.classList.remove('is-hidden');
+}
 
 // Перевірка стану аутентифікації
 const checkAuthState = () => {
   onAuthStateChanged(auth, user => {
     if (user) {
-      userBtnInfo.querySelector('span').nextSibling.textContent =
-        user.displayName;
-      signUpBtn.classList.add('is-hidden');
-      userBtnInfo.classList.remove('is-hidden');
-      menuShopingList.classList.remove('is-hidden');
-      menuShopingListMobile.classList.remove('is-hidden');
+      userBtnInfo.querySelector('span').textContent = user.displayName;
+      hideElement(signUpBtn);
+      showElement(userBtnInfo);
+      showElement(refs.menuShopingList);
+      showElement(refs.menuShopingListMobile);
 
-      if (window.location.pathname === '/index.html') {
+      if (window.location.pathname !== '/shoping-list.html') {
         const btnAddAndRemoveBooks =
           document.querySelector('.btn-modal-add-js');
         if (btnAddAndRemoveBooks) {
-          btnAddAndRemoveBooks.classList.remove('is-hidden');
+          showElement(btnAddAndRemoveBooks);
         }
       }
     } else {
-      signUpBtn.classList.remove('is-hidden');
-      userBtnInfo.classList.add('is-hidden');
-      menuShopingList.classList.add('is-hidden');
-      menuShopingListMobile.classList.add('is-hidden');
+      showElement(signUpBtn);
+      hideElement(userBtnInfo);
+      hideElement(refs.menuShopingList);
+      hideElement(refs.menuShopingListMobile);
 
-      if (window.location.pathname === '/index.html') {
+      if (window.location.pathname !== '/shoping-list.html') {
         const btnAddAndRemoveBooks =
           document.querySelector('.btn-modal-add-js');
         if (btnAddAndRemoveBooks) {
-          btnAddAndRemoveBooks.classList.add('is-hidden');
+          hideElement(btnAddAndRemoveBooks);
         }
       }
       modalBooks.style.minHeight = '30%';
@@ -83,8 +91,8 @@ const userSignUp = (name, email, password) => {
     .then(userSignUpCreate => {
       const user = userSignUpCreate.user;
       console.log(user);
-      backdropAuth.classList.add('is-hidden');
-      modalWindow.classList.add('is-hidden');
+      hideElement(backdropAuth);
+      hideElement(modalWindow);
       return updateProfile(auth.currentUser, {
         displayName: name,
       });
@@ -94,9 +102,7 @@ const userSignUp = (name, email, password) => {
         auth.currentUser.displayName;
     })
     .catch(error => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log(errorCode + errorMessage);
+      handleError(error);
     });
 };
 
@@ -104,14 +110,12 @@ const userSignUp = (name, email, password) => {
 const userSignIn = (email, password) => {
   signInWithEmailAndPassword(auth, email, password)
     .then(userSignUpCreate => {
-      backdropAuth.classList.add('is-hidden');
-      modalWindow.classList.remove('is-hidden');
+      hideElement(backdropAuth);
+      showElement(modalWindow);
       console.log(userSignUpCreate);
     })
     .catch(error => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log(errorCode + errorMessage);
+      handleError(error);
     });
 };
 
@@ -119,12 +123,10 @@ const userSignIn = (email, password) => {
 const userSignOut = () => {
   signOut(auth)
     .then(() => {
-      signOutButton.classList.remove('is-hidden');
+      showElement(signOutButton);
     })
     .catch(error => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log(errorCode + errorMessage);
+      handleError(error);
     });
 };
 
@@ -134,12 +136,13 @@ function handleFormSubmit(e) {
   const { email, password } = e.currentTarget.elements;
   const userEmail = email.value.trim();
   const userPassword = password.value.trim();
+  const submitText = formBtnSubmit.textContent.toLowerCase();
 
-  if (formBtnSubmit.textContent.toLowerCase() === 'sign up') {
+  if (submitText === 'sign up') {
     const { name } = e.currentTarget.elements;
     const userName = name.value.trim();
     userSignUp(userName, userEmail, userPassword);
-  } else if (formBtnSubmit.textContent.toLowerCase() === 'sign in') {
+  } else if (submitText === 'sign in') {
     userSignIn(userEmail, userPassword);
   } else {
     alert('Something went wrong');
@@ -151,6 +154,7 @@ const profileUser = () => {
   const screenSmall = window.screen.availWidth < 768;
   if (!screenSmall) {
     signOutButton.classList.toggle('is-hidden');
+    settingsUser.classList.toggle('is-hidden');
   }
 };
 

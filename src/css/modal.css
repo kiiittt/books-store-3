@@ -9,8 +9,6 @@
   overflow: hidden;
 }
 
-
-
 .backdrop.is-hidden {
   visibility: hidden;
   opacity: 0;
@@ -239,9 +237,6 @@
 }
 
 .btn-modal-add-js.is-hidden {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
   display: none;
 }
 
