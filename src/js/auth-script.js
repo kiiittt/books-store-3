@@ -1,3 +1,16 @@
+import {
+  authForm,
+  signUpButton,
+  signOutButton,
+  settingsUser,
+  formBtnSubmit,
+  btnProfile,
+  userBtnInfo,
+  signUpBtn,
+  modalWindow,
+  modalBooks,
+  backdropAuth,
+} from './component/auth-file/variables'
 import { handleError } from './Error/auth-error.js';
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js';
 import {
@@ -22,18 +35,6 @@ const firebaseConfig = {
 // Ініціалізуємо Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-
-const authForm = document.querySelector('form#authForm');
-const signUpButton = document.querySelector('#signUpButton');
-const signOutButton = document.querySelector('#signOutButton');
-const settingsUser = document.getElementById('settingsUser');
-const formBtnSubmit = document.querySelector('.form--btn-submit');
-const btnProfile = document.querySelector('.btn-profile');
-const userBtnInfo = document.querySelector('.user-info');
-const signUpBtn = document.querySelector('.btn-signup');
-const modalWindow = document.querySelector('.modal-js');
-const modalBooks = document.querySelector('.modal');
-const backdropAuth = document.querySelector('.backdrop-auth');
 
 const refs = {
   menuShopingList: document.querySelector('.main-menu-tablte-shoping-list'),

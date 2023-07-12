@@ -141,7 +141,7 @@
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background: rgba(17, 17, 17, 0.4);
+	background: #4F2EE8;
 	overflow: hidden;
 }
 
@@ -217,13 +217,14 @@
 	border-radius: 18px;
 	justify-content: center;
 	align-items: center;
-	gap: 4px;
 	font-size: 14px;
 	font-weight: 500;
 	line-height: 18px;
 	display: flex;
 	font-family: 'DM Sans';
 	letter-spacing: -0.04em;
+	justify-content: space-between;
+	padding: 0 10px;
 }
 
 .sign-out-btn.is-hidden-menu {
@@ -323,12 +324,13 @@
 
 @media screen and (min-width: 768px) {
 	.user-content {
-		margin-top: 50%;
+		position: relative;
+		bottom: -47.5px;
 	}
 
 	.settings-user {
 		position: static;
-		width: 184px;
+		width: 100%;
 	}
 
 	.drop-down-arrow {
@@ -338,12 +340,11 @@
 
 	.container-svg-auth {
 		justify-content: space-evenly;
+		padding: 0 3px
 	}
 
 	.btn-profile {
-		margin-top: 48px;
 		position: static;
-		width: 184px;
 		height: 45px;
 		background-color: var(--color-btn-profile);
 		border-radius: 36px;
@@ -363,8 +364,9 @@
 
 	.sign-out-btn {
 		position: static;
-		width: 184px;
-		gap: 90px;
+		width: 100%;
+		justify-content: space-between;
+    	padding: 0 10px;
 	}
 
 
@@ -376,7 +378,7 @@
 		padding-left: 14px;
 		width: 184px;
 		height: 48px;
-		background-color: var(--color-btn-sit-up);
+		background-color: #4F2EE8;
 		border: 1.5px solid var(--header-border-color);
 		border-radius: 18px;
 		font-family: 'DM Sans';

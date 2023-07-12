@@ -20,21 +20,23 @@
 
 <body class="active-page">
 
-  <load="partials/header.html" />
-  <div class="container">
-    <div class="index">
-      <div class="index-category-support">
-        <load="partials/category.html" />
-        <load="partials/support.html" />
-      </div>
-      <div class="index-bestsellers-div">
-        <load="partials/bestsellers.html" />
+<div id="root">
+    <load="partials/header.html" />
+    <div class="container">
+      <div class="index">
+        <div class="index-category-support">
+          <load="partials/category.html" />
+          <load="partials/support.html" />
+        </div>
+        <div class="index-bestsellers-div">
+          <load="partials/bestsellers.html" />
+        </div>
       </div>
     </div>
-  </div>
+    
+    <load="partials/modal.html" />
 
-  <load="partials/modal.html" />
-
+</div>
 
 
   <script type="module" type="text/javascript" src="/main.js"></script>
@@ -47,6 +49,7 @@
   <script type="module" type="text/javascript" src="./js/autorization.js"></script>
   <script type="module" type="text/javascript" src="./js/auth-script.js"></script>
   <script type="module" type="text/javascript" src="./js/component/loader-sing-up/scroll-up.js"></script>
+  <script type="module" type="text/javascript" src="./js/settings/settings_page.js"></script>
 </body>
 
 </html>

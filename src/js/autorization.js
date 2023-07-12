@@ -1,28 +1,30 @@
-const openSignUp = document.querySelector('.btn-signup');
-const userInfo = document.querySelector('.user-info');
-const btnProfile = document.querySelector('.btn-profile');
-const hederBurger = document.querySelector('#open-button-menu');
-const closeModal = document.querySelector('.modal-close-js');
-const authModal = document.querySelector('.auth-modal-js');
-const btnSubmit = document.querySelector('.form--btn-submit');
-const btnSignUp = document.querySelector('.form__btn-sign-up');
-const btnSignIn = document.querySelector('.form__btn-sign-in');
-const formInputAdd = document.querySelector('.form-add');
-const inputName = document.querySelector('.form-input-name');
-const mobileMenu = document.querySelector('.mobile-menu');
-const singBtnOut = document.querySelector('.sign-out-btn-js');
-const signOutButton = document.querySelector('#signOutButton');
-const settingsUser = document.getElementById('settingsUser');
-const passwordInput = document.querySelector('.input-password-js');
-const checkAuthOpen = document.querySelector('.input-psw-open');
-const iconLookPasswork = document.querySelector('.icon-lock-auth');
-const iconEye = document.querySelector('.icon-eye');
-const iconEyeSlash = document.querySelector('.icon-eye-slash');
-const svgEye = document.querySelector('.svg-eye');
-const formInputName = document.querySelector('.form-input-name');
-const userEmail = document.getElementById('userEmail');
-const userPassword = document.getElementById('userPassword');
-const authForm = document.querySelector('form#authForm');
+import {
+  openSignUp,
+  userInfo,
+  btnProfile,
+  hederBurger,
+  closeModal,
+  authModal,
+  btnSubmit,
+  btnSignUp,
+  btnSignIn,
+  formInputAdd,
+  inputName,
+  mobileMenu,
+  singBtnOut,
+  signOutButton,
+  settingsUser,
+  passwordInput,
+  checkAuthOpen,
+  iconLookPasswork,
+  iconEye,
+  iconEyeSlash,
+  svgEye,
+  formInputName,
+  userEmail,
+  userPassword,
+  authForm
+} from './component/auth-file/variables';
 
 passwordInput.addEventListener('input', e => {
   passwordInputToggle(e);
