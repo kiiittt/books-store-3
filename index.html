@@ -16,15 +16,16 @@
   
   
   
-  <script type="module" crossorigin src="/books-store-3/assets/index-4958da45.js"></script>
-  <link rel="modulepreload" crossorigin href="/books-store-3/assets/auth-script-557ae712.js">
-  <link rel="stylesheet" href="/books-store-3/assets/auth-script-8ba8111f.css">
-  <link rel="stylesheet" href="/books-store-3/assets/index-0a09895c.css">
+  <script type="module" crossorigin src="/books-store-3/assets/index-449f9d2b.js"></script>
+  <link rel="modulepreload" crossorigin href="/books-store-3/assets/auth-script-a4572549.js">
+  <link rel="stylesheet" href="/books-store-3/assets/auth-script-4e4a3626.css">
+  <link rel="stylesheet" href="/books-store-3/assets/index-eba86179.css">
 </head>
 
 <body class="active-page">
 
-  <header class="header ">
+<div id="root">
+    <header class="header ">
   <div class="container wrapper containers">
     <a class="logo" href="./index.html">
       <svg version="1.1" x="0px" y="0px" viewBox="0 0 109 28" xml:space="preserve">
@@ -109,12 +110,12 @@
               </svg>
             </div>
           </button>
-          <button id="settingsUser" class="settings-user settings-user-js is-hidden">
+          <a href="../settings.html" id="settingsUser" class="settings-user settings-user-js is-hidden">
             Settings
             <svg class="settings-auth">
               <use href=""></use>
             </svg>
-          </button>
+          </a>
           <button id="signOutButton" class="sign-out-btn sign-out-btn-js is-hidden" aria-label="Log Out">Log out
             <span>
               <svg class="arrow-auth">
@@ -153,10 +154,10 @@
               <input class="input-psw-open is-hidden" type="checkbox" name="open-password">
               <div class="svg-eye">
                 <svg class="icon-eye icon-eye-off">
-                  <use href='/books-store-3/assets/toggle_eye-35ee52e7.svg#icon-iconmonstr-eye-thin'></use>
+                  <use href='/books-store-3/assets/toggle_eye-a2f2f13b.svg#icon-iconmonstr-eye-thin'></use>
                 </svg>
                 <svg class="icon-eye-slash icon-eye-off-slash">
-                  <use href='/books-store-3/assets/toggle_eye-35ee52e7.svg#icon-iconmonstr-eye-off-thin'></use>
+                  <use href='/books-store-3/assets/toggle_eye-a2f2f13b.svg#icon-iconmonstr-eye-off-thin'></use>
                 </svg>
               </div>
               <div class="error"></div>
@@ -224,10 +225,10 @@
     </div>
   </div>
 </div>
-  <div class="container">
-    <div class="index">
-      <div class="index-category-support">
-        <section class="category">
+    <div class="container">
+      <div class="index">
+        <div class="index-category-support">
+          <section class="category">
   <ul class="category_list">
     <li>
       <button type="button" class="category_button category_all">
@@ -236,7 +237,7 @@
     </li>
   </ul>
 </section>
-        <section class="support">
+          <section class="support">
     <div class="support-title-wrapper">
         <h1 class="support-title">Support Ukraine</h1>
         <svg class="support-title-icon" width="20" height="32">
@@ -254,9 +255,9 @@
         </svg>
     </button>
 </section>
-      </div>
-      <div class="index-bestsellers-div">
-        <section class="category_books_container">
+        </div>
+        <div class="index-bestsellers-div">
+          <section class="category_books_container">
   <h2 class="category_books_title"></h2>
   <ul class="category_books"></ul>
 </section>
@@ -267,11 +268,11 @@
   </p>
   <ul class="bestsellers-list"></ul>
 </section>
+        </div>
       </div>
     </div>
-  </div>
-
-  <div class="backdrop is-hidden" data-modal>
+    
+    <div class="backdrop is-hidden" data-modal>
   <div class="modal">
     <div class="div-close-modal">
       <button class="btn-close-modal" data-modal-close>
@@ -293,8 +294,10 @@
   </div>
 </div>
 
+</div>
 
 
+  
   
   
   
